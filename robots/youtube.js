@@ -1,5 +1,5 @@
 var http = require('https');
-var credentials = require("./credentials.json");
+var credentials = require("../credentials.json");
 
 var conteudo;
 

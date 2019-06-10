@@ -8,15 +8,13 @@
 </head>
 
 <body>
-    <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
     <div id="player"></div>
     <%- teste %>
     <script>
-        // 2. This code loads the IFrame Player API code asynchronously.
         var tag = document.createElement('script');
         const urlParams = new URLSearchParams(window.location.search);
         const sala = urlParams.get('sala');
-        var socket = io.connect("http://192.168.0.106:3000?sala=" + sala);
+        var socket = io.connect("<%- site %>?sala=" + sala);
         var playerPronto = false;
         socket.on("connect", () => {
             console.log("Conectado");
