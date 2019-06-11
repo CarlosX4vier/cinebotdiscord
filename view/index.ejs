@@ -4,11 +4,23 @@
 <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
+    <style>
+        body {
+            background: url(https://media.discordapp.net/attachments/280129143255990275/587792451457253393/Vista_3D_9.jpg) cadetblue;
+            background-size: 100%;
+            background-repeat: no-repeat;
+        }
+    </style>
 </head>
 
 <body>
-    <div id="player"></div>
+    <div style="margin: 0 auto;
+        width: 55%; /* Valor da Largura */
+        height: 65vh !important;
+    
+    ">
+        <div id="player"></div>
+    </div>
     <%- teste %>
     <script>
         var tag = document.createElement('script');
@@ -16,6 +28,7 @@
         const sala = urlParams.get('sala');
         var socket = io.connect("<%- site %>?sala=" + sala);
         var playerPronto = false;
+
         socket.on("connect", () => {
             console.log("Conectado");
             if (playerPronto) {
@@ -23,15 +36,14 @@
             }
         });
         $(document).ready(function () {
-
             socket.on("disconnect", () => {
-                player.pauseVideo();
+                player.stopVideo();
                 player.seekTo(0);
-
             });
 
             socket.on("time", (data) => {
                 if (playerPronto) {
+                    $("#player").show();
                     if (player.getVideoData()['video_id'] != data.video) {
                         player.loadVideoById({ 'videoId': data.video });
                     }
@@ -54,12 +66,14 @@
         var player;
         function onYouTubeIframeAPIReady() {
             player = new YT.Player('player', {
-                height: '360',
-                width: '640',
+                height: '100%',
+                width: '100%',
                 videoId: '',
+                playerVars: { 'controls': 0, 'modestbranding': 1, 'rel': 0, 'showinfo': 0 },
                 events: {
                     'onReady': onPlayerReady,
-                    'onStateChange': onPlayerStateChange
+                    'onStateChange': onPlayerStateChange,
+                    'onError': onError
                 }
             });
         }
@@ -68,6 +82,11 @@
         function onPlayerReady(event) {
             playerPronto = true;
             event.target.playVideo();
+
+        }
+
+        function onError(event) {
+            $("#player").hide();
         }
 
         // 5. The API calls this function when the player's state changes.
@@ -75,14 +94,18 @@
         //    the player should play for six seconds and then stop.
         var done = false;
         function onPlayerStateChange(event) {
-            if (event.data == YT.PlayerState.PLAYING && !done) {
+            if (event.data == YT.PlayerState.PLAYING && playerPronto) {
                 //setTimeout(stopVideo, 6000);
+                $("#player").show();
                 // done = true;
             }
+            if (event.data == 0 || event.data == 5 || event.data == -1) {
+                console.log("terminou");
+                $("#player").hide();
+            }
+            console.log(event.data);
         }
-        function stopVideo() {
-            player.stopVideo();
-        }
+
 
     </script>
 
