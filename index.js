@@ -31,6 +31,26 @@ setInterval(() => {
 
 Sala.salas = [];
 
+client.on('guildCreate', (guild) => {
+
+  //guild.defaultChannel.send("Olá, eu sou a **Jessy**, a organizadora do **CineDiscord** e eu já estou pronta para começar : \n `COMANDOS` \n:arrow_right: **!assistir** *link do YouTube* - Para começar a sessão de videos \n :arrow_right:  **!doar** - Para saber como colaborar com o projeto. \n :star: E AI?! Vamos começar?! :smile:");
+  let channelID;
+  let channels = guild.channels;
+  channelLoop:
+  for (let c of channels) {
+    let channelType = c[1].type;
+    if (channelType === "text") {
+      channelID = c[0];
+      break channelLoop;
+    }
+  }
+
+  let channel = guild.channels.get(guild.systemChannelID || channelID);
+  channel.send(`Thanks for inviting me into this server!`);
+  var msg = "Ol\u00E1, eu sou a **Jessy**, a organizadora do **Cine Discord** e eu j\u00E1 estou pronta para come\u00E7ar:\r\n\r\n`COMANDOS` \r\n:arrow_right: **!assistir** *link do YouTube* - Para come\u00E7ar a sess\u00E3o de videos\r\n:arrow_right:  **!doar** - Para saber como colaborar com o projeto. \r\n\r\n :star: E AI?! Vamos come\u00E7ar?!";
+  channel.send(msg);
+})
+
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 
@@ -55,7 +75,7 @@ client.login('MzkyOTAzMTcwNTQ1ODExNDU3.XPaWwQ.J0SA8eN3y8mGEblnA6jiPB39o3U');
 
 
 client.on('message', async (msg) => {
-  if (msg.content.includes("!assistir")) {
+  if (msg.content.split(" ")[0] == "!assistir") {
 
     msg.reply("O endereço da sala do servidor '" + msg.guild.name + "' é " + credentials.site + "/?sala=" + msg.guild.id);
 
