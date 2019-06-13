@@ -4,24 +4,48 @@
 <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title> <%- teste %> </title>
     <style>
-        body {
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #apoiadores {
+            float: left;
+            margin-top: 10vw;
+            transform: skew(-11deg, 8deg);
+            margin-left: 4vw;
+            font-size: 1.2vw;
+        }
+
+        .fundo {
             background: url(https://media.discordapp.net/attachments/280129143255990275/587792451457253393/Vista_3D_9.jpg) cadetblue;
-            background-size: 100%;
+            background-size: 100vw;
+
             background-repeat: no-repeat;
+            width: 100vw;
+            height: 100vh;
         }
     </style>
 </head>
 
 <body>
-    <div style="margin: 0 auto;
-        width: 55%; /* Valor da Largura */
-        height: 65vh !important;
-    
-    ">
-        <div id="player"></div>
+    <div style="height: 100% !important;">
+        <div class="fundo">
+            <div id="apoiadores">
+                Lista de apoiadores
+                <ul>
+                    <li>Carlos</li>
+                </ul>
+
+            </div>
+            <div style="width: 50vw;height: 26.5vw;padding-top: 5vw;margin: 0 auto;">
+                <div id="player"></div>
+            </div>
+        </div>
     </div>
-    <%- teste %>
+
     <script>
         var tag = document.createElement('script');
         const urlParams = new URLSearchParams(window.location.search);
@@ -36,6 +60,7 @@
             }
         });
         $(document).ready(function () {
+
             socket.on("disconnect", () => {
                 player.stopVideo();
                 player.seekTo(0);
@@ -89,24 +114,19 @@
             $("#player").hide();
         }
 
-        // 5. The API calls this function when the player's state changes.
-        //    The function indicates that when playing a video (state=1),
-        //    the player should play for six seconds and then stop.
-        var done = false;
         function onPlayerStateChange(event) {
-            if (event.data == YT.PlayerState.PLAYING && playerPronto) {
-                //setTimeout(stopVideo, 6000);
+            if (event.data == YT.PlayerState.PLAYING) {
                 $("#player").show();
-                // done = true;
             }
-            if (event.data == 0 || event.data == 5 || event.data == -1) {
+            if(event.data == YT.PlayerState.PAUSED){
+                player.playVideo(); 
+            }
+            if (event.data == YT.PlayerState.ENDED || event.data == YT.PlayerState.CUED) {
                 console.log("terminou");
                 $("#player").hide();
+                player.clearVideo();
             }
-            console.log(event.data);
         }
-
-
     </script>
 
 </body>

@@ -33,7 +33,6 @@ Sala.salas = [];
 
 client.on('guildCreate', (guild) => {
 
-  //guild.defaultChannel.send("Olá, eu sou a **Jessy**, a organizadora do **CineDiscord** e eu já estou pronta para começar : \n `COMANDOS` \n:arrow_right: **!assistir** *link do YouTube* - Para começar a sessão de videos \n :arrow_right:  **!doar** - Para saber como colaborar com o projeto. \n :star: E AI?! Vamos começar?! :smile:");
   let channelID;
   let channels = guild.channels;
   channelLoop:
@@ -46,27 +45,12 @@ client.on('guildCreate', (guild) => {
   }
 
   let channel = guild.channels.get(guild.systemChannelID || channelID);
-  channel.send(`Thanks for inviting me into this server!`);
   var msg = "Ol\u00E1, eu sou a **Jessy**, a organizadora do **Cine Discord** e eu j\u00E1 estou pronta para come\u00E7ar:\r\n\r\n`COMANDOS` \r\n:arrow_right: **!assistir** *link do YouTube* - Para come\u00E7ar a sess\u00E3o de videos\r\n:arrow_right:  **!doar** - Para saber como colaborar com o projeto. \r\n\r\n :star: E AI?! Vamos come\u00E7ar?!";
   channel.send(msg);
 })
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-
-  //var channels = 
-  /* canais.forEach(
-       canal =>
-           canal.channels.forEach(
-               a => {
-                   if(a.type =='text'){
-                       a.send("A");
-                   }
-               }
-           )
-   );*/
-  ///   console.log(canais.member.array());
-
 });
 
 
@@ -77,21 +61,21 @@ client.login('MzkyOTAzMTcwNTQ1ODExNDU3.XPaWwQ.J0SA8eN3y8mGEblnA6jiPB39o3U');
 client.on('message', async (msg) => {
   if (msg.content.split(" ")[0] == "!assistir") {
 
-    msg.reply("O endereço da sala do servidor '" + msg.guild.name + "' é " + credentials.site + "/?sala=" + msg.guild.id);
-
-
-    /* salaUser = new Sala(salaID, "Sala numero" + salaID);
-      if (verificarSala(salaUser.id) == -1) {
-        Sala.salas.push(salaUser);
-      }*/
-
+    console.log("Sala existe: "+Sala.verificarSala(msg.guild.id));
+    if (Sala.verificarSala(msg.guild.id) == -1) {
+      msg.reply("Espere só um minutinho que eu estou terminando de arrumar sua sala!! :blush:");
+      msg.reply("Pegue a pipoca :popcorn: e acesse '" + msg.guild.name + "' é " + credentials.site + "/?sala=" + msg.guild.id + " \n porque o video já vai começar!");
+    } else {
+      msg.reply("Coloquei esse video na playlista, agora é só esperar :thumbsup: \n\n :link: O link da sessão é '" + msg.guild.name + "' é " + credentials.site + "/?sala=" + msg.guild.id);
+    }
     var idSala = Sala.criarSala(Sala.salas, msg.guild.id);
 
     var url = new URL(msg.content.split(" ")[1]);
     var idVideo = url.searchParams.get('v');
-    await Sala.salas[idSala].adicionarVideo("yYzaEnt0kxs", msg);
-    await Sala.salas[idSala].adicionarVideo("SEmlPFYAl-g", msg);
-    await Sala.salas[idSala].adicionarVideo(idVideo, msg);
+    setTimeout(async () => {
+      await Sala.salas[idSala].adicionarVideo("yYzaEnt0kxs", msg);
+      await Sala.salas[idSala].adicionarVideo(idVideo, msg);
+    }, 5000);
   }
 });
 
