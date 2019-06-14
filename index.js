@@ -14,22 +14,37 @@ var credentials = require('./credentials');
 app.set('view engine', 'ejs')
 app.set('views', './view');
 
+//Seta valores
+Sala.salas = [];
+Sala.io = io;
+
 setInterval(() => {
-  for (i = 0; i < Sala.salas.length; i++) {
-    if (Sala.salas[i].playlist.length >= 1) {
-      if (Sala.salas[i].tempo >= Sala.salas[i].playlist[0].duracao) {
-        Sala.salas[i].tempo = 0;
-        Sala.salas[i].playlist.shift();
+  Sala.salas.forEach((element, i) => {
+
+    if (element.playlist.length >= 1) {
+
+      if (element.tempo >= element.playlist[0].duracao) {
+
+        element.tempo = 0;
+        element.playlist.shift();
+
+      } else if (element.tempo == 0) {
+
+        io.to(element.id).emit("video", { video: Sala.salas[i].playlist[0].id });
+        // io.to(Sala.salas[i].id).emit("volume", { volume: Sala.salas[i].volume });
+        element.setVolume();
+        element.atualizarTempo();
+
       } else {
-        Sala.salas[i].atualizarTempo();
-        io.to(Sala.salas[i].id).emit("time", { duracao: Sala.salas[i].tempo, sala: Sala.salas[i].id, video: Sala.salas[i].playlist[0].id });
+
+        element.atualizarTempo();
+        io.to(element.id).emit();
       }
     }
-  }
+  });
 }, 1000);
 
 
-Sala.salas = [];
 
 client.on('guildCreate', (guild) => {
 
@@ -59,23 +74,38 @@ client.login('MzkyOTAzMTcwNTQ1ODExNDU3.XPaWwQ.J0SA8eN3y8mGEblnA6jiPB39o3U');
 
 
 client.on('message', async (msg) => {
-  if (msg.content.split(" ")[0] == "!assistir") {
+  var acao = msg.content.split(" ");
+  id = Sala.verificarSala(msg.guild.id);
 
-    console.log("Sala existe: "+Sala.verificarSala(msg.guild.id));
+  if (acao[0] == "!assistir") {
+
     if (Sala.verificarSala(msg.guild.id) == -1) {
       msg.reply("Espere só um minutinho que eu estou terminando de arrumar sua sala!! :blush:");
       msg.reply("Pegue a pipoca :popcorn: e acesse '" + msg.guild.name + "' é " + credentials.site + "/?sala=" + msg.guild.id + " \n porque o video já vai começar!");
+      var id = Sala.criarSala(Sala.salas, msg.guild.id);
+
     } else {
       msg.reply("Coloquei esse video na playlista, agora é só esperar :thumbsup: \n\n :link: O link da sessão é '" + msg.guild.name + "' é " + credentials.site + "/?sala=" + msg.guild.id);
     }
-    var idSala = Sala.criarSala(Sala.salas, msg.guild.id);
+
 
     var url = new URL(msg.content.split(" ")[1]);
     var idVideo = url.searchParams.get('v');
+
+    client.user.setPresence({
+      game: {
+        name: "Organizando sala " + Sala.salas[id].nome,
+        url: credentials.site + "/?sala=" + msg.guild.id
+      }
+    });
+
     setTimeout(async () => {
-      await Sala.salas[idSala].adicionarVideo("yYzaEnt0kxs", msg);
-      await Sala.salas[idSala].adicionarVideo(idVideo, msg);
+      await Sala.salas[id].adicionarVideo("yYzaEnt0kxs", msg);
+      await Sala.salas[id].adicionarVideo(idVideo, msg);
     }, 5000);
+
+  } else if (acao[0] == "!volume") {
+    Sala.salas[id].setVolume(io, acao[1]);
   }
 });
 
@@ -98,13 +128,15 @@ app.get('/', (req, res) => {
 
 io.on('connection', function (socket) {
   let salaID = socket.handshake.query.sala;
-
   socket.join(salaID, function () {
-    console.log("enviado para sala: " + salaID);
-
-    console.log('a user connected');
-    console.log(Sala.verificarSala(salaID))
-
+    index = Sala.verificarSala(salaID);
+    if (index != -1) {
+      sala = Sala.salas[index]
+      if (sala != -1 && sala.playlist.length > 0) {
+        socket.emit("video", { video: sala.playlist[0].id });
+        socket.emit("volume", { volume: sala.volume });
+      }
+    }
   });
 
 });

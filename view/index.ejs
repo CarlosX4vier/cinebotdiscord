@@ -20,9 +20,8 @@
         }
 
         .fundo {
-            background: url(https://media.discordapp.net/attachments/280129143255990275/587792451457253393/Vista_3D_9.jpg) cadetblue;
+            background: url(https://media.discordapp.net/attachments/280129143255990275/587792451457253393/Vista_3D_9.jpg) black;
             background-size: 100vw;
-
             background-repeat: no-repeat;
             width: 100vw;
             height: 100vh;
@@ -40,7 +39,7 @@
                 </ul>
 
             </div>
-            <div style="width: 50vw;height: 26.5vw;padding-top: 5vw;margin: 0 auto;">
+            <div id="video" style="width: 50vw;height: 26.5vw;padding-top: 5vw;margin: 0 auto;">
                 <div id="player"></div>
             </div>
         </div>
@@ -51,36 +50,8 @@
         const urlParams = new URLSearchParams(window.location.search);
         const sala = urlParams.get('sala');
         var socket = io.connect("<%- site %>?sala=" + sala);
+
         var playerPronto = false;
-
-        socket.on("connect", () => {
-            console.log("Conectado");
-            if (playerPronto) {
-                player.playVideo();
-            }
-        });
-        $(document).ready(function () {
-
-            socket.on("disconnect", () => {
-                player.stopVideo();
-                player.seekTo(0);
-            });
-
-            socket.on("time", (data) => {
-                if (playerPronto) {
-                    $("#player").show();
-                    if (player.getVideoData()['video_id'] != data.video) {
-                        player.loadVideoById({ 'videoId': data.video });
-                    }
-                    if (Math.floor(player.getCurrentTime()) != data.duracao - 1) {
-                        console.log(Math.floor(player.getCurrentTime()) + " " + data.duracao);
-                        player.seekTo(data.duracao);
-                    }
-                }
-            });
-
-        });
-
 
         tag.src = "https://www.youtube.com/iframe_api";
         var firstScriptTag = document.getElementsByTagName('script')[0];
@@ -94,7 +65,7 @@
                 height: '100%',
                 width: '100%',
                 videoId: '',
-                playerVars: { 'controls': 0, 'modestbranding': 1, 'rel': 0, 'showinfo': 0 },
+                playerVars: { 'controls': 0, 'modestbranding': 0, 'rel': 0, 'showinfo': 0 },
                 events: {
                     'onReady': onPlayerReady,
                     'onStateChange': onPlayerStateChange,
@@ -103,28 +74,82 @@
             });
         }
 
+        function socketManager() {
+
+            var tag = document.createElement('script');
+            const urlParams = new URLSearchParams(window.location.search);
+            const sala = urlParams.get('sala');
+            var socket = io.connect("<%- site %>?sala=" + sala);
+
+            socket.on("connect", () => {
+                console.log("Conectado");
+            });
+
+            socket.on("reconnect",()=>{
+                player.playVideo();
+            })
+            
+            socket.on("volume", (data) => {
+                console.log("Volume:" + data.volume)
+                if (playerPronto) {
+                    if (player.getVolume() != data.volume) {
+                        player.setVolume(data.volume);
+                    }
+                }
+            })
+
+            socket.on("video", async (data) => {
+
+                console.log("Video: " + data.video)
+                dados = await player.getVideoData();
+                console.log(dados)
+                if (dados['video_id'] != data.video) {
+                    $("#video").show();
+                    player.loadVideoById({ 'videoId': data.video });
+                }
+            });
+
+            socket.on("disconnect", () => {
+                player.seekTo(0);
+                player.stopVideo();
+            });
+
+            socket.on("time", (data) => {
+                console.log(Math.floor(player.getCurrentTime()) + " " + data.duracao);
+
+                if (playerPronto) {
+                    $("#video").show();
+                    if (Math.floor(player.getCurrentTime()) != data.duracao - 1) {
+                        console.log(Math.floor(player.getCurrentTime()) + " " + data.duracao);
+                        player.seekTo(data.duracao);
+                    }
+                }
+            });
+        }
+
         // 4. The API will call this function when the video player is ready.
         function onPlayerReady(event) {
             playerPronto = true;
+            console.log("PlayerPronto")
             event.target.playVideo();
+            socketManager();
 
         }
 
         function onError(event) {
-            $("#player").hide();
+            $("#video").hide();
         }
 
         function onPlayerStateChange(event) {
             if (event.data == YT.PlayerState.PLAYING) {
-                $("#player").show();
+                $("#video").show();
             }
-            if(event.data == YT.PlayerState.PAUSED){
-                player.playVideo(); 
+            if (event.data == YT.PlayerState.PAUSED) {
+                player.playVideo();
             }
             if (event.data == YT.PlayerState.ENDED || event.data == YT.PlayerState.CUED) {
                 console.log("terminou");
-                $("#player").hide();
-                player.clearVideo();
+                $("#video").hide();
             }
         }
     </script>
