@@ -11,6 +11,11 @@
             padding: 0;
         }
 
+        #video {
+            height: 100%;
+            position: relative;
+        }
+
         #apoiadores {
             float: left;
             margin-top: 10vw;
@@ -20,7 +25,7 @@
         }
 
         .fundo {
-            background: url(https://media.discordapp.net/attachments/280129143255990275/587792451457253393/Vista_3D_9.jpg) black;
+            background: url(/fundo.png) black;
             background-size: 100vw;
             background-repeat: no-repeat;
             width: 100vw;
@@ -32,15 +37,17 @@
 <body>
     <div style="height: 100% !important;">
         <div class="fundo">
-            <div id="apoiadores">
-                Lista de apoiadores
-                <ul>
-                    <li>Carlos</li>
-                </ul>
-
-            </div>
-            <div id="video" style="width: 50vw;height: 26.5vw;padding-top: 5vw;margin: 0 auto;">
-                <div id="player"></div>
+            <div style="width: 77vw;height: 24.5vw;padding-top: 5.2vw;margin: 0px auto">
+                <div style="background: black;height: 100%;width: 100%;box-shadow: 0px 0px 5px #000;">
+                    <div id="video">
+                        <div style="
+                        position: absolute;
+                        height: 100%;
+                        width: 100%;
+                    "></div>
+                        <div id="player"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -65,7 +72,7 @@
                 height: '100%',
                 width: '100%',
                 videoId: '',
-                playerVars: { 'controls': 0, 'modestbranding': 0, 'rel': 0, 'showinfo': 0 },
+                playerVars: { 'autoplay': 0, 'controls': 0, 'modestbranding': 1, 'rel': 0, 'showinfo': 0 },
                 events: {
                     'onReady': onPlayerReady,
                     'onStateChange': onPlayerStateChange,
@@ -85,10 +92,10 @@
                 console.log("Conectado");
             });
 
-            socket.on("reconnect",()=>{
+            socket.on("reconnect", () => {
                 player.playVideo();
             })
-            
+
             socket.on("volume", (data) => {
                 console.log("Volume:" + data.volume)
                 if (playerPronto) {
@@ -99,13 +106,14 @@
             })
 
             socket.on("video", async (data) => {
+                $("#video").hide();
 
                 console.log("Video: " + data.video)
                 dados = await player.getVideoData();
-                console.log(dados)
                 if (dados['video_id'] != data.video) {
-                    $("#video").show();
+                    //$("#video").show();
                     player.loadVideoById({ 'videoId': data.video });
+                    player.stopVideo();
                 }
             });
 
@@ -116,12 +124,11 @@
 
             socket.on("time", (data) => {
                 console.log(Math.floor(player.getCurrentTime()) + " " + data.duracao);
-
                 if (playerPronto) {
-                    $("#video").show();
                     if (Math.floor(player.getCurrentTime()) != data.duracao - 1) {
                         console.log(Math.floor(player.getCurrentTime()) + " " + data.duracao);
                         player.seekTo(data.duracao);
+                        $("#video").show();
                     }
                 }
             });
@@ -148,7 +155,7 @@
                 player.playVideo();
             }
             if (event.data == YT.PlayerState.ENDED || event.data == YT.PlayerState.CUED) {
-                console.log("terminou");
+                console.log("terminou" + event.data);
                 $("#video").hide();
             }
         }

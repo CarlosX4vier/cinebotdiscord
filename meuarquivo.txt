@@ -1,0 +1,2869 @@
+<!DOCTYPE html>
+<html class="no-js" lang="pt-br" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VQUCVVZTARABVFhaAwIPVlQ="};window.NREUM||(NREUM={}),__nr_require=function(t,n,e){function r(e){if(!n[e]){var o=n[e]={exports:{}};t[e][0].call(o.exports,function(n){var o=t[e][1][n];return r(o||n)},o,o.exports)}return n[e].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<e.length;o++)r(e[o]);return r}({1:[function(t,n,e){function r(t){try{s.console&&console.log(t)}catch(n){}}var o,i=t("ee"),a=t(18),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,n,e){r(e.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,n){return t}).join(", ")))},{}],2:[function(t,n,e){function r(t,n,e,r,s){try{p?p-=1:o(s||new UncaughtException(t,n,e),!0)}catch(f){try{i("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,n,e){this.message=t||"Uncaught error with no additional information",this.sourceURL=n,this.line=e}function o(t,n){var e=n?null:c.now();i("err",[t,e])}var i=t("handle"),a=t(19),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,l="nr@seenError",p=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(8),t(7),"addEventListener"in window&&t(5),c.xhrWrappable&&t(9),d=!0)}s.on("fn-start",function(t,n,e){d&&(p+=1)}),s.on("fn-err",function(t,n,e){d&&!e[l]&&(f(e,l,function(){return!0}),this.thrown=!0,o(e))}),s.on("fn-end",function(){d&&!this.thrown&&p>0&&(p-=1)}),s.on("internal-error",function(t){i("ierr",[t,c.now(),!0])})},{}],3:[function(t,n,e){t("loader").features.ins=!0},{}],4:[function(t,n,e){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(8),s=t(7),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",l="resource",p="-start",h="-end",m="fn"+p,w="fn"+h,v="bstTimer",y="pushState",g=t("loader");g.features.stn=!0,t(6);var x=NREUM.o.EV;o.on(m,function(t,n){var e=t[0];e instanceof x&&(this.bstStart=g.now())}),o.on(w,function(t,n){var e=t[0];e instanceof x&&i("bst",[e,n,this.bstStart,g.now()])}),a.on(m,function(t,n,e){this.bstStart=g.now(),this.bstType=e}),a.on(w,function(t,n){i(v,[n,this.bstStart,g.now(),this.bstType])}),s.on(m,function(){this.bstStart=g.now()}),s.on(w,function(t,n){i(v,[n,this.bstStart,g.now(),"requestAnimationFrame"])}),o.on(y+p,function(t){this.time=g.now(),this.startPath=location.pathname+location.hash}),o.on(y+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],5:[function(t,n,e){function r(t){for(var n=t;n&&!n.hasOwnProperty(u);)n=Object.getPrototypeOf(n);n&&o(n)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,n){return t[1]}var a=t("ee").get("events"),s=t(21)(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";n.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,n){var e=t[1],r=c(e,"nr@wrapped",function(){function t(){if("function"==typeof e.handleEvent)return e.handleEvent.apply(e,arguments)}var n={object:t,"function":e}[typeof e];return n?s(n,"fn-",null,n.name||"anonymous"):e});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],6:[function(t,n,e){var r=t("ee").get("history"),o=t(21)(r);n.exports=r,o.inPlace(window.history,["pushState","replaceState"],"-")},{}],7:[function(t,n,e){var r=t("ee").get("raf"),o=t(21)(r),i="equestAnimationFrame";n.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],8:[function(t,n,e){function r(t,n,e){t[0]=a(t[0],"fn-",null,e)}function o(t,n,e){this.method=e,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,e)}var i=t("ee").get("timer"),a=t(21)(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";n.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],9:[function(t,n,e){function r(t,n){d.inPlace(n,["onreadystatechange"],"fn-",s)}function o(){var t=this,n=u.context(t);t.readyState>3&&!n.resolved&&(n.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,y,"fn-",s)}function i(t){g.push(t),h&&(b?b.then(a):w?w(a):(E=-E,R.data=E))}function a(){for(var t=0;t<g.length;t++)r([],g[t]);g.length&&(g=[])}function s(t,n){return n}function c(t,n){for(var e in t)n[e]=t[e];return n}t(5);var f=t("ee"),u=f.get("xhr"),d=t(21)(u),l=NREUM.o,p=l.XHR,h=l.MO,m=l.PR,w=l.SI,v="readystatechange",y=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],g=[];n.exports=u;var x=window.XMLHttpRequest=function(t){var n=new p(t);try{u.emit("new-xhr",[n],n),n.addEventListener(v,o,!1)}catch(e){try{u.emit("internal-error",[e])}catch(r){}}return n};if(c(p,x),x.prototype=p.prototype,d.inPlace(x.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,n){r(t,n),i(n)}),u.on("open-xhr-start",r),h){var b=m&&m.resolve();if(!w&&!m){var E=1,R=document.createTextNode(E);new h(a).observe(R,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===v||a()})},{}],10:[function(t,n,e){function r(){var t=window.NREUM,n=t.info.accountID||null,e=t.info.agentID||null,r=t.info.trustKey||null,i="btoa"in window&&"function"==typeof window.btoa;if(!n||!e||!i)return null;var a={v:[0,1],d:{ty:"Browser",ac:n,ap:e,id:o.generateCatId(),tr:o.generateCatId(),ti:Date.now()}};return r&&n!==r&&(a.d.tk=r),btoa(JSON.stringify(a))}var o=t(16);n.exports={generateTraceHeader:r}},{}],11:[function(t,n,e){function r(t){var n=this.params,e=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<p;r++)t.removeEventListener(l[r],this.listener,!1);n.aborted||(e.duration=s.now()-this.startTime,this.loadCaptureCalled||4!==t.readyState?null==n.status&&(n.status=0):a(this,t),e.cbTime=this.cbTime,d.emit("xhr-done",[t],t),c("xhr",[n,e,this.startTime]))}}function o(t,n){var e=t.responseType;if("json"===e&&null!==n)return n;var r="arraybuffer"===e||"blob"===e||"json"===e?t.response:t.responseText;return w(r)}function i(t,n){var e=f(n),r=t.params;r.host=e.hostname+":"+e.port,r.pathname=e.pathname,t.sameOrigin=e.sameOrigin}function a(t,n){t.params.status=n.status;var e=o(n,t.lastSize);if(e&&(t.metrics.rxSize=e),t.sameOrigin){var r=n.getResponseHeader("X-NewRelic-App-Data");r&&(t.params.cat=r.split(", ").pop())}t.loadCaptureCalled=!0}var s=t("loader");if(s.xhrWrappable){var c=t("handle"),f=t(12),u=t(10).generateTraceHeader,d=t("ee"),l=["load","error","abort","timeout"],p=l.length,h=t("id"),m=t(15),w=t(14),v=window.XMLHttpRequest;s.features.xhr=!0,t(9),d.on("new-xhr",function(t){var n=this;n.totalCbs=0,n.called=0,n.cbTime=0,n.end=r,n.ended=!1,n.xhrGuids={},n.lastSize=null,n.loadCaptureCalled=!1,t.addEventListener("load",function(e){a(n,t)},!1),m&&(m>34||m<10)||window.opera||t.addEventListener("progress",function(t){n.lastSize=t.loaded},!1)}),d.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),d.on("open-xhr-end",function(t,n){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&n.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid);var e=!1;if("init"in NREUM&&"distributed_tracing"in NREUM.init&&(e=!!NREUM.init.distributed_tracing.enabled),e&&this.sameOrigin){var r=u();r&&n.setRequestHeader("newrelic",r)}}),d.on("send-xhr-start",function(t,n){var e=this.metrics,r=t[0],o=this;if(e&&r){var i=w(r);i&&(e.txSize=i)}this.startTime=s.now(),this.listener=function(t){try{"abort"!==t.type||o.loadCaptureCalled||(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof n.onload))&&o.end(n)}catch(e){try{d.emit("internal-error",[e])}catch(r){}}};for(var a=0;a<p;a++)n.addEventListener(l[a],this.listener,!1)}),d.on("xhr-cb-time",function(t,n,e){this.cbTime+=t,n?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof e.onload||this.end(e)}),d.on("xhr-load-added",function(t,n){var e=""+h(t)+!!n;this.xhrGuids&&!this.xhrGuids[e]&&(this.xhrGuids[e]=!0,this.totalCbs+=1)}),d.on("xhr-load-removed",function(t,n){var e=""+h(t)+!!n;this.xhrGuids&&this.xhrGuids[e]&&(delete this.xhrGuids[e],this.totalCbs-=1)}),d.on("addEventListener-end",function(t,n){n instanceof v&&"load"===t[0]&&d.emit("xhr-load-added",[t[1],t[2]],n)}),d.on("removeEventListener-end",function(t,n){n instanceof v&&"load"===t[0]&&d.emit("xhr-load-removed",[t[1],t[2]],n)}),d.on("fn-start",function(t,n,e){n instanceof v&&("onload"===e&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=s.now()))}),d.on("fn-end",function(t,n){this.xhrCbStart&&d.emit("xhr-cb-time",[s.now()-this.xhrCbStart,this.onload,n],n)})}},{}],12:[function(t,n,e){n.exports=function(t){var n=document.createElement("a"),e=window.location,r={};n.href=t,r.port=n.port;var o=n.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=n.hostname||e.hostname,r.pathname=n.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!n.protocol||":"===n.protocol||n.protocol===e.protocol,a=n.hostname===document.domain&&n.port===e.port;return r.sameOrigin=i&&(!n.hostname||a),r}},{}],13:[function(t,n,e){function r(){}function o(t,n,e){return function(){return i(t,[f.now()].concat(s(arguments)),n?null:this,e),n?void 0:this}}var i=t("handle"),a=t(18),s=t(19),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",p=l+"ixn-";a(d,function(t,n){u[n]=o(l+n,!0,"api")}),u.addPageAction=o(l+"addPageAction",!0),u.setCurrentRouteName=o(l+"routeName",!0),n.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,n){var e={},r=this,o="function"==typeof n;return i(p+"tracer",[f.now(),t,e],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],e),o)try{return n.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],e),t}finally{c.emit("fn-end",[f.now()],e)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,n){h[n]=o(p+n)}),newrelic.noticeError=function(t,n){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now(),!1,n])}},{}],14:[function(t,n,e){n.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(n){return}}}},{}],15:[function(t,n,e){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),n.exports=r},{}],16:[function(t,n,e){function r(){function t(){return n?15&n[e++]:16*Math.random()|0}var n=null,e=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&(n=r.getRandomValues(new Uint8Array(31)));for(var o,i="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx",a="",s=0;s<i.length;s++)o=i[s],"x"===o?a+=t().toString(16):"y"===o?(o=3&t()|8,a+=o.toString(16)):a+=o;return a}function o(){function t(){return n?15&n[e++]:16*Math.random()|0}var n=null,e=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&Uint8Array&&(n=r.getRandomValues(new Uint8Array(31)));for(var o=[],i=0;i<16;i++)o.push(t().toString(16));return o.join("")}n.exports={generateUuid:r,generateCatId:o}},{}],17:[function(t,n,e){function r(t,n){if(!o)return!1;if(t!==o)return!1;if(!n)return!0;if(!i)return!1;for(var e=i.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==e[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(o="Safari",i=c[1])}n.exports={agent:o,version:i,match:r}},{}],18:[function(t,n,e){function r(t,n){var e=[],r="",i=0;for(r in t)o.call(t,r)&&(e[i]=n(r,t[r]),i+=1);return e}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],19:[function(t,n,e){function r(t,n,e){n||(n=0),"undefined"==typeof e&&(e=t?t.length:0);for(var r=-1,o=e-n||0,i=Array(o<0?0:o);++r<o;)i[r]=t[n+r];return i}n.exports=r},{}],20:[function(t,n,e){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],21:[function(t,n,e){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(19),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;n.exports=function(t,n){function e(t,n,e,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof e?e(r,a):e||{}}catch(f){l([f,"",[r,a,o],s])}u(n+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(d){throw u(n+"err",[r,a,d],s),d}finally{u(n+"end",[r,a,c],s)}}return r(t)?t:(n||(n=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,n,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<n.length;c++)s=n[c],a=t[s],r(a)||(t[s]=e(a,f?s+o:o,i,s))}function u(e,r,o){if(!c||n){var i=c;c=!0;try{t.emit(e,r,o,n)}catch(a){l([a,e,r,o])}c=i}}function d(t,n){if(Object.defineProperty&&Object.keys)try{var e=Object.keys(t);return e.forEach(function(e){Object.defineProperty(n,e,{get:function(){return t[e]},set:function(n){return t[e]=n,n}})}),n}catch(r){l([r])}for(var o in t)s.call(t,o)&&(n[o]=t[o]);return n}function l(n){try{t.emit("internal-error",n)}catch(e){}}return t||(t=o),e.inPlace=f,e.flag=a,e}},{}],ee:[function(t,n,e){function r(){}function o(t){function n(t){return t&&t instanceof r?t:t?c(t,s,i):i()}function e(e,r,o,i){if(!l.aborted||i){t&&t(e,r,o);for(var a=n(o),s=m(e),c=s.length,f=0;f<c;f++)s[f].apply(a,r);var d=u[g[e]];return d&&d.push([x,e,r,a]),a}}function p(t,n){y[t]=m(t).concat(n)}function h(t,n){var e=y[t];if(e)for(var r=0;r<e.length;r++)e[r]===n&&e.splice(r,1)}function m(t){return y[t]||[]}function w(t){return d[t]=d[t]||o(e)}function v(t,n){f(t,function(t,e){n=n||"feature",g[e]=n,n in u||(u[n]=[])})}var y={},g={},x={on:p,addEventListener:p,removeEventListener:h,emit:e,get:w,listeners:m,context:n,buffer:v,abort:a,aborted:!1};return x}function i(){return new r}function a(){(u.api||u.feature)&&(l.aborted=!0,u=l.backlog={})}var s="nr@context",c=t("gos"),f=t(18),u={},d={},l=n.exports=o();l.backlog=u},{}],gos:[function(t,n,e){function r(t,n,e){if(o.call(t,n))return t[n];var r=e();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(t,n,e){function r(t,n,e,r){o.buffer([t],r),o.emit(t,n,e)}var o=t("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(t,n,e){function r(t){var n=typeof t;return!t||"object"!==n&&"function"!==n?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");n.exports=r},{}],loader:[function(t,n,e){function r(){if(!E++){var t=b.info=NREUM.info,n=p.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&n))return u.abort();f(g,function(n,e){t[n]||(t[n]=e)}),c("mark",["onload",a()+b.offset],null,"api");var e=p.createElement("script");e.src="https://"+t.agent,n.parentNode.insertBefore(e,n)}}function o(){"complete"===p.readyState&&i()}function i(){c("mark",["domContent",a()+b.offset],null,"api")}function a(){return R.exists&&performance.now?Math.round(performance.now()):(s=Math.max((new Date).getTime(),s))-b.offset}var s=(new Date).getTime(),c=t("handle"),f=t(18),u=t("ee"),d=t(17),l=window,p=l.document,h="addEventListener",m="attachEvent",w=l.XMLHttpRequest,v=w&&w.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:w,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var y=""+location,g={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1123.min.js"},x=w&&v&&v[h]&&!/CriOS/.test(navigator.userAgent),b=n.exports={offset:s,now:a,origin:y,features:{},xhrWrappable:x,userAgent:d};t(13),p[h]?(p[h]("DOMContentLoaded",i,!1),l[h]("load",r,!1)):(p[m]("onreadystatechange",o),l[m]("onload",r)),c("mark",["firstbyte",s],null,"api");var E=0,R=t(20)},{}]},{},["loader",2,11,4,3]);</script>
+            <meta property="fb:pages" content="6047074339" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+<link rel="manifest" href="/favicons/site.webmanifest">
+<link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#ff6c00">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">    <link rel="alternate" type="application/rss+xml" title="Latest Shows on Crunchyroll" href="http://feeds.feedburner.com/crunchyroll/rss" />
+    <link rel="alternate" type="application/rss+xml" title="Latest Anime News" href="http://feeds.feedburner.com/crunchyroll/animenews" />
+
+          <link rel="canonical" href="http://www.crunchyroll.com/pt-br/attack-on-titan/episode-56-the-basement-783663" />
+      <link href="https://plus.google.com/106460836780899737568" rel="publisher" />
+      <meta property="og:url" content="http://www.crunchyroll.com/pt-br/attack-on-titan/episode-56-the-basement-783663" />
+    
+          <meta property="og:site_name" content="Crunchyroll" />
+      <meta property="og:type" content="tv_show" />
+      <meta name="og:description" content="Watch Attack on Titan S3 Episódio 56 - The Basement"/>
+    
+    
+    
+    
+          <link href="/versioned_assets/css/www/application-legacy.afd0380c.css" rel="stylesheet">
+    
+                  <link rel="stylesheet" type="text/css" href="https://www.crunchyroll.com/versioned_assets/css/www/view/showmedia.4201f524.css">
+              <link rel="stylesheet" type="text/css" href="https://www.crunchyroll.com/versioned_assets/css/crcommon/overlay.97151830.css">
+          
+          <title>Attack on Titan S3 Episódio 56, The Basement, - Assista na Crunchyroll</title>
+    
+    <script>
+      if(typeof console==='undefined'){(function(){var noOp=function(){return;};console={log:noOp,info:noOp,warn:noOp,error:noOp,assert:noOp,dir:noOp,clear:noOp,profile:noOp,profileEnd:noOp};})();}
+    </script>
+
+    <script>
+    var DOMAIN = "crunchyroll.com",
+      AJAXROOT = "\/ajax\/\u003F",
+      WEBROOT = "http\u003A\/\/www.crunchyroll.com\/",
+      LOCALE = "ptBR",
+      CACHED_TRANSLATIONS = {},
+      page = {};
+  </script>
+
+          <script src="https://www.crunchyroll.com/js/lang/22a284b944b34f92a28530058a871984/cr/ptBR/common.js"></script>
+          <script src="https://www.crunchyroll.com/js/lang/22a284b944b34f92a28530058a871984/cr/ptBR/showmedia.js"></script>
+    
+        <script src="https://www.crunchyroll.com/versioned_assets/js/components/ads_enabled.ac6fa3aa.js"></script>
+    <script src="https://www.crunchyroll.com/versioned_assets/js/modules/www/application.d7fa80ba.js"></script>
+
+    
+    
+    <script src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.5" async defer></script>
+    
+                      <script src="https://www.crunchyroll.com/versioned_assets/js/jquery/popout.54f9f614.js"></script>
+              <script src="https://www.crunchyroll.com/versioned_assets/js/view/queue_btn_tmpl.c93d1940.js"></script>
+          
+                <link rel="alternate" type="application/rss+xml" title="Attack on Titan Episodes" href="/attack-on-titan.rss" />
+                <script type="text/javascript">
+    function runCompanion(width, height, type, url, code) {
+    }
+  </script>    
+    <meta name="keywords" content="watch attack on titan s3 episodes online,watch attack on titan s3 episode 56,watch attack on titan s3 episode 57,shingeki no kyojin,attack on titan s3 - episódio 56 - porão,anime videos" />
+<meta name="title" content="Attack on Titan S3 Episódio 56, The Basement, - Assista na Crunchyroll" />
+<meta name="description" content="Assista Attack on Titan S3 Episódio 56, The Basement, na Crunchyroll. Depois da importante decisão que encerrou o último episódio, Eren e companhia partem em direção ao porão de sua casa." />
+<meta property="fb:app_id" content="146038295843" />
+<meta property="og:title" content="Attack on Titan" />
+<meta property="og:image" content="https://img1.ak.crunchyroll.com/i/spire1/13b484b48acc14537703fbc505b087121558560482_large.jpg" />
+<link rel="image_src" href="https://img1.ak.crunchyroll.com/i/spire3-tmb/a487ae5f50260859ae587418f53f68501560126406_large.jpg" />
+<link rel="video_src" href="http://www.crunchyroll.com/swf/StandardVideoPlayer-10dff2a.swf?config_url=http%3A%2F%2Fwww.crunchyroll.com%2Fxml%2F%3Freq%3DRpcApiVideoPlayer_GetStandardConfig%26media_id%3D783663%26video_format%3D0%26video_quality%3D0%26auto_play%3D1%26click_through%3D1" />
+<link rel="index" title="Attack on Titan S3" href="/pt-br/attack-on-titan"/>
+<link rel="first" title="Attack on Titan S3 - Episódio 38 - Sinal de Fumaça" href="http://www.crunchyroll.com/pt-br/attack-on-titan/episode-38-smoke-signal-775810?no-prefetch=1"/>
+<link rel="prev" title="Attack on Titan S3 - Episódio 55 - Sol da Meia-Noite" href="http://www.crunchyroll.com/pt-br/attack-on-titan/episode-55-midnight-sun-783662?no-prefetch=1"/>
+<link rel="next" title="Attack on Titan S3 - Episódio 57 - Aquele Dia" href="http://www.crunchyroll.com/pt-br/attack-on-titan/episode-57-that-day-783664?no-prefetch=1"/>
+
+<script type="application/ld+json">
+  {"@context":["http:\/\/schema.org",{"@language":"pt-br"}],"@type":"TVEpisode","@id":"http:\/\/www.crunchyroll.com\/pt-br\/attack-on-titan\/episode-56-the-basement-783663","url":"http:\/\/www.crunchyroll.com\/pt-br\/attack-on-titan\/episode-56-the-basement-783663","name":"Por\u00e3o Epis\u00f3dio 56","episodeNumber":"3","image":"https:\/\/img1.ak.crunchyroll.com\/i\/spire3-tmb\/a487ae5f50260859ae587418f53f68501560126406_main.jpg","partOfSeason":{"@type":"TVSeason","@id":"http:\/\/www.crunchyroll.com\/pt-br\/attack-on-titan","name":"Attack on Titan S3","seasonNumber":"3"},"partOfSeries":{"@type":"TVSeries","@id":"http:\/\/www.crunchyroll.com\/pt-br\/attack-on-titan","name":"Attack on Titan"},"potentialAction":{"@type":"WatchAction","target":{"@type":"EntryPoint","urlTemplate":"http:\/\/www.crunchyroll.com\/pt-br\/attack-on-titan\/episode-56-the-basement-783663","inLanguage":"pt-br","actionPlatform":["http:\/\/schema.org\/DesktopWebPlatform","http:\/\/schema.googleapis.com\/GoogleVideoCast"]},"actionAccessibilityRequirement":{"@type":"ActionAccessSpecification","category":"nologinrequired","availabilityStarts":"2019-06-16T10:35:00+00:00","availabilityEnds":"2119-06-17T19:13:18+00:00","eligibleRegion":[{"@type":"Country","name":"AS"},{"@type":"Country","name":"AG"},{"@type":"Country","name":"AR"},{"@type":"Country","name":"AU"},{"@type":"Country","name":"BS"},{"@type":"Country","name":"BB"},{"@type":"Country","name":"BZ"},{"@type":"Country","name":"BO"},{"@type":"Country","name":"BR"},{"@type":"Country","name":"CA"},{"@type":"Country","name":"KY"},{"@type":"Country","name":"CL"},{"@type":"Country","name":"CX"},{"@type":"Country","name":"CC"},{"@type":"Country","name":"CO"},{"@type":"Country","name":"CR"},{"@type":"Country","name":"CU"},{"@type":"Country","name":"DK"},{"@type":"Country","name":"DM"},{"@type":"Country","name":"DO"},{"@type":"Country","name":"EC"},{"@type":"Country","name":"SV"},{"@type":"Country","name":"FK"},{"@type":"Country","name":"FO"},{"@type":"Country","name":"FI"},{"@type":"Country","name":"GD"},{"@type":"Country","name":"GU"},{"@type":"Country","name":"GT"},{"@type":"Country","name":"GG"},{"@type":"Country","name":"GY"},{"@type":"Country","name":"HM"},{"@type":"Country","name":"HN"},{"@type":"Country","name":"IS"},{"@type":"Country","name":"IE"},{"@type":"Country","name":"IM"},{"@type":"Country","name":"JM"},{"@type":"Country","name":"JE"},{"@type":"Country","name":"MX"},{"@type":"Country","name":"NL"},{"@type":"Country","name":"NZ"},{"@type":"Country","name":"NI"},{"@type":"Country","name":"NF"},{"@type":"Country","name":"MP"},{"@type":"Country","name":"NO"},{"@type":"Country","name":"PA"},{"@type":"Country","name":"PY"},{"@type":"Country","name":"PE"},{"@type":"Country","name":"PR"},{"@type":"Country","name":"KN"},{"@type":"Country","name":"LC"},{"@type":"Country","name":"VC"},{"@type":"Country","name":"ZA"},{"@type":"Country","name":"SE"},{"@type":"Country","name":"TT"},{"@type":"Country","name":"TC"},{"@type":"Country","name":"GB"},{"@type":"Country","name":"US"},{"@type":"Country","name":"UM"},{"@type":"Country","name":"UY"},{"@type":"Country","name":"VE"},{"@type":"Country","name":"VI"}]}},"description":""}</script>
+
+    
+<!-- Global site tag (gtag.js) - Google Ads: 982007020 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-982007020"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-982007020');
+</script>
+
+<script src="https://js.adsrvr.org/up_loader.1.1.0.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  (function () {
+    var url = 'https://insight.adsrvr.org/track/up/';
+    var advertizerId = "bk1xezd";
+    var tagId = "a1pxjel";
+    var params = {};
+
+    
+        if (ttd_dom_ready) { 
+      ttd_dom_ready(function () {
+        if (typeof TTDUniversalPixelApi === 'function') {
+          var universalPixelApi = new TTDUniversalPixelApi();
+          universalPixelApi.init(advertizerId, [tagId], url, params);
+        }
+      });
+    }
+  })();
+</script>
+
+  <script src="https://www.crunchyroll.com/versioned_assets/js/tracking/ga_initial_visit.6abd907b.js"></script>
+  <script>
+    (function initializeGA() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    (function initializeGAObject(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-579606-1', 'auto', {
+            'allowLinker': true
+    });
+    ga('require', 'linkid', 'linkid.js');
+
+    (function sendPageview() {
+      var initialVisitDate = ga_initial_visit.getPSTValue();
+      if (initialVisitDate) {
+        ga('set', 'dimension4', initialVisitDate);
+      }
+
+      ga('set', 'dimension5', 'not-registered');
+      ga('set', 'dimension6', '');
+      ga('set', 'dimension7', '');
+      ga('set', 'dimension8', '');
+
+              ga('send', 'pageview');
+          })();
+  </script>
+  <!-- Facebook Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+      document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
+    fbq('init', '131069540803462');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+         src="https://www.facebook.com/tr?id=1310695408034622&ev=PageView&noscript=1"
+    />
+  </noscript>
+  <!-- End Facebook Pixel Code -->
+    <meta name="google-site-verification" content="zuHV4BzoWdv29ExvUbbNKy67VvRS8WWpE1FQThEA-r0" />
+
+          <link rel="alternate" hreflang="en-us" href="https://www.crunchyroll.com/attack-on-titan/episode-56-the-basement-783663">
+      <link rel="alternate" hreflang="en-gb" href="https://www.crunchyroll.com/en-gb/attack-on-titan/episode-56-the-basement-783663">
+      <link rel="alternate" hreflang="es" href="https://www.crunchyroll.com/es/attack-on-titan/episode-56-the-basement-783663">
+      <link rel="alternate" hreflang="es-es" href="https://www.crunchyroll.com/es-es/attack-on-titan/episode-56-the-basement-783663">
+      <link rel="alternate" hreflang="pt-br" href="https://www.crunchyroll.com/pt-br/attack-on-titan/episode-56-the-basement-783663">
+      <link rel="alternate" hreflang="pt-pt" href="https://www.crunchyroll.com/pt-pt/attack-on-titan/episode-56-the-basement-783663">
+      <link rel="alternate" hreflang="fr" href="https://www.crunchyroll.com/fr/attack-on-titan/episode-56-the-basement-783663">
+      <link rel="alternate" hreflang="de" href="https://www.crunchyroll.com/de/attack-on-titan/episode-56-the-basement-783663">
+      <link rel="alternate" hreflang="ar" href="https://www.crunchyroll.com/ar/attack-on-titan/episode-56-the-basement-783663">
+      <link rel="alternate" hreflang="it" href="https://www.crunchyroll.com/it/attack-on-titan/episode-56-the-basement-783663">
+      <link rel="alternate" hreflang="ru" href="https://www.crunchyroll.com/ru/attack-on-titan/episode-56-the-basement-783663">
+    </head>
+  <body class="main-page responsive ptBR ">
+    
+    
+
+
+    
+<header id="header_beta" class="site-header" itemscope itemtype="http://schema.org/WPHeader">
+  <div id="header_container" class="content">
+    <div class="header-navigation">
+      <div class="home">
+        <h1 id="logo_beta" class="header-logo logo-enUS" itemscope itemtype="http://schema.org/Organization">
+          <meta content="" itemprop="name">
+
+          <a href="/pt-br" itemprop="url">
+            <svg viewBox="0 0 96 18">
+              <title>Crunchyroll</title>
+              <use xlink:href="/i/svg/header.svg#cr_logo_noTagline"></use>
+            </svg>
+          </a>
+        </h1>
+
+        <button id="header_mobilemenu_beta" class="mini-menu-button" type="button">
+          <svg class="open-icon" viewBox="0 0 48 48">
+            <title>Open Menu</title>
+            <use xlink:href="/i/svg/header.svg#cr_drawer"></use>
+          </svg>
+
+          <svg class="close-icon" viewBox="0 0 48 48">
+            <title>Close Menu</title>
+            <use xlink:href="/i/svg/header.svg#cr_close"></use>
+          </svg>
+        </button>
+      </div>
+
+      <nav id="header_menubar_beta" class="header-menubar" itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <ul>
+          <li class="">
+            <a href="/pt-br/videos/anime" itemprop="url" token="topbar">Séries</a>
+          </li>
+
+          
+                      <li class="">
+              <a href="/pt-br/news" itemprop="url" token="topbar">Notícias</a>
+            </li>
+          
+          <li class="">
+            <a href="/forum" rel="discussion" itemprop="url" token="topbar">Fórum</a>
+          </li>
+
+          
+  <style>
+    #store_button {
+      color: #363136 !important;
+    }
+
+    #store_button:hover {
+      color: #DF6300 !important;
+    }
+  </style>
+
+                      <li class="premium ">
+              <a href="/pt-br/freetrial?from=topbar" itemprop="url" token="topbar" id="header_try_premium_free">
+                <span class="premium-link-text">
+                  Premium                  <small class="freetrial-note">Experimente de graça</small>
+                </span>
+              </a>
+            </li>
+          
+                  </ul>
+      </nav>
+
+      <nav id="header_userpanel_beta" class="header-userpanel" itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <ul>
+                      <li class="userpanel-item login">
+              <a class="header-icon" href="https://www.crunchyroll.com/pt-br/login?next=%2Fpt-br%2Fattack-on-titan%2Fepisode-56-the-basement-783663" rel="nofollow" token="login_top">
+                <svg viewBox="0 0 48 48">
+                  <title>Entrar</title>
+                  <use xlink:href="/i/svg/header.svg#cr_login"></use>
+                </svg>
+                <div class="caption">Entrar</div>
+              </a>
+            </li>
+          
+          <li class="userpanel-item queue ">
+  <a class="header-icon" href="/home" token="topbar">
+    <div class="icon-container">
+      <svg viewBox="0 0 48 48">
+        <use xlink:href="/i/svg/header.svg#cr_bookmark_header"></use>
+      </svg>
+    </div>
+
+    <div class="caption">Fila</div>
+  </a>
+</li>
+<li class="userpanel-item random">
+  <a class="header-icon" href="/pt-br/random/anime?random_ref=topbar" token="topbar">
+    <div class="icon-container">
+      <svg viewBox="0 0 48 48">
+        <use xlink:href="/i/svg/header.svg#cr_random"></use>
+      </svg>
+    </div>
+
+    <div class="caption">Aleatório</div>
+  </a>
+</li>
+
+
+                    <li id="header_search_userpanel_item" class="userpanel-item search">
+  <button id="header_show_search_button" class="header-icon" type="button">
+    <div class="icon-container">
+      <svg viewBox="0 0 48 48">
+        <use xlink:href="/i/svg/header.svg#cr_search"></use>
+      </svg>
+    </div>
+
+    <div class="caption">Busca</div>
+  </button>
+</li>
+        </ul>
+      </nav>
+    </div>
+
+    <form id="header_search_form" class="header-search-form" action="/search" method="get" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
+      <link itemprop="target" href="/search?q={q}">
+
+      <div class="content">
+        <input name="from" type="hidden" value="attack-on-titan">
+
+        <input
+          id="header_search_input"
+          class="header-searchbox"
+          autocomplete="off"
+          name="q"
+          placeholder="Anime, drama etc."
+          type="search"
+          value=""
+          itemprop="query-input"
+        />
+
+        <button
+          id="header_search_submit_beta"
+          class="header-searchbox-submit"
+          title="Busca"
+        >
+          <svg viewBox="0 0 48 48">
+            <use xlink:href="/i/svg/header.svg#cr_search"></use>
+          </svg>
+
+          <span class="button-label">Busca</span>
+        </button>
+
+        <div id="header_search_autocomplete" class="header-search-autocomplete"> </div>
+      </div>
+    </form>
+  </div>
+</header><!-- header -->
+        <div id="template_scroller" class="ad-skin">
+                    <div id="template_container" class="cf template-container">
+        <div id="template_body" class="cf new-template-body">
+                                <div id="message_box" ></div>
+                    <script type="text/javascript">
+            Page.messaging_box_controller = new MessageBox({"render_to": "#message_box"});
+            Page.messaging_box_controller.addItems([{"type":"nag","message_body":"<a href=\"https:\/\/got.cr\/Dr-STONE-broadcast-PT\">A humanidade inteira virou pedra&ndash;e cabe a um homem usar ci&ecirc;ncia para reescrever a hist&oacute;ria! Dr. STONE chega na Crunchyroll em Julho.<a\/>","message_body_html":"<a href=\"https:\/\/got.cr\/Dr-STONE-broadcast-PT\">A humanidade inteira virou pedra&ndash;e cabe a um homem usar ci&ecirc;ncia para reescrever a hist&oacute;ria! Dr. STONE chega na Crunchyroll em Julho.<a\/>","data":null}]);
+          </script>
+
+          <div style="height:0;visibility:hidden;" class="clearfix"></div>
+          
+<script>
+  (function() {
+    var videoPlayer,
+      vrvModal;
+
+    window.onCrunchyrollPlayerReady = function onCrunchyrollPlayerReady() {
+      var mediaMetadata = {"id":783663,"collection_id":24557,"group_id":254209,"name":"Attack on Titan Season 3 - Episode 56 - The Basement","duration":1435,"tags":["library:anime","season:spring_2013","season:summer_2013","action","adventure","fantasy","shounen","attack on titan","season:spring_2017"]};
+
+      videoPlayer = document.querySelector('#showmedia_video_player');
+
+      if (videoPlayer && Components.TruoptikTrackingFacade) {
+        var truoptikFacade = new Components.TruoptikTrackingFacade();
+
+        truoptikFacade.initialize().then(function startTracking() {
+          truoptikFacade.trackVideoPlayer(mediaMetadata, videoPlayer);
+        });
+      }
+    };
+
+    window.onContentStart = function onContentStart() {
+          }
+  })();
+</script>
+
+<script>
+  var loadBrandedPlayerAd = function() { };
+</script>
+
+<div>
+  <div class="showmedia-trail cf">
+  <div class="showmedia-header cf">
+            <span style="display:none;" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+      <a href="/pt-br/videos/anime" itemprop="url">
+        <span itemprop="title">Animes</span>
+      </a>
+    </span>
+    
+    <h1 itemscope itemtype="http://data-vocabulary.org/Breadcrumb" class="ellipsis">
+      <a href="http://www.crunchyroll.com/pt-br/attack-on-titan" itemprop="url" class="text-link"><span itemprop="title">Attack on Titan S3</span></a>
+              Episódio 56            &ndash; Porão        </h1>
+  </div>
+</div>
+  <div id="showmedia" class="cf new_layout">
+    <div id="main_content" class="left">
+      <div id="showmedia_video" class="medium-margin-bottom">
+        <div id="showmedia_video_box" class="xsmall-margin-bottom player-container">
+          <div id="showmedia_video_player" class="vilos-iframe-container"></div>
+<script src="https://www.crunchyroll.com/vendor/playerjs.js"></script>
+<script src="https://www.crunchyroll.com/versioned_assets/js/components/vilos_player.07ba0994.js"></script>
+<script>
+(function () {
+
+  function buildPlayer (segment_anonymous_id) {
+    var vilos = new VilosPlayer();
+
+    vilos.config.player.language = "ptBR";
+    vilos.config.player.pause_screen.text = "Por\u00e3o";
+    vilos.config.player.start_offset = 0;
+
+    if (localStorage.getItem('vilosPreferredVolume') !== null) {
+      vilos.config.player.preferred_volume = parseFloat(localStorage.getItem('vilosPreferredVolume'));
+    }
+
+    vilos.config.media = {"metadata":{"id":"GY8D0QMJY","type":"anime","channel_id":null,"title":"Por\u00e3o","description":"","episode_number":"56","display_episode_number":"56","is_mature":false,"duration":1435000},"thumbnail":{"url":"https:\/\/img1.ak.crunchyroll.com\/i\/spire3-tmb\/a487ae5f50260859ae587418f53f68501560126406_fwide.jpg"},"streams":[{"format":"adaptive_hls","audio_lang":"jaJP","hardsub_lang":"enUS","url":"https:\/\/dl.v.vrv.co\/evs\/2fd5782586fd50e1a80292f89029244a\/assets\/422c81615a32d17d288d1f603ef748ff_,3683928.mp4,3683931.mp4,3683925.mp4,3683919.mp4,3683922.mp4,.urlset\/master.m3u8?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cCo6Ly9kbC52LnZydi5jby9ldnMvMmZkNTc4MjU4NmZkNTBlMWE4MDI5MmY4OTAyOTI0NGEvYXNzZXRzLzQyMmM4MTYxNWEzMmQxN2QyODhkMWY2MDNlZjc0OGZmXywzNjgzOTI4Lm1wNCwzNjgzOTMxLm1wNCwzNjgzOTI1Lm1wNCwzNjgzOTE5Lm1wNCwzNjgzOTIyLm1wNCwudXJsc2V0L21hc3Rlci5tM3U4IiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNTYwOTcxODE5fX19XX0_&Signature=EVmlIuVF2h7V~u-K88xCZqY0OXTakzF-69keMna5XenYbE7qqK0iaJh-3CX9CsLytKzCw9cof2Vwr-QcZb3QkfsBgYnFWH5KUGMp4cTPXk71Jx0KlO1gKTYHPJgwZaQ9AJVbYwcTka3kU02tSd~lZY-hXOhgGpVV~zSADjRQirItzVlslmSZkrKDT4l6nrz-HpPyhRxuzDVrcVBeIXugeNRwnivpaQpx9sD0HWWrFA-vJQ~LyKdZOAV9CB3JRqHf5vJMYJqfzhZZtTBQK87gGI49vFJVbAX4ZTW4PzKdBT05m0NMJa6Cna7s4peBsbWob3FfDHF7lNSFED5SzGLPgw__&Key-Pair-Id=DLVR","resolution":"adaptive"},{"format":"adaptive_hls","audio_lang":"jaJP","hardsub_lang":"esLA","url":"https:\/\/dl.v.vrv.co\/evs\/2fd5782586fd50e1a80292f89029244a\/assets\/422c81615a32d17d288d1f603ef748ff_,3683929.mp4,3683932.mp4,3683926.mp4,3683920.mp4,3683923.mp4,.urlset\/master.m3u8?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cCo6Ly9kbC52LnZydi5jby9ldnMvMmZkNTc4MjU4NmZkNTBlMWE4MDI5MmY4OTAyOTI0NGEvYXNzZXRzLzQyMmM4MTYxNWEzMmQxN2QyODhkMWY2MDNlZjc0OGZmXywzNjgzOTI5Lm1wNCwzNjgzOTMyLm1wNCwzNjgzOTI2Lm1wNCwzNjgzOTIwLm1wNCwzNjgzOTIzLm1wNCwudXJsc2V0L21hc3Rlci5tM3U4IiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNTYwOTcxODE5fX19XX0_&Signature=eHia8q5GLTz~WNLpvQP5WBK6CAquRvTH5jtdDohQX5Jfxpq9NwSYT8j9YVhLjf1pPppTXWCsuoPKAHIEgoRxw7gZXBIMPs18yBSo1hVSxVWgYD8UR6HvAkwSvFSikmI3LouP6HVXOhQ3GNGcAmfjhdLkdYteGJkTxw0m-CbqwcJpwLZBIA0d25ml8wf6oUYDQj9zRUdado291V11oWJaWgaL~aXrA3CM7THrtc~E3N4wKeCX0qvDH4BmLCe6dlL5jKYZNZ~IinlmBIe9ByVzvSineh-UkoU0vHiOShE3GQML07Tza-BiH19HkcQfioJg9RpSqEX22uKfpQQr0P~kkA__&Key-Pair-Id=DLVR","resolution":"adaptive"},{"format":"adaptive_hls","audio_lang":"jaJP","hardsub_lang":null,"url":"https:\/\/dl.v.vrv.co\/evs\/2fd5782586fd50e1a80292f89029244a\/assets\/422c81615a32d17d288d1f603ef748ff_,3683885.mp4,3683886.mp4,3683884.mp4,3683882.mp4,3683883.mp4,.urlset\/master.m3u8?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cCo6Ly9kbC52LnZydi5jby9ldnMvMmZkNTc4MjU4NmZkNTBlMWE4MDI5MmY4OTAyOTI0NGEvYXNzZXRzLzQyMmM4MTYxNWEzMmQxN2QyODhkMWY2MDNlZjc0OGZmXywzNjgzODg1Lm1wNCwzNjgzODg2Lm1wNCwzNjgzODg0Lm1wNCwzNjgzODgyLm1wNCwzNjgzODgzLm1wNCwudXJsc2V0L21hc3Rlci5tM3U4IiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNTYwOTcxODE5fX19XX0_&Signature=SjMTQxkLhUq7UtL2YlnyXTbkg-CiViR2pAMzZxkCqunPrST2cENVTM1bLaEw6UVtFgAMNG0hTHJ3lJ7Ks-1oeMlzMv1e5qLbbW2C6-8CzOZ54MP3udnNuDVt6WtUmKixwohWwFyFAslyjrYKWBjRZKMb0~Z5BzaYZIV0elisYMkq7pkvuUfeRSpfm2~TSX2AeVTBUvbfRLepymkZKwu3Sqex0u50a1ZQ~ZTBtvyihX~PKJN1jWkdd8TexgmQAYKPQItoDYdhPJ-f5VGxcRmlEP-1lWGUxTuxNdLFaOGcYxkkTOLD67cNOs~WTfDa8qZHBG2WLmftV6f49329cmRj2Q__&Key-Pair-Id=DLVR","resolution":"adaptive"},{"format":"adaptive_hls","audio_lang":"jaJP","hardsub_lang":"ptBR","url":"https:\/\/dl.v.vrv.co\/evs\/2fd5782586fd50e1a80292f89029244a\/assets\/422c81615a32d17d288d1f603ef748ff_,3683930.mp4,3683933.mp4,3683927.mp4,3683921.mp4,3683924.mp4,.urlset\/master.m3u8?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cCo6Ly9kbC52LnZydi5jby9ldnMvMmZkNTc4MjU4NmZkNTBlMWE4MDI5MmY4OTAyOTI0NGEvYXNzZXRzLzQyMmM4MTYxNWEzMmQxN2QyODhkMWY2MDNlZjc0OGZmXywzNjgzOTMwLm1wNCwzNjgzOTMzLm1wNCwzNjgzOTI3Lm1wNCwzNjgzOTIxLm1wNCwzNjgzOTI0Lm1wNCwudXJsc2V0L21hc3Rlci5tM3U4IiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNTYwOTcxODE5fX19XX0_&Signature=I1Vu~SAdiQwgv1cjX4AWV0WgYCx539pKiG-pUc8Hrn05-HZn5B7Sb0Zkk47ng7HJ9sNQKa35mQVpB43mrGAfq6AP9lQ6p7eUUlG82ChelFZimr-nTj~TO-hmSH~-Z-FJcaE-5t5D9cNjqGtz5dXCgX1GRshjAYc5cWKIOZMctWOSiuVWU77DhbqFaNpJWu5CKKzk0gR7~FW1DZVnFHqmJGKsR~ikHTHKjW9OV2RnsT6zaRYN6fyPuKE84RSktxfpYe6cAqWLgjzOkQy~EUZHMmyotJah3zgtAD5wBX6rK7lNyuJ4AYtSTKpzH~GtY0qjNuBpJLz1DpfQs8b6IU1Tow__&Key-Pair-Id=DLVR","resolution":"adaptive"},{"format":"drm_adaptive_dash","audio_lang":"jaJP","hardsub_lang":"esLA","url":"https:\/\/dl.v.vrv.co\/evs\/dcacdc23721e8fb1a997690c3cc93299\/assets\/p\/422c81615a32d17d288d1f603ef748ff_,3683929.mp4,3683932.mp4,3683926.mp4,3683920.mp4,3683923.mp4,.urlset\/manifest.mpd?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cCo6Ly9kbC52LnZydi5jby9ldnMvZGNhY2RjMjM3MjFlOGZiMWE5OTc2OTBjM2NjOTMyOTkvYXNzZXRzL3AvNDIyYzgxNjE1YTMyZDE3ZDI4OGQxZjYwM2VmNzQ4ZmZfLDM2ODM5MjkubXA0LDM2ODM5MzIubXA0LDM2ODM5MjYubXA0LDM2ODM5MjAubXA0LDM2ODM5MjMubXA0LC51cmxzZXQvbWFuaWZlc3QubXBkIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNTYwOTcxODE5fX19XX0_&Signature=lU8f5QGxA5AOX2NQOAWTfZRHFJQTUvaAb-n~W5EtMKZBAF-j3lhZpyem8HNpr2is0Gy4R2eAWd7OvM9lhEA0A49KdxuxduR~F0-UOVPOLSlrhxl64xUrQ2cbkinbwNtacRiU~wrXUDchUicwrbvlXHmaGDD-P7NguCTIOO6S3aWoU2MJQ2lq4yoTbp~u7yJvbmF476K3p1O-yJ6a4q~jtXAVyle0CFF88x4X7a9BYi3RyI-TNXpdrMweGrXQHs~4DDkLKZ7eChhGLx8UgrmArh3zwJGqW7mw5tSpGMlrObtLOfgfGPmFAL7ReCBuHKwtlMOTAuWO7oVLiJ-jrHOMfQ__&Key-Pair-Id=DLVR","resolution":"adaptive"},{"format":"drm_adaptive_dash","audio_lang":"jaJP","hardsub_lang":"ptBR","url":"https:\/\/dl.v.vrv.co\/evs\/dcacdc23721e8fb1a997690c3cc93299\/assets\/p\/422c81615a32d17d288d1f603ef748ff_,3683930.mp4,3683933.mp4,3683927.mp4,3683921.mp4,3683924.mp4,.urlset\/manifest.mpd?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cCo6Ly9kbC52LnZydi5jby9ldnMvZGNhY2RjMjM3MjFlOGZiMWE5OTc2OTBjM2NjOTMyOTkvYXNzZXRzL3AvNDIyYzgxNjE1YTMyZDE3ZDI4OGQxZjYwM2VmNzQ4ZmZfLDM2ODM5MzAubXA0LDM2ODM5MzMubXA0LDM2ODM5MjcubXA0LDM2ODM5MjEubXA0LDM2ODM5MjQubXA0LC51cmxzZXQvbWFuaWZlc3QubXBkIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNTYwOTcxODE5fX19XX0_&Signature=Rlm4e-Tk7K8NKlbEe1s9bit460CKy4fujGoBfYHfviilzkWh-fwQ0yvv3-pWrSKfGD4sJWFoOtS0EXudjviqNoAlOq1M5sgMSuwBvI7SZpZWzr57RDyFzpS2T-MMTfgifyb0PSlDtYR0Z2vFNpbGiG-xdTDFeaHbMhRULpeLFHMEEltXuDCP~j~J-evJge2~-Ngatt3K6vJdzDSfz3RJLR1DbCfJ79-KRt8c8LsOda-9TQloq4Z5JTAwYU4KMs--mqYEna3KF5V-hjpSAsypf8qr4rwxsk0433uBSFZ5tkQx~Io5C~Oz3ZNVwSntA7SxU6DjW9sqE~Nz6ZQDHMTQEw__&Key-Pair-Id=DLVR","resolution":"adaptive"},{"format":"drm_adaptive_dash","audio_lang":"jaJP","hardsub_lang":null,"url":"https:\/\/dl.v.vrv.co\/evs\/dcacdc23721e8fb1a997690c3cc93299\/assets\/p\/422c81615a32d17d288d1f603ef748ff_,3683885.mp4,3683886.mp4,3683884.mp4,3683882.mp4,3683883.mp4,.urlset\/manifest.mpd?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cCo6Ly9kbC52LnZydi5jby9ldnMvZGNhY2RjMjM3MjFlOGZiMWE5OTc2OTBjM2NjOTMyOTkvYXNzZXRzL3AvNDIyYzgxNjE1YTMyZDE3ZDI4OGQxZjYwM2VmNzQ4ZmZfLDM2ODM4ODUubXA0LDM2ODM4ODYubXA0LDM2ODM4ODQubXA0LDM2ODM4ODIubXA0LDM2ODM4ODMubXA0LC51cmxzZXQvbWFuaWZlc3QubXBkIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNTYwOTcxODE5fX19XX0_&Signature=JnYMAB6MmtD1B58LnYkNU3mGQJ6pUOpju3whXfkCd9rAlR2RFcP9dQ~yDoqJq2hjworQUcwZcloX8U8L5Cmxae4v7mb3TVTl0TlTwmXYH7iuwXhmfsqYpjOXvEo2choI5QYgmFSE94kt0z~9Qon2fvg5kTTSRFGh8VWtpi3CLsnWEo5DtmES2GAdZpzz2vtbAdTh-bWXAdi4ibVQMrflr4zdETgbs3VewstHVNWX0oSp1rh931fUaZgqtl9ILI~HlgboME6QCTr8jehHTCdgiYBpaX-RWrRi3JSUHuST78-OPjLKggrxoHTjv1dRMOBbePn5c0JLRgtGSJURe1PYNA__&Key-Pair-Id=DLVR","resolution":"adaptive"},{"format":"drm_adaptive_dash","audio_lang":"jaJP","hardsub_lang":"enUS","url":"https:\/\/dl.v.vrv.co\/evs\/dcacdc23721e8fb1a997690c3cc93299\/assets\/p\/422c81615a32d17d288d1f603ef748ff_,3683928.mp4,3683931.mp4,3683925.mp4,3683919.mp4,3683922.mp4,.urlset\/manifest.mpd?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cCo6Ly9kbC52LnZydi5jby9ldnMvZGNhY2RjMjM3MjFlOGZiMWE5OTc2OTBjM2NjOTMyOTkvYXNzZXRzL3AvNDIyYzgxNjE1YTMyZDE3ZDI4OGQxZjYwM2VmNzQ4ZmZfLDM2ODM5MjgubXA0LDM2ODM5MzEubXA0LDM2ODM5MjUubXA0LDM2ODM5MTkubXA0LDM2ODM5MjIubXA0LC51cmxzZXQvbWFuaWZlc3QubXBkIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNTYwOTcxODE5fX19XX0_&Signature=Z7UH2JxVn2yKm6oq5U-HjFDv8OJfVw1z76cy3OJXK3hJgksN0upCjNpU27RmN65M6zDwOK7D4Ha~LWLChYxtSY0bW4TDzBD3zdurcuQhRKK6m4YZzgm-XW2HgNTkELsSte7tHhiVQZzoJ0xFmEt3DCVoUwYpQwqGUiipuJWBOu3z6HYSN8IfSVv3pDuFWJSD~qJpA3mzR9L3rqEPr0HXRpWsW3KmDEgTxgUz4Y67GzfRNbqJ0I2Bgr8ZFRm0jwy2FSRCtawC~11-qN3fbhpQbYvPb1NtY9dSzqPurVHUPYGKZKncTA0nEilATf70XTiEWlMwaeZ~N9An2NI-CdymhA__&Key-Pair-Id=DLVR","resolution":"adaptive"},{"format":"drm_multitrack_adaptive_hls_v2","audio_lang":"jaJP","hardsub_lang":"esLA","url":"https:\/\/dl.v.vrv.co\/evs\/dcacdc23721e8fb1a997690c3cc93299\/assets\/p\/422c81615a32d17d288d1f603ef748ff_,3683929.mp4,3683932.mp4,3683926.mp4,3683920.mp4,3683923.mp4,211698.txt,.urlset\/master.m3u8?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cCo6Ly9kbC52LnZydi5jby9ldnMvZGNhY2RjMjM3MjFlOGZiMWE5OTc2OTBjM2NjOTMyOTkvYXNzZXRzL3AvNDIyYzgxNjE1YTMyZDE3ZDI4OGQxZjYwM2VmNzQ4ZmZfLDM2ODM5MjkubXA0LDM2ODM5MzIubXA0LDM2ODM5MjYubXA0LDM2ODM5MjAubXA0LDM2ODM5MjMubXA0LDIxMTY5OC50eHQsLnVybHNldC9tYXN0ZXIubTN1OCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTU2MDk3MTgxOX19fV19&Signature=h-f3Z-8pjVDOhzZYaHiVY00ZwQfXAYL6XGwK5W2FCGgDAiiKOj86uCz2zJr40Crr8FruVc-dQ-9K~J54VVfMIbf9BDYt1LIIMOXPHEeqaLe7PDoQyrPCgOlozS-EFt5Rd1-sbjQfgIzbSRhlV4PVhRmFWE419a88a~kbNV2bBnJsjqLMQzzjftY5OXlNY-bv3pildmMnqHkdiMPuLjZbVyxZBdfD1JeCZoR~rnnYjg43LF3hDt~fH-j8z8IdcBHHdaMKmOUsImYp8N9kVjCFoQpJZeuTfpp8zofE94Kxe9msOW9mhjszlap9sI2oktcyeXMYcAaBNFOeawYMXCDnog__&Key-Pair-Id=DLVR","resolution":"adaptive"},{"format":"drm_multitrack_adaptive_hls_v2","audio_lang":"jaJP","hardsub_lang":"enUS","url":"https:\/\/dl.v.vrv.co\/evs\/dcacdc23721e8fb1a997690c3cc93299\/assets\/p\/422c81615a32d17d288d1f603ef748ff_,3683928.mp4,3683931.mp4,3683925.mp4,3683919.mp4,3683922.mp4,211698.txt,.urlset\/master.m3u8?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cCo6Ly9kbC52LnZydi5jby9ldnMvZGNhY2RjMjM3MjFlOGZiMWE5OTc2OTBjM2NjOTMyOTkvYXNzZXRzL3AvNDIyYzgxNjE1YTMyZDE3ZDI4OGQxZjYwM2VmNzQ4ZmZfLDM2ODM5MjgubXA0LDM2ODM5MzEubXA0LDM2ODM5MjUubXA0LDM2ODM5MTkubXA0LDM2ODM5MjIubXA0LDIxMTY5OC50eHQsLnVybHNldC9tYXN0ZXIubTN1OCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTU2MDk3MTgxOX19fV19&Signature=Mawl0m0uYQNcRboa-kJQ~5pBSPjqZVyKmXZ-8JjoT6BHrk-rKXRrrP-x4nwQQZMkX1dpKjji8ao8mXTIwIRomyt82TD9ogZVUvNfZpjtG-YBMVL537YQlfrfTHOyx1f-meiELgOCkUvynWXegRb1zdyzfoI4AQaM8duJAV1XxRwXxPGyqGgOfm6EXCJ6qZWQlBg4LJiuu-TXEkpeIc0n3RsAwQRnoSisqxbdUYDIkftYMR62lbjqZRJcKERxnywFecFdKCxP3aBD24j8mJRkRlUkOnuyeGc-7Xz9Ezd2QkDPUT1O0vaP92r1eRmZLnp4E3G0hhIY45ybvBE7bjcdiw__&Key-Pair-Id=DLVR","resolution":"adaptive"},{"format":"drm_multitrack_adaptive_hls_v2","audio_lang":"jaJP","hardsub_lang":"ptBR","url":"https:\/\/dl.v.vrv.co\/evs\/dcacdc23721e8fb1a997690c3cc93299\/assets\/p\/422c81615a32d17d288d1f603ef748ff_,3683930.mp4,3683933.mp4,3683927.mp4,3683921.mp4,3683924.mp4,211698.txt,.urlset\/master.m3u8?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cCo6Ly9kbC52LnZydi5jby9ldnMvZGNhY2RjMjM3MjFlOGZiMWE5OTc2OTBjM2NjOTMyOTkvYXNzZXRzL3AvNDIyYzgxNjE1YTMyZDE3ZDI4OGQxZjYwM2VmNzQ4ZmZfLDM2ODM5MzAubXA0LDM2ODM5MzMubXA0LDM2ODM5MjcubXA0LDM2ODM5MjEubXA0LDM2ODM5MjQubXA0LDIxMTY5OC50eHQsLnVybHNldC9tYXN0ZXIubTN1OCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTU2MDk3MTgxOX19fV19&Signature=XKqtq5O~tgu-AluceCr83U6ixs36-rmgSBDl5tCgm0Fqvici1n63hUVDKJUynQlNkaH1wr8d5rT-Trma0ym~rMSTGHuOQehdtOeHM4RNxCxGbYN6xZZbT8zxSTUDan2VU~6LIuTfj96vSto3HyyeDpLU~g~uH-KZQ0qC-Xxk20Qkt1CwzsKSBZzKCHWMfnwSuynNKzUJthRkdHM189FBDbbxoOksZqh2bifrlfyQyEhiXFVRiF-l9NyWcZeC8I-D4mSdiS2oQDKMOXsW4ZP~~L39RE3Xt2KVBS-9g59-7cxsBogfyhKdmH9UZ8kGGCe8AARWXZagUp63tJxUN14CQg__&Key-Pair-Id=DLVR","resolution":"adaptive"},{"format":"drm_multitrack_adaptive_hls_v2","audio_lang":"jaJP","hardsub_lang":null,"url":"https:\/\/dl.v.vrv.co\/evs\/dcacdc23721e8fb1a997690c3cc93299\/assets\/p\/422c81615a32d17d288d1f603ef748ff_,3683885.mp4,3683886.mp4,3683884.mp4,3683882.mp4,3683883.mp4,211698.txt,.urlset\/master.m3u8?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cCo6Ly9kbC52LnZydi5jby9ldnMvZGNhY2RjMjM3MjFlOGZiMWE5OTc2OTBjM2NjOTMyOTkvYXNzZXRzL3AvNDIyYzgxNjE1YTMyZDE3ZDI4OGQxZjYwM2VmNzQ4ZmZfLDM2ODM4ODUubXA0LDM2ODM4ODYubXA0LDM2ODM4ODQubXA0LDM2ODM4ODIubXA0LDM2ODM4ODMubXA0LDIxMTY5OC50eHQsLnVybHNldC9tYXN0ZXIubTN1OCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTU2MDk3MTgxOX19fV19&Signature=l2CYMVULY587Cx60HTYm0F68IIDRnKnpxbzHX1hdUOf5xMeFRKaaQXG31BE1H7U23uasp0ysOmAp9r6BUzkgvy-Ldhn7inyoHndoT~3UcYVuE9Cf3wv2HPC~1xXGpH~J-nMIz1c4MRO1tJa3oh47wagp1bRoP~vjdjBzLCi1Y8HuI2~OnZxeax~vUJAQXo~MdRVxaB2HvEwPeMFKtSdxCNvOddFW3gnJcss661rm2jhZOX2Y5MIjkAzgV6HZ9C~~RFQFwACvTNqDAy5XbNUa-i3i2naruNnKc6mE2MGPxREReUZebkYC6XgjQyDR78ma~KmhdMNkNhTw21TMKdvv8Q__&Key-Pair-Id=DLVR","resolution":"adaptive"},{"format":"multitrack_adaptive_hls_v2","audio_lang":"jaJP","hardsub_lang":"ptBR","url":"https:\/\/dl.v.vrv.co\/evs\/2fd5782586fd50e1a80292f89029244a\/assets\/422c81615a32d17d288d1f603ef748ff_,3683930.mp4,3683933.mp4,3683927.mp4,3683921.mp4,3683924.mp4,211698.txt,.urlset\/master.m3u8?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cCo6Ly9kbC52LnZydi5jby9ldnMvMmZkNTc4MjU4NmZkNTBlMWE4MDI5MmY4OTAyOTI0NGEvYXNzZXRzLzQyMmM4MTYxNWEzMmQxN2QyODhkMWY2MDNlZjc0OGZmXywzNjgzOTMwLm1wNCwzNjgzOTMzLm1wNCwzNjgzOTI3Lm1wNCwzNjgzOTIxLm1wNCwzNjgzOTI0Lm1wNCwyMTE2OTgudHh0LC51cmxzZXQvbWFzdGVyLm0zdTgiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE1NjA5NzE4MTl9fX1dfQ__&Signature=FcdTF3TapbkQhfCuvjEaEdb4CnHVk9Sswudm5vSFD4dNhdXCpz2s-4fsA9jykDSCd0u4uPDUrEvLE0OM7PNn4t5-BFNuniLry7ogjeEYETxOrI1rOTKYdS8mm0ofaPZrDdwXbvoqffz2EuBTzeJII~OdDT89mUXaj2B-oWi7VartfEh6xODlal9lqroYdJ6ZVqaeUiqNmGrvz~owPSORGAa9WjNAnxt59xsCQh7a-sY-xs4pZ15R2m5hY-kVkpxjTO5fTGq8OsXo6ZdFpV4UhkfmVS4aPZZHM2Yo7XNzIPci43hS1K0dN3~ZMOYf4UtvTZHnL63ecJ6wJpV1RFWarA__&Key-Pair-Id=DLVR","resolution":"adaptive"},{"format":"multitrack_adaptive_hls_v2","audio_lang":"jaJP","hardsub_lang":null,"url":"https:\/\/dl.v.vrv.co\/evs\/2fd5782586fd50e1a80292f89029244a\/assets\/422c81615a32d17d288d1f603ef748ff_,3683885.mp4,3683886.mp4,3683884.mp4,3683882.mp4,3683883.mp4,211698.txt,.urlset\/master.m3u8?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cCo6Ly9kbC52LnZydi5jby9ldnMvMmZkNTc4MjU4NmZkNTBlMWE4MDI5MmY4OTAyOTI0NGEvYXNzZXRzLzQyMmM4MTYxNWEzMmQxN2QyODhkMWY2MDNlZjc0OGZmXywzNjgzODg1Lm1wNCwzNjgzODg2Lm1wNCwzNjgzODg0Lm1wNCwzNjgzODgyLm1wNCwzNjgzODgzLm1wNCwyMTE2OTgudHh0LC51cmxzZXQvbWFzdGVyLm0zdTgiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE1NjA5NzE4MTl9fX1dfQ__&Signature=D0xIGutJIYSH05fNbHwZfAFIsc-yuSOEJ8i9YIbGIcQOFPFZAoue6AGHMyqzcCGK8aDG2aKigkLl0fmoqbW6Lkaw7ethKFuW1~324FdTnmXmcugeC09XP2Eu8nieYW9moBJKzqibCgDW1YjCqJIBK6HMzvLq7Dxf2jry~K4MIzJx1-vJAiWadyrTlwqTAZ~Wn0w47kr2yqiEYf3GixJSNeDHWzRSFn5mQyFfL3FzdZhjhsLbvT3BE1g0wsteQwnr6V2i9ZI9quRQelVUCViWU-n-t0WF~HtQUYq11Yq89BF0ObhzxbaMn6t7oURMRv9kjd~p1b~wN3afhk8-qjAwdA__&Key-Pair-Id=DLVR","resolution":"adaptive"},{"format":"multitrack_adaptive_hls_v2","audio_lang":"jaJP","hardsub_lang":"esLA","url":"https:\/\/dl.v.vrv.co\/evs\/2fd5782586fd50e1a80292f89029244a\/assets\/422c81615a32d17d288d1f603ef748ff_,3683929.mp4,3683932.mp4,3683926.mp4,3683920.mp4,3683923.mp4,211698.txt,.urlset\/master.m3u8?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cCo6Ly9kbC52LnZydi5jby9ldnMvMmZkNTc4MjU4NmZkNTBlMWE4MDI5MmY4OTAyOTI0NGEvYXNzZXRzLzQyMmM4MTYxNWEzMmQxN2QyODhkMWY2MDNlZjc0OGZmXywzNjgzOTI5Lm1wNCwzNjgzOTMyLm1wNCwzNjgzOTI2Lm1wNCwzNjgzOTIwLm1wNCwzNjgzOTIzLm1wNCwyMTE2OTgudHh0LC51cmxzZXQvbWFzdGVyLm0zdTgiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE1NjA5NzE4MTl9fX1dfQ__&Signature=Du~3xCJxeupZEe9QdfNoHqsW-nIzn0S6w5Y0~Pmv7FroL5s7cwBZlz7sXBw4BSEBxc3bLNxQK0CR6BoD2VcSnM76xVMK33H~l99KZ~Tj4RD5sH2t4UvAGKvf8U8jMAP4zdlWqYP6tdGYyAQRm9U3Afna1lUpK2q2~w1mfuN4eM6YK7EXrllzr6zSqDFD5d2pUnVlN24s0ZFwfo265uK5SgQA9BDYT7TP38pUlpg1fMOPWrdPc4-Y0WkYQJgr9jxNoPBfdg~p6NHGt~vUDhk317N~CmhJgUM-liFfPbltSrCIAemWGbDnXcAp7pEENHJ2aCsk6dP94U2-yQHpyNhCtA__&Key-Pair-Id=DLVR","resolution":"adaptive"},{"format":"multitrack_adaptive_hls_v2","audio_lang":"jaJP","hardsub_lang":"enUS","url":"https:\/\/dl.v.vrv.co\/evs\/2fd5782586fd50e1a80292f89029244a\/assets\/422c81615a32d17d288d1f603ef748ff_,3683928.mp4,3683931.mp4,3683925.mp4,3683919.mp4,3683922.mp4,211698.txt,.urlset\/master.m3u8?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cCo6Ly9kbC52LnZydi5jby9ldnMvMmZkNTc4MjU4NmZkNTBlMWE4MDI5MmY4OTAyOTI0NGEvYXNzZXRzLzQyMmM4MTYxNWEzMmQxN2QyODhkMWY2MDNlZjc0OGZmXywzNjgzOTI4Lm1wNCwzNjgzOTMxLm1wNCwzNjgzOTI1Lm1wNCwzNjgzOTE5Lm1wNCwzNjgzOTIyLm1wNCwyMTE2OTgudHh0LC51cmxzZXQvbWFzdGVyLm0zdTgiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE1NjA5NzE4MTl9fX1dfQ__&Signature=V-6~WpIhhyg-wPKS6M21KLQy~13h1eZ8gnO-tdxzGAOX0zbYukSAiIvteASwQokTIACEQuM5xku~FTJ90YFA1fFJNsQT0HIxgzIqBDEgl6p-T~QmRexXT70EI7YaI0e58NbdRor-VRnYhol6KTjmkSGSiTeM~A4rtX2Xfs5dy-bQpkRtHUZIKCxpenNJyg01SriYDsEzJ02Qf5woUnr82h0bdHuaPbKE2A33qRl-VSZNASJIRWx~D29pL6ewHeB21UXe-DEkxCL77rcCDD9giMMm~ZphEdZC6fIcyrtIE~gjkNnDOt7OXETEXLMgk-oFt37UIP9tctZ9xfwpF01TDw__&Key-Pair-Id=DLVR","resolution":"adaptive"}],"ad_breaks":[{"type":"preroll","offset":0},{"type":"midroll","offset":89960},{"type":"midroll","offset":770020},{"type":"midroll","offset":1220220}],"subtitles":[{"language":"enUS","url":"https:\/\/dl.v.vrv.co\/evs\/2fd5782586fd50e1a80292f89029244a\/assets\/422c81615a32d17d288d1f603ef748ff_211698.txt?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cCo6Ly9kbC52LnZydi5jby9ldnMvMmZkNTc4MjU4NmZkNTBlMWE4MDI5MmY4OTAyOTI0NGEvYXNzZXRzLzQyMmM4MTYxNWEzMmQxN2QyODhkMWY2MDNlZjc0OGZmXyoudHh0IiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNTYwOTcxODE5fX19XX0_&Signature=I345-svIS8GLWPWxMRizo9ZCGTavT19x5YWmARKlDwOpK1IP~7BTtZItXfZpNEjDDHkRjqtrMHEZ7-EBNEKXlAepReuAIEgF~wQIXcL2-wsIOIYZFljFWXTM1wu9AvZecwlubZao~HPFedEcRlg4tkGnNsdiF-xFdcvFVAPC692S2tp-O63nMdTwb0gYbg4t9KERdCJ2Nrs4RsBkEoO3eNcz8Fk6I7AQH1QeDZ9PCL3GXLIXKEvcPWQCpFdqB8riiTWNs8QP2SpPrbwKJRDfoduEqrb9-aET0U3JuWLaKNHiwcfHjrBnyH2VMjkNUTX6iMZ-2EfKiPbyGCHaAbwQ5Q__&Key-Pair-Id=DLVR","title":"English (US)","format":"ass"},{"language":"esLA","url":"https:\/\/dl.v.vrv.co\/evs\/2fd5782586fd50e1a80292f89029244a\/assets\/422c81615a32d17d288d1f603ef748ff_211699.txt?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cCo6Ly9kbC52LnZydi5jby9ldnMvMmZkNTc4MjU4NmZkNTBlMWE4MDI5MmY4OTAyOTI0NGEvYXNzZXRzLzQyMmM4MTYxNWEzMmQxN2QyODhkMWY2MDNlZjc0OGZmXyoudHh0IiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNTYwOTcxODE5fX19XX0_&Signature=I345-svIS8GLWPWxMRizo9ZCGTavT19x5YWmARKlDwOpK1IP~7BTtZItXfZpNEjDDHkRjqtrMHEZ7-EBNEKXlAepReuAIEgF~wQIXcL2-wsIOIYZFljFWXTM1wu9AvZecwlubZao~HPFedEcRlg4tkGnNsdiF-xFdcvFVAPC692S2tp-O63nMdTwb0gYbg4t9KERdCJ2Nrs4RsBkEoO3eNcz8Fk6I7AQH1QeDZ9PCL3GXLIXKEvcPWQCpFdqB8riiTWNs8QP2SpPrbwKJRDfoduEqrb9-aET0U3JuWLaKNHiwcfHjrBnyH2VMjkNUTX6iMZ-2EfKiPbyGCHaAbwQ5Q__&Key-Pair-Id=DLVR","title":"Espa\u00f1ol","format":"ass"},{"language":"ptBR","url":"https:\/\/dl.v.vrv.co\/evs\/2fd5782586fd50e1a80292f89029244a\/assets\/422c81615a32d17d288d1f603ef748ff_211700.txt?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cCo6Ly9kbC52LnZydi5jby9ldnMvMmZkNTc4MjU4NmZkNTBlMWE4MDI5MmY4OTAyOTI0NGEvYXNzZXRzLzQyMmM4MTYxNWEzMmQxN2QyODhkMWY2MDNlZjc0OGZmXyoudHh0IiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNTYwOTcxODE5fX19XX0_&Signature=I345-svIS8GLWPWxMRizo9ZCGTavT19x5YWmARKlDwOpK1IP~7BTtZItXfZpNEjDDHkRjqtrMHEZ7-EBNEKXlAepReuAIEgF~wQIXcL2-wsIOIYZFljFWXTM1wu9AvZecwlubZao~HPFedEcRlg4tkGnNsdiF-xFdcvFVAPC692S2tp-O63nMdTwb0gYbg4t9KERdCJ2Nrs4RsBkEoO3eNcz8Fk6I7AQH1QeDZ9PCL3GXLIXKEvcPWQCpFdqB8riiTWNs8QP2SpPrbwKJRDfoduEqrb9-aET0U3JuWLaKNHiwcfHjrBnyH2VMjkNUTX6iMZ-2EfKiPbyGCHaAbwQ5Q__&Key-Pair-Id=DLVR","title":"Portugu\u00eas (Brasil)","format":"ass"}]};
+
+    vilos.config.analytics = {"user_id":null,"legacy":{"media_id":"783663","media_type":"1","url":"https:\/\/www.crunchyroll.com\/ajax\/","video_encode_id":"2168101"},"media_reporting_parent":{"type":"S\u00e9rie","id":"254209","title":"Attack on Titan"}};
+          vilos.config.analytics.anonymous_id = segment_anonymous_id;
+        vilos.config.analytics.segment = {
+      write_key: "KC3ITMkcWCrn2dZrMXlkjNQBaFSB9ilG"
+    };
+
+    
+    return vilos;
+  }
+
+  function setStylingWideAspectRatio() {
+    if (document.getElementsByClassName('player-container').length === 1) {
+      document.getElementsByClassName('player-container')[0].classList.add('player-container-16-9');
+    }
+
+    if (document.getElementsByClassName('wide-player-container').length === 1) {
+      document.getElementsByClassName('wide-player-container')[0].classList.add('wide-player-container-16-9');
+    }
+  }
+
+  var iframeURL = 'https://static.crunchyroll.com/vilos/player.html';
+  if($.cookie('VILOS_OVERRIDE_URL')){
+    iframeURL = $.cookie('VILOS_OVERRIDE_URL');
+  }
+  var vilosIframeContainer = '#showmedia_video_player';
+  var nextMediaUrl = "http:\/\/www.crunchyroll.com\/pt-br\/attack-on-titan\/episode-57-that-day-783664";
+
+  //we require segment's anonymous id in the vilos configuration
+  //but window.analytics.ready fails if an ad blocker is present
+  document.addEventListener('SEGMENT_IDENTIFY_EXECUTED', function (e) {
+    setStylingWideAspectRatio();
+    var vilosPlayer = buildPlayer(e.detail.segment_anonymous_id);
+    vilosPlayer.load(vilosIframeContainer, iframeURL, nextMediaUrl);
+  });
+
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "Porão",
+  "description": "Depois da importante decisão que encerrou o último episódio, Eren e companhia partem em direção ao porão de sua casa.",
+  "thumbnailUrl": [
+    "https://img1.ak.crunchyroll.com/i/spire3-tmb/a487ae5f50260859ae587418f53f68501560126406_thumb.jpg"
+   ],
+  "uploadDate": "2019-06-09 17:45:00"
+}
+</script>
+        </div>
+        <div class="video-quality cf">
+                  </div>
+      </div>
+
+      <div class="showmedia-submenu white-wrapper cf container-shadow small-margin-bottom">
+          <span class="facebook left"><div class="fb-share-button" data-href="http://www.crunchyroll.com/pt-br/attack-on-titan" data-layout="button"></div>
+</span>
+    <span class="twitter left">
+    <a href="https://twitter.com/share" class="twitter-share-button"
+
+  
+  
+      data-text="Watching+Attack+on+Titan+S3+56+on+Crunchyroll!+http://www.crunchyroll.com/media-783663"
+  
+      data-hashtags="crunchyroll"
+  
+      data-via="Crunchyroll_PT"
+  
+  
+   data-count="horizontal"
+   data-dnt="true"
+
+>Tweet</a>
+<script>!function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id = id;
+      js.src = 'https://platform.twitter.com/widgets.js';
+      fjs.parentNode.insertBefore(js, fjs);
+    }
+  }(document, 'script', 'twitter-wjs');</script>
+  </span>
+    <span id="sharing_add_queue_button" class="right" group_id="254209">
+      <button class="queue-button add-queue-button in-queue js-add-queue-button"
+              id="series_queue_254209"
+              group_id="254209" type="button">
+        <div class="firefox-flex-fix">
+          <svg class="queue-icon" viewBox="0 0 48 48">
+            <use xlink:href="/i/svg/queue_buttons.svg#cr_bookmark"></use>
+          </svg>
+          <span class="queue-label">
+                          Remover                      </span>
+        </div>
+      </button>
+          </span>
+  </div>
+      <div class="white-wrapper container-shadow large-margin-bottom">
+          <div id="carousel-group-254209" class="collection-carousel clearfix">
+    <a class="collection-carousel-arrow collection-carousel-leftarrow " href="#">
+    </a>
+    <div class="collection-carousel-contents">
+      <div class="collection-carousel-scrollable" style="left: -6264px;">
+                  <div media_id="623251" class="collection-carousel-media">
+                      </div>
+                  <div media_id="623253" class="collection-carousel-media">
+                      </div>
+                  <div media_id="623255" class="collection-carousel-media">
+                      </div>
+                  <div media_id="623257" class="collection-carousel-media">
+                      </div>
+                  <div media_id="623899" class="collection-carousel-media">
+                      </div>
+                  <div media_id="623901" class="collection-carousel-media">
+                      </div>
+                  <div media_id="623903" class="collection-carousel-media">
+                      </div>
+                  <div media_id="623905" class="collection-carousel-media">
+                      </div>
+                  <div media_id="623907" class="collection-carousel-media">
+                      </div>
+                  <div media_id="623909" class="collection-carousel-media">
+                      </div>
+                  <div media_id="623911" class="collection-carousel-media">
+                      </div>
+                  <div media_id="623913" class="collection-carousel-media">
+                      </div>
+                  <div media_id="623915" class="collection-carousel-media">
+                      </div>
+                  <div media_id="639475" class="collection-carousel-media">
+                      </div>
+                  <div media_id="642189" class="collection-carousel-media">
+                      </div>
+                  <div media_id="642191" class="collection-carousel-media">
+                      </div>
+                  <div media_id="642193" class="collection-carousel-media">
+                      </div>
+                  <div media_id="642195" class="collection-carousel-media">
+                      </div>
+                  <div media_id="642197" class="collection-carousel-media">
+                      </div>
+                  <div media_id="642199" class="collection-carousel-media">
+                      </div>
+                  <div media_id="642201" class="collection-carousel-media">
+                      </div>
+                  <div media_id="642203" class="collection-carousel-media">
+                      </div>
+                  <div media_id="642205" class="collection-carousel-media">
+                      </div>
+                  <div media_id="642207" class="collection-carousel-media">
+                      </div>
+                  <div media_id="642209" class="collection-carousel-media">
+                      </div>
+                  <div media_id="642211" class="collection-carousel-media">
+                      </div>
+                  <div media_id="733245" class="collection-carousel-media">
+                      </div>
+                  <div media_id="733247" class="collection-carousel-media">
+                      </div>
+                  <div media_id="733249" class="collection-carousel-media">
+                      </div>
+                  <div media_id="733251" class="collection-carousel-media">
+                      </div>
+                  <div media_id="733253" class="collection-carousel-media">
+                      </div>
+                  <div media_id="733255" class="collection-carousel-media">
+                      </div>
+                  <div media_id="733257" class="collection-carousel-media">
+                      </div>
+                  <div media_id="733259" class="collection-carousel-media">
+                      </div>
+                  <div media_id="733261" class="collection-carousel-media">
+                      </div>
+                  <div media_id="733263" class="collection-carousel-media">
+                      </div>
+                  <div media_id="733265" class="collection-carousel-media">
+                      </div>
+                  <div media_id="733267" class="collection-carousel-media">
+                      </div>
+                  <div media_id="775810" class="collection-carousel-media">
+                      </div>
+                  <div media_id="776024" class="collection-carousel-media">
+                      </div>
+                  <div media_id="776025" class="collection-carousel-media">
+                      </div>
+                  <div media_id="776026" class="collection-carousel-media">
+                      </div>
+                  <div media_id="776027" class="collection-carousel-media">
+                      </div>
+                  <div media_id="776028" class="collection-carousel-media">
+                      </div>
+                  <div media_id="776029" class="collection-carousel-media">
+                      </div>
+                  <div media_id="776030" class="collection-carousel-media">
+                      </div>
+                  <div media_id="776031" class="collection-carousel-media">
+                      </div>
+                  <div media_id="776032" class="collection-carousel-media">
+                      </div>
+                  <div media_id="776033" class="collection-carousel-media">
+                      </div>
+                  <div media_id="776034" class="collection-carousel-media">
+                      </div>
+                  <div media_id="783657" class="collection-carousel-media">
+                      </div>
+                  <div media_id="783658" class="collection-carousel-media">
+                      </div>
+                  <div media_id="783659" class="collection-carousel-media">
+                      </div>
+                  <div media_id="783660" class="collection-carousel-media">
+                      </div>
+                  <div media_id="783661" class="collection-carousel-media">
+                              <div class="collection-carousel-media-link ">
+      <div class="collection-carousel-media-thumb hover-bubble">
+        <a class="link block-link block" title="Attack on Titan S3 54" href="/pt-br/attack-on-titan/episode-54-hero-783661">
+          <img class="mug" src="https://img1.ak.crunchyroll.com/i/spire2-tmb/7385376881794960b527bd1f97f92ff21558902273_wide.jpg" alt="Attack on Titan S3 Episódio 54" />
+          <div class="collection-carousel-overlay" dir="auto">
+
+                          <span class="collection-carousel-overlay-top ellipsis">
+              Episódio 54            </span>
+                              <span class="collection-carousel-overlay-bottom ellipsis xsmall-margin-bottom">
+                                                        Herói                                  </span>
+                          
+          </div>
+
+                    <div class="episode-progress-bar">
+            <div class="episode-progress" media_id="783661" style="width:0%;"></div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    
+    <script type="text/javascript">
+      $('.collection-carousel-contents div[media_id=783661] .hover-bubble').data('bubble_data',{"name":"Her\u00f3i","description":"A investida her\u00f3ica de Erwin ganha tempo para que Levy confronte o Tit\u00e3 Bestial. Enquanto isso, Armin pensa em um plano que se arriscando o m\u00e1ximo que pode."});
+          </script>
+                          </div>
+                  <div media_id="783662" class="collection-carousel-media">
+                              <div class="collection-carousel-media-link ">
+      <div class="collection-carousel-media-thumb hover-bubble">
+        <a class="link block-link block" title="Attack on Titan S3 55" href="/pt-br/attack-on-titan/episode-55-midnight-sun-783662">
+          <img class="mug" src="https://img1.ak.crunchyroll.com/i/spire4-tmb/3f288861f03d9538d342855139c322e71559516204_wide.jpg" alt="Attack on Titan S3 Episódio 55" />
+          <div class="collection-carousel-overlay" dir="auto">
+
+                          <span class="collection-carousel-overlay-top ellipsis">
+              Episódio 55            </span>
+                              <span class="collection-carousel-overlay-bottom ellipsis xsmall-margin-bottom">
+                                                        Sol da Meia-Noite                                  </span>
+                          
+          </div>
+
+                    <div class="episode-progress-bar">
+            <div class="episode-progress" media_id="783662" style="width:0%;"></div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    
+    <script type="text/javascript">
+      $('.collection-carousel-contents div[media_id=783662] .hover-bubble').data('bubble_data',{"name":"Sol da Meia-Noite","description":"Enquanto se recuperam da \u00faltima batalha, o Reconhecimento precisa tomar uma decis\u00e3o importante que pode salvar um dos seus companheiros."});
+          </script>
+                          </div>
+                  <div media_id="783663" class="collection-carousel-media">
+                              <div class="collection-carousel-media-link collection-carousel-media-link-current">
+      <div class="collection-carousel-media-thumb hover-bubble">
+        <a class="link block-link block" title="Attack on Titan S3 56" href="/pt-br/attack-on-titan/episode-56-the-basement-783663">
+          <img class="mug" src="https://img1.ak.crunchyroll.com/i/spire3-tmb/a487ae5f50260859ae587418f53f68501560126406_wide.jpg" alt="Attack on Titan S3 Episódio 56" />
+          <div class="collection-carousel-overlay" dir="auto">
+
+                          <span class="collection-carousel-overlay-top ellipsis">
+              Episódio 56            </span>
+                              <span class="collection-carousel-overlay-bottom ellipsis xsmall-margin-bottom">
+                                                        Porão                                  </span>
+                          
+          </div>
+
+                    <div class="episode-progress-bar">
+            <div class="episode-progress" media_id="783663" style="width:0%;"></div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    
+    <script type="text/javascript">
+      $('.collection-carousel-contents div[media_id=783663] .hover-bubble').data('bubble_data',{"name":"Por\u00e3o","description":"Depois da importante decis\u00e3o que encerrou o \u00faltimo epis\u00f3dio, Eren e companhia partem em dire\u00e7\u00e3o ao por\u00e3o de sua casa."});
+          </script>
+                          </div>
+                  <div media_id="783664" class="collection-carousel-media">
+                              <div class="collection-carousel-media-link ">
+      <div class="collection-carousel-media-thumb hover-bubble">
+        <a class="link block-link block" title="Attack on Titan S3 57" href="/pt-br/attack-on-titan/episode-57-that-day-783664">
+          <img class="mug" src="https://img1.ak.crunchyroll.com/i/spire3-tmb/914b753bfd31868515ac2901569073b41560712044_wide.jpg" alt="Attack on Titan S3 Episódio 57" />
+          <div class="collection-carousel-overlay" dir="auto">
+
+                          <span class="collection-carousel-overlay-top ellipsis">
+              Episódio 57            </span>
+                              <span class="collection-carousel-overlay-bottom ellipsis xsmall-margin-bottom">
+                                                        Aquele Dia                                  </span>
+                          
+          </div>
+
+                      <span class="premium-only-media-star"></span>
+                    <div class="episode-progress-bar">
+            <div class="episode-progress" media_id="783664" style="width:0%;"></div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    
+    <script type="text/javascript">
+      $('.collection-carousel-contents div[media_id=783664] .hover-bubble').data('bubble_data',{"name":"Aquele Dia","description":"Grisha Jaeger lembra o dia que mudou sua vida, quando em sua inf\u00e2ncia, saiu do distrito de concentra\u00e7\u00e3o de Liberio com sua irm\u00e3, e dos fatos que marcariam sua vida para todo o sempre, e que nos ajudam a elucidar a origem dos Tit\u00e3s."});
+          </script>
+                          </div>
+              </div>
+    </div>
+    <a class="collection-carousel-arrow collection-carousel-rightarrow disabled" href="#">
+    </a>
+  </div>
+
+  <script type="text/javascript">
+    // episode play overlay
+    play_icon_overlay('.collection-carousel-media a');
+
+    $('.collection-carousel-arrow').mouseover(function(){
+      $('.portrait-bubble').fadeOut(100);
+    });
+
+    $('#carousel-group-254209').data('first_visible',54);
+    $('#carousel-group-254209').data('filled_media_ids',{"783661":"    <div class=\"collection-carousel-media-link \">\n      <div class=\"collection-carousel-media-thumb hover-bubble\">\n        <a class=\"link block-link block\" title=\"Attack on Titan S3 54\" href=\"\/pt-br\/attack-on-titan\/episode-54-hero-783661\">\n          <img class=\"mug\" src=\"https:\/\/img1.ak.crunchyroll.com\/i\/spire2-tmb\/7385376881794960b527bd1f97f92ff21558902273_wide.jpg\" alt=\"Attack on Titan S3 Epis\u00f3dio 54\" \/>\n          <div class=\"collection-carousel-overlay\" dir=\"auto\">\n\n                          <span class=\"collection-carousel-overlay-top ellipsis\">\n              Epis\u00f3dio 54            <\/span>\n                              <span class=\"collection-carousel-overlay-bottom ellipsis xsmall-margin-bottom\">\n                                                        Her\u00f3i                                  <\/span>\n                          \n          <\/div>\n\n                    <div class=\"episode-progress-bar\">\n            <div class=\"episode-progress\" media_id=\"783661\" style=\"width:0%;\"><\/div>\n          <\/div>\n        <\/a>\n      <\/div>\n    <\/div>\n\n    \n    <script type=\"text\/javascript\">\n      $('.collection-carousel-contents div[media_id=783661] .hover-bubble').data('bubble_data',{\"name\":\"Her\\u00f3i\",\"description\":\"A investida her\\u00f3ica de Erwin ganha tempo para que Levy confronte o Tit\\u00e3 Bestial. Enquanto isso, Armin pensa em um plano que se arriscando o m\\u00e1ximo que pode.\"});\n          <\/script>\n    ","783662":"    <div class=\"collection-carousel-media-link \">\n      <div class=\"collection-carousel-media-thumb hover-bubble\">\n        <a class=\"link block-link block\" title=\"Attack on Titan S3 55\" href=\"\/pt-br\/attack-on-titan\/episode-55-midnight-sun-783662\">\n          <img class=\"mug\" src=\"https:\/\/img1.ak.crunchyroll.com\/i\/spire4-tmb\/3f288861f03d9538d342855139c322e71559516204_wide.jpg\" alt=\"Attack on Titan S3 Epis\u00f3dio 55\" \/>\n          <div class=\"collection-carousel-overlay\" dir=\"auto\">\n\n                          <span class=\"collection-carousel-overlay-top ellipsis\">\n              Epis\u00f3dio 55            <\/span>\n                              <span class=\"collection-carousel-overlay-bottom ellipsis xsmall-margin-bottom\">\n                                                        Sol da Meia-Noite                                  <\/span>\n                          \n          <\/div>\n\n                    <div class=\"episode-progress-bar\">\n            <div class=\"episode-progress\" media_id=\"783662\" style=\"width:0%;\"><\/div>\n          <\/div>\n        <\/a>\n      <\/div>\n    <\/div>\n\n    \n    <script type=\"text\/javascript\">\n      $('.collection-carousel-contents div[media_id=783662] .hover-bubble').data('bubble_data',{\"name\":\"Sol da Meia-Noite\",\"description\":\"Enquanto se recuperam da \\u00faltima batalha, o Reconhecimento precisa tomar uma decis\\u00e3o importante que pode salvar um dos seus companheiros.\"});\n          <\/script>\n    ","783663":"    <div class=\"collection-carousel-media-link collection-carousel-media-link-current\">\n      <div class=\"collection-carousel-media-thumb hover-bubble\">\n        <a class=\"link block-link block\" title=\"Attack on Titan S3 56\" href=\"\/pt-br\/attack-on-titan\/episode-56-the-basement-783663\">\n          <img class=\"mug\" src=\"https:\/\/img1.ak.crunchyroll.com\/i\/spire3-tmb\/a487ae5f50260859ae587418f53f68501560126406_wide.jpg\" alt=\"Attack on Titan S3 Epis\u00f3dio 56\" \/>\n          <div class=\"collection-carousel-overlay\" dir=\"auto\">\n\n                          <span class=\"collection-carousel-overlay-top ellipsis\">\n              Epis\u00f3dio 56            <\/span>\n                              <span class=\"collection-carousel-overlay-bottom ellipsis xsmall-margin-bottom\">\n                                                        Por\u00e3o                                  <\/span>\n                          \n          <\/div>\n\n                    <div class=\"episode-progress-bar\">\n            <div class=\"episode-progress\" media_id=\"783663\" style=\"width:0%;\"><\/div>\n          <\/div>\n        <\/a>\n      <\/div>\n    <\/div>\n\n    \n    <script type=\"text\/javascript\">\n      $('.collection-carousel-contents div[media_id=783663] .hover-bubble').data('bubble_data',{\"name\":\"Por\\u00e3o\",\"description\":\"Depois da importante decis\\u00e3o que encerrou o \\u00faltimo epis\\u00f3dio, Eren e companhia partem em dire\\u00e7\\u00e3o ao por\\u00e3o de sua casa.\"});\n          <\/script>\n    ","783664":"    <div class=\"collection-carousel-media-link \">\n      <div class=\"collection-carousel-media-thumb hover-bubble\">\n        <a class=\"link block-link block\" title=\"Attack on Titan S3 57\" href=\"\/pt-br\/attack-on-titan\/episode-57-that-day-783664\">\n          <img class=\"mug\" src=\"https:\/\/img1.ak.crunchyroll.com\/i\/spire3-tmb\/914b753bfd31868515ac2901569073b41560712044_wide.jpg\" alt=\"Attack on Titan S3 Epis\u00f3dio 57\" \/>\n          <div class=\"collection-carousel-overlay\" dir=\"auto\">\n\n                          <span class=\"collection-carousel-overlay-top ellipsis\">\n              Epis\u00f3dio 57            <\/span>\n                              <span class=\"collection-carousel-overlay-bottom ellipsis xsmall-margin-bottom\">\n                                                        Aquele Dia                                  <\/span>\n                          \n          <\/div>\n\n                      <span class=\"premium-only-media-star\"><\/span>\n                    <div class=\"episode-progress-bar\">\n            <div class=\"episode-progress\" media_id=\"783664\" style=\"width:0%;\"><\/div>\n          <\/div>\n        <\/a>\n      <\/div>\n    <\/div>\n\n    \n    <script type=\"text\/javascript\">\n      $('.collection-carousel-contents div[media_id=783664] .hover-bubble').data('bubble_data',{\"name\":\"Aquele Dia\",\"description\":\"Grisha Jaeger lembra o dia que mudou sua vida, quando em sua inf\\u00e2ncia, saiu do distrito de concentra\\u00e7\\u00e3o de Liberio com sua irm\\u00e3, e dos fatos que marcariam sua vida para todo o sempre, e que nos ajudam a elucidar a origem dos Tit\\u00e3s.\"});\n          <\/script>\n    "});
+
+    $('#carousel-group-254209 .collection-carousel-rightarrow').click(function(ev) {
+      if($('#carousel-group-254209').data()['first_visible'] >= 53) {
+        return false;
+      }
+
+      var next_first_visible = Math.min(53, $('#carousel-group-254209').data()['first_visible'] + 5);
+      var this_handle = $(this);
+      this_handle.addClass("loading");
+      Rpc.request({
+        ajax_root: '/ajax/?req=RpcApiMedia_GetCollectionCarouselPage',
+        method: 'get',
+        params_obj: {
+          group_id: null,
+          collection_id: "24557",
+          media_id: "783663",
+          first_index: next_first_visible,
+          pagetype: "small"        },
+        callback: function(resp) {
+          this_handle.removeClass("loading");
+          if(resp.result_code == Rpc.RESULT_SUCCESS && resp.data) {
+            var media_ids_to_html = resp.data;
+            $.each(media_ids_to_html, function(media_id, html) {
+              if(!$('#carousel-group-254209').data()['filled_media_ids'][media_id]) {
+                $('#carousel-group-254209 .collection-carousel-contents div[media_id=' + media_id + ']').html(html);
+                $('#carousel-group-254209').data()['filled_media_ids'][media_id] = 1;
+              }
+            });
+
+            $('#carousel-group-254209 .collection-carousel-scrollable').animate({left:(-116 * next_first_visible) + 'px'}, 450);
+            $('#carousel-group-254209').data()['first_visible'] = next_first_visible;
+            if($('#carousel-group-254209').data()['first_visible'] > 0) {
+              $('#carousel-group-254209 .collection-carousel-leftarrow').each(function (i, e) {
+                $(e).removeClass('disabled');
+              });
+            }
+            if($('#carousel-group-254209').data()['first_visible'] >= 53) {
+              $('#carousel-group-254209 .collection-carousel-rightarrow').each(function (i, e) {
+                $(e).addClass('disabled');
+              });
+            }
+          }
+        }
+      });
+      return false;
+    });
+
+    $('#carousel-group-254209 .collection-carousel-leftarrow').click(function(ev) {
+      if($('#carousel-group-254209').data()['first_visible'] <= 0) {
+        return false;
+      }
+
+      var next_first_visible = Math.max(0, $('#carousel-group-254209').data()['first_visible'] - 5);
+      var this_handle = $(this);
+      this_handle.addClass("loading");
+      Rpc.request({
+        ajax_root: '/ajax/?req=RpcApiMedia_GetCollectionCarouselPage',
+        method: 'get',
+        params_obj: {
+          group_id: null,
+          collection_id: "24557",
+          media_id: "783663",
+          first_index: next_first_visible,
+          pagetype: "small"        },
+        callback: function(resp) {
+          this_handle.removeClass("loading");
+          if(resp.result_code == Rpc.RESULT_SUCCESS && resp.data) {
+            var media_ids_to_html = resp.data;
+
+            $.each(media_ids_to_html, function(media_id, html) {
+              if(!$('#carousel-group-254209').data()['filled_media_ids'][media_id]) {
+                $('#carousel-group-254209 .collection-carousel-contents div[media_id=' + media_id + ']').html(html);
+                $('#carousel-group-254209').data()['filled_media_ids'][media_id] = 1;
+              }
+            });
+
+            $('#carousel-group-254209 .collection-carousel-scrollable').animate({left:(-116 * next_first_visible) + 'px'}, 450);
+            $('#carousel-group-254209').data()['first_visible'] = next_first_visible;
+
+            if($('#carousel-group-254209').data()['first_visible'] < 53) {
+              $('#carousel-group-254209 .collection-carousel-rightarrow').each(function (i, e) {
+                $(e).removeClass('disabled');
+              });
+            }
+            if($('#carousel-group-254209').data()['first_visible'] == 0) {
+              $('#carousel-group-254209 .collection-carousel-leftarrow').each(function (i, e) {
+                $(e).addClass('disabled');
+              });
+            }
+          }
+        }
+      });
+      return false;
+    });
+
+
+  </script>
+      </div>
+
+    <script id="singleReply" type="text/x-jquery-tmpl">
+        <li class="reply{{if comment.isRemoved}} removed{{/if}}">
+          <div class="guestbook-list cf" id="guestbook_comment_${comment.id}" {{if comment.isLowScoring}} style="display:none;" {{/if}}>
+          <div>
+          {{if !comment.isRemoved}}
+              <a href="${user.homeLink}" class="guestbook-mug">
+                <img src="${user.thumb}" alt="${user.name}" title="${user.name}"/>
+                </a>
+          {{else}}
+              <span class="guestbook-mug">
+                <img src="https://www.crunchyroll.com/i/no_image_beta_thumb.jpg"/>
+              </span>
+          {{/if}}
+            </div>
+            <div class="guestbook-name">
+            {{if !comment.isRemoved}}
+              <a href="${user.homeLink}" title="${user.name}">${user.name}</a>
+              {{if user.isPremiumOrHold}}
+                {{html user.memberStarTiny}}
+              {{/if}}
+              {{if user.isOnline}}
+                <img src="https://www.crunchyroll.com/i/icons/online_12_12.gif" title="Online Atualmente" class="no-border">
+              {{/if}}
+            {{/if}}
+          </div>
+          {{if !comment.isRemoved}}
+            <div id="guestbook_time_${comment.id}" class="guestbook-time small-data">
+              ${comment.formattedTimeCreated}
+            </div>
+          {{/if}}
+
+          <div class="guestbook-body" id="guestbook_comment_body_${comment.id}" style>
+          {{if comment.isRemoved}}
+            <span class="removed-comment">[Este comentário foi removido.]</span>
+          {{else}}
+            {{html comment.body}}
+          {{/if}}
+          </div>
+          {{if !comment.isRemoved}}
+            {{if comment.isSpoiler}}
+              <scr{{= ""}}ipt type="text/javascript">$('#guestbook_comment_body_${comment.id}').hide(); </scr{{= ""}}ipt>              <a href="javascript:void(0)" class="guestbook-list-hidden clearfix"
+                 onclick="$(this).remove(); $('#guestbook_comment_body_${comment.id}').fadeIn(500);"
+                 rel="nofollow" title="Mostrar Comentário Spoiler">Mostrar Comentário Spoiler</a>
+            {{/if}}
+          {{/if}}
+
+          <div class="guestbook-links cf clearfix">
+          {{if !comment.isRemoved}}
+            {{if comment.canRemove}}
+              <a href="javascript:void(0)" class="comment-spoiler" onclick="Guestbook.ToggleCommentSpoiler('${comment.id}',
+              'FyeB9IYzfGSD7wgH5EREkQTqUCEF6J4DCm5qPtmcY58'
+              '1001-MEDIAKEY_783663')"
+                   rel="nofollow" title="spoiler">spoiler</a>
+            {{/if}}
+              <span id="guestbook_ratingsarrows_${comment.id}" class="guestbook-ratings small-margin-bottom">
+                {{if comment.points != undefined}}
+                  <span id="points_${comment.id}" class="points {{if comment.points>0}}positive-score{{/if}}{{if comment.points<0}}negative-score{{/if}}">{{if comment.points>0}}+{{/if}}${comment.points}</span>
+                {{/if}}
+                <a href="javascript:void(0)" onclick="Guestbook.RateComment('${comment.id}', 'tb_up      ', '0y5WpOEdr_mRkCIxnxueZXu0jMLcqZ14KQEwFTgG9rE', '1001-MEDIAKEY_783663');" rel="nofollow">
+                  <img src="https://www.crunchyroll.com/i/icons/comment_up_grey.gif" title="Vote positivo">
+                </a>
+                <a href="javascript:void(0)" onclick="Guestbook.RateComment('${comment.id}', 'tb_down      ', '0y5WpOEdr_mRkCIxnxueZXu0jMLcqZ14KQEwFTgG9rE', '1001-MEDIAKEY_783663');" rel="nofollow">
+                  <img src="https://www.crunchyroll.com/i/icons/comment_down_grey.gif" title="Vote negativo">
+                </a>
+                <a href="javacript:void(0)" class="ratespam" onclick="Guestbook.RateComment('${comment.id}', 'tb_spam      ', '0y5WpOEdr_mRkCIxnxueZXu0jMLcqZ14KQEwFTgG9rE', '1001-MEDIAKEY_783663');" rel="nofollow">
+                  <img src="https://www.crunchyroll.com/i/icons/rate_spam_grey.gif" title="Marque este comentário como spam">
+                </a>
+                </span>
+              <a href="javascript:void(0)" class="reportmod" onclick="javascript:modreport_add('${comment.id}', 'talkboxcomment', 'giktF7MndnoOfshozix3PXFZf_QZkqgqUMW-g_FmPKw');"
+                 rel="nofollow">
+                <img src="https://www.crunchyroll.com/i/icons/exclamation_gray_14_14.gif" title="Reportar ao Moderador">
+              </a>
+              {{if comment.canRemove}}
+                <a href="javascript:void(0)" class="comment-delete" id="comment_delete_${comment.id}" onclick="if (confirm('Tem certeza?')) Guestbook.SoftRemoveComment('${comment.id}', true, 'isdDdL_xvI7_Jl7vL5thWD14GacY_WJFI8iyKkfqNk8', '1001-MEDIAKEY_783663')">
+                  <img src="https://www.crunchyroll.com/i/icons/remove_grey_14_14.gif" title="Remover">
+                </a>
+              {{/if}}
+  {{/if}}
+            </div>
+          </div>
+          {{if comment.isLowScoring}}
+            <div class="guestbook-list guestbook-list-hidden cf" id="guestbook_hidden_comment_${comment.id}">
+              <a href="javascript:void(0)" onclick="$('#guestbook_hidden_comment_${comment.id}').remove(); $('#guestbook_comment_${comment.id}').fadeIn(500);"
+                 rel="nofollow" title="Mostrar Comentário Oculto">
+              Mostrar Comentário Oculto              </a>
+            </div>
+          {{/if}}
+        </li>
+
+
+
+    </script>
+          <script id="replyForm" type="text/x-jquery-tmpl">
+        <li id="reply_${id}" {{if $item.hidden}} style="display:none;" {{/if}}>
+        <form onsubmit="Guestbook.SubmitComment({form_id:'add_reply_${id}', gb_id:'1001-MEDIAKEY_783663        ', parent_id:${id}, new_text:'Resposta Adicionada!        ', extended_threads:''}); return false;" name="add_reply_${id}" id="add_reply_${id}" method="post" action="/?a=formhandler">
+            <input type="hidden" name="origin_token" value="2:SjsRRQnW7/V8VkdRSjjN9aRQvT4=:1560971926">
+            <input type="hidden" name="mugsize" value='small'>
+            <input type="hidden" name="last_comment_time" value="1560799126">
+            <input type="hidden" name="formname" value="add_reply_${id}">
+            <textarea class="reply-form small-margin-bottom placeholder" id="comment${id}_textarea" cid="${id}"
+              placeholder="Escrever um comentário..." name="body"></textarea>
+            <div id="replybuttons_${id}" class="reply-buttons medium-margin-bottom cf">
+	            <input id="comment_spoiler_${id}" class="reply-spoiler-checkbox left" value="1" name="spoiler" type="checkbox">
+                <label for="comment_spoiler_${id}">
+                  &nbspSpoiler                </label>
+              </input>
+            <input name="submit_comment_btn" class="button medium-margin-bottom default-button medium-button button-padding right" type="button"
+                     onclick="Guestbook.SubmitComment({form_id:'add_reply_${id}', gb_id:'1001-MEDIAKEY_783663        ', parent_id:'${id}', new_text:'Resposta Adicionada!        ', extended_threads:''});" value="Adicionar resposta">
+            </div>
+          </form>
+          <scr{{= ""}}ipt type="text/javascript">$('#comment${id}_textarea').jqEasyCounter({'maxChars':240,
+                              'msgFontSize':'11px',
+                              'msgFontColor':'#888',
+                             });
+          </scr{{= ""}}ipt>        </li>
+
+
+
+      </script>
+          <script id="moreRepliesButton" type="text/x-jquery-tmpl">
+      <li id="more_replies_box_${id}" class="more_replies_box" style="display:none;">
+        <scr{{= ""}}ipt type="text/javascript">          $(function() {
+            var btn = $("#more_replies_${id}"),
+                url = '/comments',
+                pg  = parseInt(btn.attr('data-page')),
+                talkboxid = '1001-MEDIAKEY_783663',
+                parentid = '${id}',
+                loading_message = '<div class="loading-message cf"><div class="left strong">Carregando...</div></div>',
+                replycount = '5',
+                thread_limit = '${$item.thread_limit}';
+            btn.click(function(e) {
+              pg = parseInt($(this).attr('data-page'));
+              $(this).parent().parent().hide();
+              $("#replylist_${id}").prepend(loading_message);
+              $.get(url, {pg: pg, talkboxid: talkboxid, parentid: parentid, replycount: replycount, threadlimit: thread_limit}, function(data) {
+                data = jQuery.parseJSON(data);
+                if (data && data.length) {
+                  data = data.reverse();
+                  $(btn).attr('data-page', pg+1);
+                  $("#singleComment").tmpl(data, {thread_limit:${$item.thread_limit}-1}).insertAfter("#more_replies_box_${id}").hide().fadeIn(800);
+                  if ((pg+1) * parseInt(replycount) < parseInt('${replyCount}')) {
+                    $(btn).parent().parent().fadeIn(200);
+                  }
+                  $("#replylist_${id}").children(".loading-message").remove();
+                }
+              });
+            });
+            if (parseInt('${replyCount}') > parseInt(replycount)) {
+              btn.parent().parent().fadeIn(200);
+            }
+          });
+        </scr{{= ""}}ipt>
+        <div class="more-replies"><a href="javascript:void(0)" id="more_replies_${id}" data-page="1">Exibir Mais Respostas</a></div>
+      </li>
+
+
+
+    </script>
+        <script id="moreCommentsButton" type="text/x-jquery-tmpl">
+      <scr{{= ""}}ipt type="text/javascript">        $(function() {
+            var btn = $('input.more_comments'),
+                url = '/comments',
+                pg  = parseInt(btn.attr('data-page')),
+                talkboxid = '1001-MEDIAKEY_783663',
+                sortParams = '${sortParams}',
+                loading_message = '<div class="loading-message cf"><div class="left strong">Carregando...</div></div>',
+                replycount = '5',
+                threadlimit = '2',
+                pagelimit = '4';
+            btn.click(function(e) {
+              pg = parseInt($(this).attr('data-page'));
+              $(this).hide();
+              $("#allCommentsList").append(loading_message);
+              $.get(url, {pg: pg, talkboxid: talkboxid, sort: sortParams, replycount: replycount, threadlimit: threadlimit, pagelimit:pagelimit}, function(data) {
+                data = jQuery.parseJSON(data);
+                if (data && data.length) {
+                  $(btn).attr('data-page', pg+1);
+                  $("#singleComment").tmpl(data.slice(0,parseInt(pagelimit)), {thread_limit: 0}).appendTo("#allCommentsList");
+                  $(".reply-form").each(function() {
+                    Guestbook.AddPlaceholder(this);
+                  });
+                  if (data.length > 4) {
+                    $(btn).show();
+                  }
+                  if (window.removeDeletedTrees) {
+                    removeDeletedTrees("#allCommentsList");
+                  }
+                  $("#allCommentsList").children(".loading-message").remove();
+                }
+              });
+            });
+            var count = parseInt('5');
+            if (count > 4) {
+              btn.fadeIn(200);
+            }
+        });
+      </scr{{= ""}}ipt>
+      <input type="button" class="more_comments button default-button large-button" style="display:none;"
+             name="more_comments" value="Mais Comentários" data-page='1'>
+
+
+
+    </script>
+    
+    <script id="singleComment" type="text/x-jquery-tmpl">
+      <li {{if children}}{{if comment.isRemoved}}class="removed"{{/if}}{{/if}}>
+        <div class="guestbook-list cf" id="guestbook_comment_${comment.id}" {{if comment.isLowScoring}} style="display:none;" {{/if}}>
+        <div>
+          {{if !comment.isRemoved}}
+            <a href="${user.homeLink}" class="guestbook-mug">
+              <img src="${user.thumb}" alt="${user.name}" title="${user.name}"/>
+            </a>
+          {{else}}
+            <span class="guestbook-mug">
+            <img src="https://www.crunchyroll.com/i/no_image_beta_thumb.jpg"/>
+            </span>
+          {{/if}}
+        </div>
+        <div class="guestbook-name">
+          {{if !comment.isRemoved}}
+            <a href="${user.homeLink}" title="${user.name}">${user.name}</a>
+            {{if user.isPremiumOrHold}}
+              {{html user.memberStarTiny}}
+            {{/if}}
+            {{if user.isOnline}}
+              <img src="https://www.crunchyroll.com/i/icons/online_12_12.gif" title="Online Atualmente" class="no-border"/>
+            {{/if}}
+          {{/if}}
+        </div>
+        {{if !comment.isRemoved}}
+          <div class="guestbook-time small-data">
+            ${comment.formattedTimeCreated}
+          </div>
+        {{/if}}
+        <div class="guestbook-body" id="guestbook_comment_body_${comment.id}" style>
+        {{if comment.isRemoved}}
+          <span class="removed-comment">[Este comentário foi removido.]</span>
+        {{else}}
+          {{html comment.body}}
+        {{/if}}
+        </div>
+        {{if !comment.isRemoved}}
+          {{if comment.isSpoiler}}
+            <scr{{= ""}}ipt type="text/javascript">$('#guestbook_comment_body_${comment.id}').hide(); </scr{{= ""}}ipt>            <a href="javascript:void(0)" class="guestbook-list-hidden clearfix"
+               onclick="$(this).remove(); $('#guestbook_comment_body_${comment.id}').fadeIn(500);"
+               rel="nofollow" title="Mostrar Comentário Spoiler">Mostrar Comentário Spoiler</a>
+          {{/if}}
+        {{/if}}
+
+        <div id="guestbook_links_${comment.id}" class="guestbook-links cf clearfix">
+        {{if !comment.isRemoved}}
+          {{if comment.canRemove}}
+            <a href="javascript:void(0)" class="comment-spoiler" onclick="Guestbook.ToggleCommentSpoiler('${comment.id}',
+            'FyeB9IYzfGSD7wgH5EREkQTqUCEF6J4DCm5qPtmcY58',
+            '1001-MEDIAKEY_783663')"
+                 rel="nofollow" title="spoiler">spoiler</a>
+          {{/if}}
+        {{/if}}
+          {{if children}}
+            {{if children.length}}
+              <a href="javascript:void(0)" id="comment-showhide_${comment.id}" class="comment-showhide" onclick="if(!$('#replylist_${comment.id}').is(':hidden')){$('#replylist_${comment.id}').hide(); $(this).hide(); $('#comment-reply_${comment.id}').show(100); len=${comment.replyCount}; if (len==1){word = l('generic.sentencecase.show_reply','Show reply');}else{word = l('generic.sentencecase.show__x__replies','Show {x} replies',null,{'x':len});} $('#comment-reply_${comment.id}').text(word).show(100); }"
+                {{if children.length == 1}}
+                  rel="nofollow" title="showhide">Ocultar resposta                {{else}}
+                  rel="nofollow" title="showhide">Ocultar respostas                {{/if}}
+              </a>
+            {{/if}}
+          {{/if}}
+              {{if $item.thread_limit >= 0}}
+    <a href="javascript:void(0)" id="comment-reply_${comment.id}" class="comment-reply" rel="nofollow" onclick="if($('#replylist_${comment.id}').is(':hidden')){$('#replylist_${comment.id}').show(200);}else{$('#reply_${comment.id}').show(200);}$(this).hide(); len=${comment.replyCount}; word = l('generic.sentencecase.hide_replies','Hide replies');  if (len==1){word = l('generic.sentencecase.hide_reply','Hide reply'); }$('#comment-showhide_${comment.id}').text(word).show(100);" title="Responder" {{if children}}{{if children.length}}style="display:none;"{{/if}}{{/if}} >Responder</a>
+    {{/if}}
+                  {{if !comment.isRemoved}}
+          <span id="guestbook_ratingsarrows_${comment.id}" class="guestbook-ratings small-margin-bottom">
+              {{if comment.points != undefined}}
+                <span id="points_${comment.id}" class="points {{if comment.points>0}}positive-score{{/if}}{{if comment.points<0}}negative-score{{/if}}">{{if comment.points>0}}+{{/if}}${comment.points}</span>
+              {{/if}}
+              <a href="javascript:void(0)"
+                 onclick="Guestbook.RateComment('${comment.id}', 'tb_up', '0y5WpOEdr_mRkCIxnxueZXu0jMLcqZ14KQEwFTgG9rE', '1001-MEDIAKEY_783663');"
+                 rel="nofollow">
+                <img src="https://www.crunchyroll.com/i/icons/comment_up_grey.gif"
+                     title="Vote positivo">
+              </a>
+              <a href="javascript:void(0)"
+                 onclick="Guestbook.RateComment('${comment.id}', 'tb_down', '0y5WpOEdr_mRkCIxnxueZXu0jMLcqZ14KQEwFTgG9rE', '1001-MEDIAKEY_783663');"
+                 rel="nofollow">
+                <img src="https://www.crunchyroll.com/i/icons/comment_down_grey.gif"
+                     title="Vote negativo"/>
+              </a>
+              <a href="javacript:void(0)" class="ratespam"
+                 onclick="Guestbook.RateComment('${comment.id}', 'tb_spam', '0y5WpOEdr_mRkCIxnxueZXu0jMLcqZ14KQEwFTgG9rE', '1001-MEDIAKEY_783663');"
+                 rel="nofollow">
+                <img src="https://www.crunchyroll.com/i/icons/rate_spam_grey.gif"
+                     title="Marque este comentário como spam"/>
+              </a>
+          </span>
+          <a href="javascript:void(0)"
+             class="reportmod"
+             onclick="javascript:modreport_add('${comment.id}', 'talkboxcomment','giktF7MndnoOfshozix3PXFZf_QZkqgqUMW-g_FmPKw', '1001-MEDIAKEY_783663');"
+             rel="nofollow">
+            <img src="https://www.crunchyroll.com/i/icons/exclamation_gray_14_14.gif"
+                 title="Reportar ao Moderador"/>
+          </a>
+          {{if comment.canRemove}}
+            <a href="javascript:void(0)" class="comment-delete" id="comment_delete_${comment.id}"
+              {{if children}}
+                onclick="if (confirm('Tem certeza?'))
+      Guestbook.SoftRemoveComment(
+      '${comment.id}',
+      {{if children}}{{if children.length}}true{{else}}false{{/if}}{{/if}},
+      'isdDdL_xvI7_Jl7vL5thWD14GacY_WJFI8iyKkfqNk8',
+      '1001-MEDIAKEY_783663')"
+              {{else}}
+                onclick="if (confirm('Tem certeza?')) Guestbook.RemoveComment('${comment.id}', false, '4oLWUp1tQIywAvVxgn1isAw_LEUwVzngtqYD3lo5QDE')"
+              {{/if}}>
+                <img src="https://www.crunchyroll.com/i/icons/remove_grey_14_14.gif" title="Remover"/>
+            </a>
+          {{/if}}
+    {{/if}}
+          </div>
+        </div>
+        {{if comment.isLowScoring}}
+          <div class="guestbook-list guestbook-list-hidden cf" id="guestbook_hidden_comment_${comment.id}">
+            <a href="javascript:void(0)" onclick="$('#guestbook_hidden_comment_${comment.id}').remove(); $('#guestbook_comment_${comment.id}').fadeIn(500);"
+               rel="nofollow" title="Mostrar Comentário Oculto">
+            Mostrar Comentário Oculto            </a>
+          </div>
+        {{/if}}
+              {{if children}}
+          <ul id="replylist_${comment.id}" class="replylist">
+            {{if children[0]}}
+                            {{tmpl(comment, {thread_limit: $item.thread_limit}) "#moreRepliesButton"}}
+              {{if $item.thread_limit > 0}}
+                {{tmpl(children, {thread_limit: $item.thread_limit-1}) "#singleComment"}}
+              {{else}}
+                {{tmpl(children) "#singleReply"}}
+              {{/if}}
+                              {{tmpl(comment, {hidden: false}) "#replyForm"}}
+              
+            {{else}}
+              {{tmpl(comment, {hidden: true}) "#replyForm"}}
+              {{tmpl(comment, {thread_limit: $item.thread_limit+1}) "#moreRepliesButton"}}
+            {{/if}}
+            </ul>
+          {{/if}}
+        </li>
+      
+
+    </script>
+        <script type="text/javascript">
+    function selectCurrent(e) {
+      if (!$(e).is(".current-selected")) {
+        $(e).parent().children("a").removeClass("current-selected");
+        $(e).addClass("current-selected");
+      }
+    }
+    function removeDeletedTrees(listIdentifier) {
+      $(listIdentifier).children(".removed").each(function() {
+        var removeIndicator = 1;
+        $(this).children("ul").children(".reply").each(function() {
+          if (!$(this).is(".removed")) {
+            removeIndicator = 0;
+          }
+        });
+        if (removeIndicator == 1) {
+          $(this).remove();
+        }
+      });
+    }
+    function ajaxSortCall(container, sortParam, callback_on_complete) {
+      var url = '/comments';
+      var talkboxid = '1001-MEDIAKEY_783663';
+      var loading_message = '<div class="loading-message cf"><div class="left strong">Carregando...</div>';
+      var replyCount = '5';
+      var threadlimit = '2';
+      var pagelimit = '4';
+      $("#"+container).children().remove();
+      $("#"+container).prepend(loading_message);
+      $.get(url, {pg:0, talkboxid:talkboxid, sort:sortParam, replycount:replyCount, threadlimit:threadlimit-1, pagelimit:pagelimit}, function(data) {
+        data = jQuery.parseJSON(data);
+        if (data) {
+          $("#singleComment").tmpl(data.slice(0,parseInt(pagelimit)), {thread_limit: 0}).appendTo("#"+container);
+          removeDeletedTrees("#"+container);
+        }
+        $("#"+container).children(".loading-message").remove();
+        $(".reply-form").each(function() {
+          Guestbook.AddPlaceholder(this);
+        });
+
+        if (typeof callback_on_complete === "function") {
+          callback_on_complete();
+        }
+      });
+      $(".more_comments_box").children().remove();
+      $("#moreCommentsButton").tmpl({sortParams:sortParam}).appendTo(".more_comments_box");
+    }
+    function showOrHideGuestbookBasedOnVisibleComments() {
+            var num_visible_comments = $("#allCommentsList").children().filter(':visible').length;
+      if (num_visible_comments <= 0) {
+        $(".guestbook-sort-bar").fadeOut(200);
+      } else {
+        $(".guestbook-sort-bar").fadeIn(200);
+      }
+    }
+
+    function getNextPage(container, sortParams) {
+      var url = '/comments';
+      var talkboxid = '1001-MEDIAKEY_783663';
+      var loading_message = '<div class="loading-message cf"><div class="left strong">Carregando...</div>';
+      var pg = parseInt($('.paging-bar').attr('data-page')) + 1;
+      var threadlimit = '1';
+      var pagelimit = '4';
+      $(function() {
+        if (pg > $('.paging-bar').attr('data-page-limit')) {
+          $('.next-button-med').attr('class', 'control-button next-button-light');
+          return;
+        }
+        $('.next-button-med').addClass('control-loading');
+        $.get(url, {pg:pg, talkboxid:talkboxid, sort:sortParams, replycount:0, threadlimit:threadlimit, pagelimit:pagelimit}, function(data) {
+          data = jQuery.parseJSON(data);
+          if (!data) {
+            return false;
+          }
+          if (data.length <= parseInt(pagelimit)) {
+            $('.next-button-med').attr('class', 'control-button next-button-light');
+            $('.paging-bar').attr('data-page-limit', pg);
+          }
+          if (pg > 0) {
+            $('.prev-button-light').attr('class', 'control-button prev-button-med');
+          }
+          $('.paging-bar').attr('data-page', pg);
+          $('.page-display').text('Página ' + (parseInt($('.paging-bar').attr('data-page'))+1).toString());
+          $("#"+container).children().remove();
+          $("#singleComment").tmpl(data.slice(0,parseInt(pagelimit)), {thread_limit: 0}).appendTo("#"+container);
+          $('.control-loading').removeClass('control-loading');
+          removeDeletedTrees("#"+container);
+          $(".reply-form").each(function() {
+            Guestbook.AddPlaceholder(this);
+          });
+        });
+      });
+    }
+
+    function getPrevPage(container, sortParams) {
+      var url = '/comments';
+      var talkboxid = '1001-MEDIAKEY_783663';
+      var loading_message = '<div class="loading-message cf"><div class="left strong">Carregando...</div>';
+      var pg = parseInt($('.paging-bar').attr('data-page')) - 1;
+      var threadlimit = '1';
+      var pagelimit = '4';
+      $(function() {
+        if (pg <= 0) {
+            $('.prev-button-med').attr('class', 'control-button prev-button-light control-loading');
+          if (pg < 0) {
+            return;
+          }
+        } 
+        $('.prev-button-med').addClass('control-loading');
+        $.get(url, {pg:pg, talkboxid:talkboxid, sort:sortParams, replycount:0, threadlimit:threadlimit, pagelimit:pagelimit}, function(data) {
+          data = jQuery.parseJSON(data);
+          if (!data) {
+            return false;
+          }
+          if (pg < $('.paging-bar').attr('data-page-limit')) {
+            $('.next-button-light').attr('class', 'control-button next-button-med');
+          }
+          $('.paging-bar').attr('data-page', pg);
+          $('.page-display').text('Página ' + (parseInt($('.paging-bar').attr('data-page'))+1).toString());
+          $("#"+container).children().remove();
+          $("#singleComment").tmpl(data.slice(0,parseInt(pagelimit)), {thread_limit: 0}).appendTo("#"+container);
+          $('.control-loading').removeClass('control-loading');
+          removeDeletedTrees("#"+container);
+          $(".reply-form").each(function() {
+            Guestbook.AddPlaceholder(this);
+          });
+        });
+      });
+    }
+  </script>
+
+    <div class="guestbook comments box" cellspacing="0" cellpadding="0">
+        <div align="center" class="comments-header boxtitle">
+              <h2>
+        Comentários        </h2>
+          </div>
+            <div id="boxMEDIAKEY_783663" class="boxcontents">
+              <div class="guestbook-commentform" id="guestbook_commentform">
+      <form onsubmit="Guestbook.SubmitComment({form_id:'add_comment', gb_id:'1001-MEDIAKEY_783663', new_text:'Comentário Adicionado!'}); return false;" class name="add_comment" id="add_comment" method="post" action="/?a=formhandler">
+        <div class="contents">
+          <input type="hidden" name="origin_token"
+                 value="2:SjsRRQnW7/V8VkdRSjjN9aRQvT4=:1560971926">
+          <input type="hidden" name="mugsize" value='small'>
+          <input type="hidden" name="last_comment_time" value="1560799126">
+          <input type="hidden" name="formname" value="add_comment">
+
+          <div class="widget-form-td">
+            <textarea class="guestbook-form text-input small-margin-bottom placeholder"
+                      id="gb1001-MEDIAKEY_783663_textarea" placeholder="Escrever um comentário..." onfocus="Guestbook.RemovePlaceholder(this);"
+                      onblur="Guestbook.AddPlaceholder(this);" name="body"></textarea>
+                        <div class="guestbook-spoiler-checkbox cf left">
+              <input id=gb_spoiler_1001-MEDIAKEY_783663 value="1" name="spoiler" type="checkbox"/>
+              <label for="gb_spoiler_1001-MEDIAKEY_783663">
+                Spoiler              </label>
+            </div>
+          </div>
+          <div class="bottom medium-margin-bottom cf" style="text-align:center;">
+            <input name="submit_comment_btn" class="button default-button medium-button button-padding right"
+                   type="button"
+                   onclick="Guestbook.SubmitComment({form_id:'add_comment',gb_id:'1001-MEDIAKEY_783663', new_text:'Comentário Adicionado!'});" value="Adicionar Comentário">
+          </div>
+        </div>
+      </form>
+      <script type="text/javascript">
+          $('#gb1001-MEDIAKEY_783663_textarea').jqEasyCounter({
+              'maxChars':240,
+              'msgFontSize': '11px',
+              'msgFontColor': '#888'
+          });
+      </script>
+    </div>
+          <div class="guestbook-sort-bar">
+              <div class="sort-options small-margin-right">Ordenar por:
+          <select id="sort-selector" onchange='ajaxSortCall("allCommentsList", this.options[this.selectedIndex].value); $(".paging-bar").attr("data-page", "0")' autocomplete="off">
+            <option value=score_desc,date_desc selected>
+                              Topo                          </option>
+                        <option value=date_desc >Recente</option>
+          </select>
+        </div>
+      </div>
+
+      <ul id="allCommentsList" class="ulist">
+      </ul>
+              <div class="more_comments_box"></div>
+          </div>
+  </div>
+
+
+    <script type="text/javascript">
+    $(document).ready(function () {
+      if (Guestbook) {
+        $(Guestbook).bind("guestbook_comments_visibility_changed", showOrHideGuestbookBasedOnVisibleComments);
+      }
+
+      ajaxSortCall("allCommentsList", "score_desc,date_desc", showOrHideGuestbookBasedOnVisibleComments);
+      
+    });
+    $('.page-display').text('Página ' + (parseInt($('.paging-bar').attr('data-page'))+1).toString());
+  </script>
+  
+  
+    <script type="text/javascript">
+    $(".reply-form").live("focus", function()
+      {
+        Guestbook.RemovePlaceholder(this);
+        $(this).animate({"height": "60px"}, "fast");
+        var cid = $(this).attr("cid");
+        $("#replybuttons_"+cid).fadeIn(200, function() {
+          $(this).siblings(".jqEasyCounterMsg").animate({opacity: 1});
+        });
+        return false;
+      }
+    );
+    $(".reply-form").live("blur", function()
+      {
+        Guestbook.AddPlaceholder(this);
+        if ($(this).is(".placeholder")) {
+          var repform = $(this);
+          var cid = $(this).attr("cid");
+          $(this).parent().children(".jqEasyCounterMsg").animate({opacity: 0}, 100, "swing", function() {
+            repform.animate({"height": "20px"}, "fast");
+            $("#replybuttons_"+cid).slideUp("fast");
+          });
+        }
+        return false;
+      }
+    );
+    $("[placeholder]").blur();
+  </script>  
+
+      </div>
+
+
+    <div id="sidebar" class="right">
+      <div id="showmedia_free_trial_signup" class="large-margin-bottom">
+        <div class="showmedia-free-trial-header medium-margin-bottom">Comece Seu Teste Gratuito</div>
+<div class="showmedia-free-trial-content">
+    <div class="showmedia-free-trial-tip medium-margin-bottom">Para assistir ao vídeo inteiro agora, comece seus 14 dias gratuitos de teste agora.</div>
+      <form method="post" action="https://www.crunchyroll.com/?a=formhandler" id="showmedia_free_trial_form">
+    <input type="hidden" name="formname" value="RpcApiUser_SignupTrialNewUser"/>
+    <input type="hidden" name="_token" value="oqhoRf8yXMLIxnJyctTm5P6omOPRaeSRINuxCfnwems"/>
+    <input type="hidden" name="fail_url" value="//www.crunchyroll.com/freetrial?next=%252Fpt-br%252Fattack-on-titan%252Fepisode-56-the-basement-783663&amp;device=pc&amp;from=ftform"/>
+    <input type="hidden" name="next_url" value="//www.crunchyroll.com/freetrial?next=%252Fpt-br%252Fattack-on-titan%252Fepisode-56-the-basement-783663&amp;device=pc&amp;from=ftform"/>
+
+    <label class="block strong">E-mail</label>
+    <input class="text-input small-margin-bottom" type="text" name="new_email" value="" id="new_email"/>
+
+    <label class="block strong">Nome de Usuário</label>
+    <input class="text-input small-margin-bottom" type="text" name="new_name" value="" id="new_name"/>
+
+    <label class="block strong">Senha</label>
+    <input class="text-input medium-margin-bottom" type="password" name="password"/>
+
+    <input type="submit" class="ie-hidden-submit"/>
+  </form>
+  <a href="#" class="button special-button large-button medium-margin-bottom" onclick="$('#showmedia_free_trial_form')[0].disabled=true;$('#showmedia_free_trial_form')[0].submit();return false;">
+    Continuar  </a>
+  <div class="showmedia-free-trial-already-have-account medium-margin-bottom small-data center-text">
+    Já tem uma conta?    <a href="/pt-br/login?next=%2Fpt-br%2Fattack-on-titan%2Fepisode-56-the-basement-783663" class="normal text-link">Entrar</a>
+  </div>
+
+<script type="text/javascript">
+  $('#showmedia_free_trial_form')[0].new_email.focus();
+</script>
+</div>
+      </div>
+
+      <div id="showmedia_about_new" class="showmedia-leftbox clearfix large-margin-bottom">
+
+  <div id="showmedia_about_info_avail" class="large-margin-bottom">
+    <h3>Aviso de Disponibilidade</h3>
+          <p class="availability-notes-high">Episode 56 will launch on 6/9 at 5:45PM PT</p>      </div>
+  
+  <h3>
+        Sobre Este Vídeo  </h3>
+
+
+  <div id="showmedia_about_media" class="medium-margin-bottom">
+          <h4 id="showmedia_about_episode_num">
+        <a href="http://www.crunchyroll.com/pt-br/attack-on-titan" class="text-link">Attack on Titan</a>
+      </h4>
+      <h4>
+            Temporada 3,
+            Episódio 56</h4>
+      </div>
+  <div id="showmedia_about_info">
+    <span class="rating block cf small-margin-bottom">
+      <div itemtype="http://data-vocabulary.org/Review-aggregate" itemscope class="left">
+                  <meta itemprop="itemreviewed" content="Attack on Titan" />
+                <span class="left ratable-parent cf block"><span id="showmedia_about_rate_widget" class="rating-widget-large" style="background-position:0px -140px;" onmouseout="Rating.SetRatingsText(&#039;Rate it!&#039;,&#039;showmedia_about_&#039;);Rating.SetStars(5,&#039;showmedia_about_&#039;,&#039;0&#039;,&#039;14&#039;);"><span onmouseover="Rating.SetRatingsText(&#039;Horrible!&#039;,&#039;showmedia_about_&#039;);Rating.SetStars(1,&#039;showmedia_about_&#039;,&#039;0&#039;,&#039;14&#039;);" onclick="Rating.SetRating(1, 2, 783663,&#039;showmedia_about_&#039;,&#039;0&#039;,&#039;14&#039;, &#039;1j3G94OnHULFU_cg6cd7tuMafAmYOdgV89JrfkHxsJM&#039;)" class="rating-widget-mask-large" id="showmedia_about_ratingStar_1"></span><span onmouseover="Rating.SetRatingsText(&#039;Bad&#039;,&#039;showmedia_about_&#039;);Rating.SetStars(2,&#039;showmedia_about_&#039;,&#039;0&#039;,&#039;14&#039;);" onclick="Rating.SetRating(2, 2, 783663,&#039;showmedia_about_&#039;,&#039;0&#039;,&#039;14&#039;, &#039;1j3G94OnHULFU_cg6cd7tuMafAmYOdgV89JrfkHxsJM&#039;)" class="rating-widget-mask-large" id="showmedia_about_ratingStar_2"></span><span onmouseover="Rating.SetRatingsText(&#039;Decent&#039;,&#039;showmedia_about_&#039;);Rating.SetStars(3,&#039;showmedia_about_&#039;,&#039;0&#039;,&#039;14&#039;);" onclick="Rating.SetRating(3, 2, 783663,&#039;showmedia_about_&#039;,&#039;0&#039;,&#039;14&#039;, &#039;1j3G94OnHULFU_cg6cd7tuMafAmYOdgV89JrfkHxsJM&#039;)" class="rating-widget-mask-large" id="showmedia_about_ratingStar_3"></span><span onmouseover="Rating.SetRatingsText(&#039;Good&#039;,&#039;showmedia_about_&#039;);Rating.SetStars(4,&#039;showmedia_about_&#039;,&#039;0&#039;,&#039;14&#039;);" onclick="Rating.SetRating(4, 2, 783663,&#039;showmedia_about_&#039;,&#039;0&#039;,&#039;14&#039;, &#039;1j3G94OnHULFU_cg6cd7tuMafAmYOdgV89JrfkHxsJM&#039;)" class="rating-widget-mask-large" id="showmedia_about_ratingStar_4"></span><span onmouseover="Rating.SetRatingsText(&#039;Excellent!&#039;,&#039;showmedia_about_&#039;);Rating.SetStars(5,&#039;showmedia_about_&#039;,&#039;0&#039;,&#039;14&#039;);" onclick="Rating.SetRating(5, 2, 783663,&#039;showmedia_about_&#039;,&#039;0&#039;,&#039;14&#039;, &#039;1j3G94OnHULFU_cg6cd7tuMafAmYOdgV89JrfkHxsJM&#039;)" class="rating-widget-mask-large" id="showmedia_about_ratingStar_5"></span></span></span>        <div class="xsmall-margin-left small-data left"><div id="showmedia_about_sampleSizeText" class="clearfix"><span itemprop="votes">3010</span> votos</div></div>
+      </div>
+    </span>
+              <h4 id="showmedia_about_name" class="strong">&ldquo;Porão&rdquo;</h4>
+        <p class="description medium-margin-bottom">
+                Depois da importante decisão que encerrou o último episódio, Eren e companhia partem em direção ao porão de sua casa.          </p>
+    <div id="showmedia_about_info_details">
+              <div>Legendas: <span class="showmedia-subtitle-text"><img src="https://www.crunchyroll.com/i/country_flags/us.gif"  /> <a href="/pt-br/attack-on-titan/episode-56-the-basement-783663?ssid=354293" title="English (US)">English (US)</a>, <img src="https://www.crunchyroll.com/i/country_flags/mx.gif"  /> <a href="/pt-br/attack-on-titan/episode-56-the-basement-783663?ssid=354291" title="Español">Español</a>, <img src="https://www.crunchyroll.com/i/country_flags/br.gif"  /> <a href="/pt-br/attack-on-titan/episode-56-the-basement-783663?ssid=354294" title="Português (Brasil)">Português (Brasil)</a></span></div>
+      
+                    <div>
+                      Distribuidora:
+            <span>
+                            <a href="/publisher/Funimation" class="text-link">Funimation</a>            </span>
+                  </div>
+      
+      <div>Disponível para <a href="/freetrial" class="text-link">assinantes premium</a>: <span>
+                    9 de Jun de 2019          
+          
+                </span></div>
+
+      <div>Disponível para usuários comuns: <span>
+                    16 de Jun de 2019          
+          
+                </span></div>
+
+                    <div>Marcadores: <span><a href="/showtag?tag=attack+on+titan+season+3&amp;type=2" title="attack on titan season 3">attack on titan season 3</a>, <a href="/showtag?tag=action&amp;type=2" title="action">action</a>, <a href="/showtag?tag=adventure&amp;type=2" title="adventure">adventure</a>, <a href="/showtag?tag=fantasy&amp;type=2" title="fantasy">fantasy</a>, <a href="/showtag?tag=shounen&amp;type=2" title="shounen">shounen</a>, <a href="/showtag?tag=attack+on+titan&amp;type=2" title="attack on titan">attack on titan</a></span></div>
+          </div>
+  </div>
+</div>
+      
+
+  
+  
+          
+                <div class="showmedia-related cf large-margin-bottom">
+        <h3>
+                    Outras Séries de Aventura        </h3>
+        <ul class="landscape-grid shows">
+                        <li class="group-item" itemscope itemtype="http://schema.org/TVSeries" group_id="42852">
+    <div class="wrapper hover-toggle-queue hover-classes" data-classes="container-shadow">
+      <a title="Naruto Shippuuden" itemprop="url" href="/pt-br/naruto-shippuden" class="landscape-element block-link cf titlefix">
+        <img itemprop="photo" alt="Naruto Shippuuden" src="https://img1.ak.crunchyroll.com/i/spire4/1c1df98707aa0f22aa54342af725e48a1491245343_small.jpg" class="portrait medium-margin-right left" />
+        <div class="series-info left">
+          <span itemprop="name" class="series-title left ellipsis" dir="auto">Naruto Shippuuden</span>
+          <span class="series-data left">
+            500 Vídeo(s)          </span>
+        </div>
+      </a>
+    </div>
+  </li>
+                          <li class="group-item" itemscope itemtype="http://schema.org/TVSeries" group_id="42850">
+    <div class="wrapper hover-toggle-queue hover-classes" data-classes="container-shadow">
+      <a title="Naruto" itemprop="url" href="/pt-br/naruto" class="landscape-element block-link cf titlefix">
+        <img itemprop="photo" alt="Naruto" src="https://img1.ak.crunchyroll.com/i/spire2/0145388e3ecfdb5a63ce1e9feaeef44a1279141923_small.jpg" class="portrait medium-margin-right left" />
+        <div class="series-info left">
+          <span itemprop="name" class="series-title left ellipsis" dir="auto">Naruto</span>
+          <span class="series-data left">
+            220 Vídeo(s)          </span>
+        </div>
+      </a>
+    </div>
+  </li>
+                    </ul>
+        <a href="/pt-br/videos/anime/genres/adventure" class="text-link strong">Ver mais</a>
+      </div>
+                <div class="showmedia-related cf large-margin-bottom">
+        <h3>
+                    Outras Séries de Ação        </h3>
+        <ul class="landscape-grid shows">
+                        <li class="group-item" itemscope itemtype="http://schema.org/TVSeries" group_id="47620">
+    <div class="wrapper hover-toggle-queue hover-classes" data-classes="container-shadow">
+      <a title="Gintama" itemprop="url" href="/pt-br/gintama" class="landscape-element block-link cf titlefix">
+        <img itemprop="photo" alt="Gintama" src="https://img1.ak.crunchyroll.com/i/spire2/54c15675670ba44c1f98c3e11ba0cddf1515030877_small.jpg" class="portrait medium-margin-right left" />
+        <div class="series-info left">
+          <span itemprop="name" class="series-title left ellipsis" dir="auto">Gintama</span>
+          <span class="series-data left">
+            379 Vídeo(s)          </span>
+        </div>
+      </a>
+    </div>
+  </li>
+                          <li class="group-item" itemscope itemtype="http://schema.org/TVSeries" group_id="42854">
+    <div class="wrapper hover-toggle-queue hover-classes" data-classes="container-shadow">
+      <a title="BLEACH" itemprop="url" href="/pt-br/bleach" class="landscape-element block-link cf titlefix">
+        <img itemprop="photo" alt="BLEACH" src="https://img1.ak.crunchyroll.com/i/spire2/52edb7a843abacb4ff0f642c8eda14401325114125_small.jpg" class="portrait medium-margin-right left" />
+        <div class="series-info left">
+          <span itemprop="name" class="series-title left ellipsis" dir="auto">BLEACH</span>
+          <span class="series-data left">
+            366 Vídeo(s)          </span>
+        </div>
+      </a>
+    </div>
+  </li>
+                    </ul>
+        <a href="/pt-br/videos/anime/genres/action" class="text-link strong">Ver mais</a>
+      </div>
+      <div class="showmedia-related showmedia-leftbox cf large-margin-bottom">
+  <h3>Seguir Crunchyroll</h3>
+<p class="medium-margin-bottom">Get the latest updates on show information, news, and more.</p>
+<div class="medium-margin-bottom">
+  <div class="fb-like" data-href="https://www.facebook.com/Crunchyroll.pt" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
+</div>
+<div class="medium-margin-bottom">
+  <a href="https://twitter.com/Crunchyroll_PT" class="twitter-follow-button" data-show-count="false">Follow
+  @Crunchyroll_PT</a>
+<script>!function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "https://platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }
+  }(document, "script", "twitter-wjs");</script>
+</div>
+</div>
+
+
+<script id="resume_series_play_template" type="text/x-jquery-tmpl">
+  <a href="${url}" class="resume-play js-resume-play-link">
+    <svg class="resume-play-icon" viewBox="0 0 48 48">
+      <use xlink:href="/i/svg/resume_play.svg#cr_resume_play"></use>
+    </svg>
+    <span class="resume-play-text">
+      ${text}
+    </span>
+  </a>
+</script>
+
+<script id="in_queue_template" type="text/x-jquery-tmpl">
+  <button class="queue-button add-queue-button in-queue js-remove-queue-button"
+          id="series_queue_${group_id}"
+          group_id="${group_id}" type="button">
+    <div class="firefox-flex-fix">
+      <svg class="queue-icon" viewBox="0 0 48 48">
+        <use xlink:href="/i/svg/queue_buttons.svg#cr_bookmark"></use>
+      </svg>
+      <span class="queue-label">Remover</span>
+    </div>
+  </button><span class="queue-indicator block"></span>
+</script>
+
+<script id="not_queued_template" type="text/x-jquery-tmpl">
+  <button class="queue-button add-queue-button not-queued js-add-queue-button"
+          id="series_queue_${group_id}"
+          group_id="${group_id}" type="button">
+    <div class="firefox-flex-fix">
+      <svg class="queue-icon" viewBox="0 0 48 48">
+        <use xlink:href="/i/svg/queue_buttons.svg#cr_bookmark"></use>
+      </svg>
+      <span class="queue-label">Adicionar à fila</span>
+    </div>
+  </button>
+</script>
+
+<script id="bubble_template" type="text/x-jquery-tmpl">
+  <div class="portrait-bubble cf">
+    <div class="tooltip-left left"></div>
+    <div class="portrait-desc container-shadow-dark left">
+      <span class="series-title white ellipsis">${name}</span>
+      <p itemprop="description" class="white">
+        {{if secondary_desc}}
+        <span class="secondary">${secondary_desc}</span><br/>
+        {{/if}}
+        ${description}
+      </p>
+    </div>
+  </div>
+</script>
+
+
+<script type="text/javascript">
+  var user_queues_group_ids = [];
+  var render_user_queue = function() {
+    //attach UserQueue buttons
+    var queueButtonText = 'Remover';
+    var notInQueueButtonText = 'Adicionar à fila';
+    $('.group-item').each(function(index,element) {
+      $(element).find('.add-queue-button').fadeOut(300,function() { $(this).remove(); });
+      $(element).find('.queue-indicator').fadeOut(300,function() { $(this).remove(); });
+      var group_id = $(element).attr('group_id');
+      if ($.inArray(group_id, user_queues_group_ids) != -1) {
+        $(element).find('.wrapper').append(getInQueueTemplate(group_id, queueButtonText));
+      } else {
+        $(element).find('.wrapper').append(getNotQueuedTemplate(group_id, notInQueueButtonText));
+      }
+    });
+  };
+
+  var render_queue_button = function() {
+    var queueButtonText = 'Remover';
+    var notInQueueButtonText = 'Adicionar à fila';
+    var add_queue_button = $('#sharing_add_queue_button').empty();
+    var current_group_id = add_queue_button.attr('group_id');
+    if ($.inArray(current_group_id, user_queues_group_ids) != -1) {
+      add_queue_button.append(getInQueueTemplate(current_group_id, queueButtonText)).find('*').css('opacity', 1);
+    } else {
+      add_queue_button.append(getNotQueuedTemplate(current_group_id, notInQueueButtonText)).find('*').css('opacity', 1);
+    }
+  }
+
+  $(function() {
+    $(".showmedia-related .wrapper a").removeAttr('title');
+    render_user_queue();
+    render_queue_button();
+  });
+
+  $(document.body).bind("queue:add", function(e, data) {
+    user_queues_group_ids.push(data.group_id);
+    render_user_queue();
+    render_queue_button();
+    $(data.parent).find("button[group_id=" + data.group_id + "]").show();
+  }).bind("queue:remove", function(e, data) {
+    user_queues_group_ids.splice($.inArray(data.group_id, user_queues_group_ids), 1);
+    render_user_queue();
+    render_queue_button();
+    $(data.parent).find("button[group_id=" + data.group_id + "]").show();
+  });
+
+</script>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<div id="sm_dtracker"></div>
+<script type="text/javascript">
+  var qs = 't=px&v=sm&k='+Math.floor(Math.random()*1000000);
+  document.write(unescape("%3Cimg%20class%3D%22pxl-tracker-img%22%20src%3D%22/tracker%3F") + qs + unescape("%22%20style%3D%22position%3A%20absolute%3B%20left%3A%20-50000px%3B%20visibility%3A%20hidden%3B%22%20/%3E"));
+  
+  var smTimer = setInterval(function () {
+      var qs2 = 't=px&v=sm_120&k='+Math.floor(Math.random()*1000000);
+      $('#sm_dtracker').html( (unescape("%3Cimg%20class%3D%22pxl-tracker-img%22%20src%3D%22/tracker%3F") + qs2 + unescape("%22%20style%3D%22position%3A%20absolute%3B%20left%3A%20-50000px%3B%20visibility%3A%20hidden%3B%22%20/%3E")) );
+      clearInterval(smTimer);
+    },
+    120000
+  );
+</script>
+
+<script>
+  (function() {
+    var gvn = document.createElement('script');
+    gvn.src = document.location.protocol + '//s0.2mdn.net/instream/video/client.js';
+    gvn.async = true;
+    gvn.type = 'text/javascript';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gvn, s);
+  })();
+</script>
+
+<script type="text/javascript">
+  (function() {
+    var criteo_q = window.criteo_q || [];
+    var deviceType = /iPad/.test(navigator.userAgent) ? "t" :
+      /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Silk/.test(navigator.userAgent) ? "m"
+        : "d";
+
+    var criteoJs = document.createElement("script");
+    criteoJs.type = 'text/javascript';
+    criteoJs.src = '//static.criteo.net/js/ld/ld.js';
+    criteoJs.async = 'true';
+    document.head.appendChild(criteoJs);
+
+    criteo_q.push(
+      {event: "setAccount", account: 47983},
+      {event: "setSiteType", type: deviceType},
+      {event: "setHashedEmail", email: ""},
+      {event: "setData", ui_account: ""}
+    );
+
+    var eventDetails = [{"event":"viewItem","item":"254209"}];
+    if (eventDetails) {
+      criteo_q.push(eventDetails);
+    }
+    window.criteo_q = criteo_q;
+  })();
+
+  function pushDynamicProductsIdsCriteoEvent(products) {
+    var items = [];
+    if (products) {
+      // https://support.criteo.com/hc/en-us/articles/203392521-Criteo-OneTag-on-your-search-listing-page
+      // you will have to pass dynamically the product IDs for the top three products displayed on the page
+      for (var i = 0; i < 3; i++) {
+        if (products[i] && products[i].product_id && products[i].status !== "private") {
+          items.push(products[i].product_id);
+        }
+      }
+    }
+
+    window.criteo_q.push({event: "viewList", item: items});
+  }
+
+  function pushDynamicCartItemsCriteoEvent(cartItems) {
+    var items = [];
+    if (cartItems) {
+      for (var i = 0; i < cartItems.length; i++) {
+        if (cartItems[i] && cartItems[i].product) {
+          items[i] = {
+            quantity: cartItems[i].quantity,
+            price: cartItems[i].price,
+            id: cartItems[i].product_id
+          }
+        }
+      }
+    }
+
+    window.criteo_q.push({event: "viewBasket", item: items});
+  }
+</script>
+        </div>
+                                        
+<div id="footer" class="cf container-shadow-bottom">
+  <div id="footer_menu" class="clearfix">
+    <div class="footer-categories-container">
+      <div class="footer-column footer-mobile-hide">
+        <h6>Séries Mais Vistas</h6>
+        <ul dir="auto">
+          
+  <li><a href="/dragon-ball-super" token="bottombar">Dragon Ball Super</a></li>
+  <li><a href="/one-piece" token="bottombar">One Piece</a></li>
+  <li><a href="/the-ancient-magus-bride" token="bottombar">The Ancient Magus' Bride</a></li>
+  <li><a href="/food-wars-shokugeki-no-soma" token="bottombar">Food Wars! Shokugeki no Soma</a></li>
+  <li><a href="/boruto-naruto-next-generations" token="bottombar">BORUTO: NARUTO NEXT GENERATIONS</a></li>
+  <li><a href="/naruto-shippuden" token="bottombar">Naruto Shippuden</a></li>
+  <li><a href="/black-clover" token="bottombar">Black Clover</a></li>
+  <li><a href="/gintama" token="bottombar">Gintama</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column footer-mobile-hide">
+        <h6>Plataformas e Aparelhos</h6>
+        <ul>
+          <li><a href="/devices#wiiu" token="bottombar">Wii U</a></li>
+          <li><a href="/devices#chromecast" token="bottombar">Chromecast</a></li>
+          <li><a href="/devices#xboxone" token="bottombar">Xbox One</a></li>
+          <li><a href="/devices#xbox360" token="bottombar">Xbox 360</a></li>
+          <li><a href="/devices#ps4" token="bottombar">PlayStation 4</a></li>
+          <li><a href="/devices#ps3" token="bottombar">PlayStation 3</a></li>
+          <li><a href="/devices#vita" token="bottombar">Playstation Vita</a></li>
+          <li><a href="/devices#ios" token="bottombar">Apple iOS</a></li>
+          <li><a href="/devices#android" token="bottombar">Android</a></li>
+          <li><a href="/devices#winphone" token="bottombar">Windows Phone</a></li>
+          <li><a href="/devices#appletv" token="bottombar">Apple TV</a></li>
+          <li><a href="/devices#roku" token="bottombar">Roku Box</a></li>
+          <li><a href="/devices#firetv" token="bottombar">Fire TV</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h6>Assinaturas Premium</h6>
+        <ul>
+                    <li>
+            <a href="/pt-br/freetrial?from=bottombar" id="footer_two_week_free_trial">
+              Teste Gratuito de Duas Semanas            </a>
+          </li>
+                    <li>
+            <a href="/pt-br/premium_comparison?src=bottombar" id="footer_compare_plans">
+              Compare os Planos            </a>
+          </li>
+
+          <li>
+            <a href="https://store.crunchyroll.com/collections/membership">
+              Comprar Assinaturas de Presente            </a>
+          </li>
+
+          <li>
+            <a href="/redeem">
+              Ativar Cartão-Presente da Crunchyroll/VRV            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h6>Idioma                                        <img id="footer_country_flag" src="https://www.crunchyroll.com/i/country_flags/br.gif"
+                     alt="Brazil"
+                     title="Your detected location is Brazil." />
+                    </h6>
+        <ul id="footer_language_list" class="footer-language">
+                                        <li>
+                <a href="/attack-on-titan/episode-56-the-basement-783663"
+                   onclick="return Localization.SetLang(
+                     'enUS',
+                     'mh6kqpfRMF_zDNYz7cntyCbmRtk1-oPcaQSDxHAOLss',
+                     '%2Fattack-on-titan%2Fepisode-56-the-basement-783663'
+                   );"
+                   data-language="English (US)"
+                  >
+                  English (US)                </a>
+              </li>
+                                        <li>
+                <a href="/en-gb/attack-on-titan/episode-56-the-basement-783663"
+                   onclick="return Localization.SetLang(
+                     'enGB',
+                     'mh6kqpfRMF_zDNYz7cntyCbmRtk1-oPcaQSDxHAOLss',
+                     '%2Fen-gb%2Fattack-on-titan%2Fepisode-56-the-basement-783663'
+                   );"
+                   data-language="English (UK)"
+                  >
+                  English (UK)                </a>
+              </li>
+                                        <li>
+                <a href="/es/attack-on-titan/episode-56-the-basement-783663"
+                   onclick="return Localization.SetLang(
+                     'esLA',
+                     'mh6kqpfRMF_zDNYz7cntyCbmRtk1-oPcaQSDxHAOLss',
+                     '%2Fes%2Fattack-on-titan%2Fepisode-56-the-basement-783663'
+                   );"
+                   data-language="Español"
+                  >
+                  Español                </a>
+              </li>
+                                        <li>
+                <a href="/es-es/attack-on-titan/episode-56-the-basement-783663"
+                   onclick="return Localization.SetLang(
+                     'esES',
+                     'mh6kqpfRMF_zDNYz7cntyCbmRtk1-oPcaQSDxHAOLss',
+                     '%2Fes-es%2Fattack-on-titan%2Fepisode-56-the-basement-783663'
+                   );"
+                   data-language="Español (España)"
+                  >
+                  Español (España)                </a>
+              </li>
+                                        <li>
+                <a href="/pt-br/attack-on-titan/episode-56-the-basement-783663"
+                   onclick="return Localization.SetLang(
+                     'ptBR',
+                     'mh6kqpfRMF_zDNYz7cntyCbmRtk1-oPcaQSDxHAOLss',
+                     '%2Fpt-br%2Fattack-on-titan%2Fepisode-56-the-basement-783663'
+                   );"
+                   data-language="Português (Brasil)"
+                  class="selected">
+                  Português (Brasil)                </a>
+              </li>
+                                        <li>
+                <a href="/pt-pt/attack-on-titan/episode-56-the-basement-783663"
+                   onclick="return Localization.SetLang(
+                     'ptPT',
+                     'mh6kqpfRMF_zDNYz7cntyCbmRtk1-oPcaQSDxHAOLss',
+                     '%2Fpt-pt%2Fattack-on-titan%2Fepisode-56-the-basement-783663'
+                   );"
+                   data-language="Português (Portugal)"
+                  >
+                  Português (Portugal)                </a>
+              </li>
+                                        <li>
+                <a href="/fr/attack-on-titan/episode-56-the-basement-783663"
+                   onclick="return Localization.SetLang(
+                     'frFR',
+                     'mh6kqpfRMF_zDNYz7cntyCbmRtk1-oPcaQSDxHAOLss',
+                     '%2Ffr%2Fattack-on-titan%2Fepisode-56-the-basement-783663'
+                   );"
+                   data-language="Français (France)"
+                  >
+                  Français (France)                </a>
+              </li>
+                                        <li>
+                <a href="/de/attack-on-titan/episode-56-the-basement-783663"
+                   onclick="return Localization.SetLang(
+                     'deDE',
+                     'mh6kqpfRMF_zDNYz7cntyCbmRtk1-oPcaQSDxHAOLss',
+                     '%2Fde%2Fattack-on-titan%2Fepisode-56-the-basement-783663'
+                   );"
+                   data-language="Deutsch"
+                  >
+                  Deutsch                </a>
+              </li>
+                                        <li>
+                <a href="/ar/attack-on-titan/episode-56-the-basement-783663"
+                   onclick="return Localization.SetLang(
+                     'arME',
+                     'mh6kqpfRMF_zDNYz7cntyCbmRtk1-oPcaQSDxHAOLss',
+                     '%2Far%2Fattack-on-titan%2Fepisode-56-the-basement-783663'
+                   );"
+                   data-language="العربية"
+                  >
+                  العربية                </a>
+              </li>
+                                        <li>
+                <a href="/it/attack-on-titan/episode-56-the-basement-783663"
+                   onclick="return Localization.SetLang(
+                     'itIT',
+                     'mh6kqpfRMF_zDNYz7cntyCbmRtk1-oPcaQSDxHAOLss',
+                     '%2Fit%2Fattack-on-titan%2Fepisode-56-the-basement-783663'
+                   );"
+                   data-language="Italiano"
+                  >
+                  Italiano                </a>
+              </li>
+                                        <li>
+                <a href="/ru/attack-on-titan/episode-56-the-basement-783663"
+                   onclick="return Localization.SetLang(
+                     'ruRU',
+                     'mh6kqpfRMF_zDNYz7cntyCbmRtk1-oPcaQSDxHAOLss',
+                     '%2Fru%2Fattack-on-titan%2Fepisode-56-the-basement-783663'
+                   );"
+                   data-language="Русский"
+                  >
+                  Русский                </a>
+              </li>
+                    </ul>
+      </div>
+
+      <div class="footer-column">
+        <h6>Suporte</h6>
+        <ul>
+          <li><a href="https://crunchyroll.zendesk.com/hc" token="bottombar">Ajuda/FAQ</a></li>
+        </ul>
+              </div>
+
+      <div class="footer-column">
+        <h6>Crunchyroll</h6>
+        <ul>
+          <li><a href="/pt-br/about" token="bottombar">Sobre</a></li>
+          <li><a href="/jobs" token="bottombar">Trabalhe Conosco</a></li>
+          <li><a href="/advertising" token="bottombar">Publicidade</a></li>
+                    <li><a href="/dmca_policy" token="bottombar">Política de Direitos Autorais</a></li>
+          <li><a href="/tos" token="bottombar">Termos de Serviço</a></li>
+          <li><a href="/privacy" token="bottombar">Política de Privacidade <span class="new-footer">Novo</span></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="social_media">
+      <div class="footer-column">
+        <a href="/feed" token="bottombar">
+          <img class="icon" src="https://www.crunchyroll.com/i/rss.png" alt="rss" />
+        </a>
+        <a href="/feed" token="bottombar">RSS</a>
+      </div>
+      <div class="footer-column">
+        <a href="https://twitter.com/Crunchyroll_PT" class="twitter-follow-button" data-show-count="false">Follow
+  @Crunchyroll_PT</a>
+<script>!function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "https://platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }
+  }(document, "script", "twitter-wjs");</script>
+      </div>
+      <div class="footer-column">
+        <div class="fb-like" data-href="https://www.facebook.com/Crunchyroll.pt" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
+      </div>
+    </div>
+  </div>
+  </div>
+              </div>
+    </div>
+
+    
+            
+<script type="text/javascript">
+$(document).ready(function(e) {
+  // temp_ad
+  var cookie = readCookie('temp_ad_closed');
+
+  // show ad if no cookie is set
+  if(cookie == 1){
+    $('#temp_ad').hide();
+    killAd();
+  }else{
+    $('#temp_ad').show();
+  }
+
+  function tempAd(){
+    var contentOffset = $('#template_body').offset();
+    var contentWidth = $('#template_body').width();
+    var windowWidth = $(window).width();
+    var tempAdv = $('#temp_ad');
+    tempAdv.offset({left: contentOffset.left + contentWidth - 180});
+  }
+  tempAd();
+  $(window).resize(function(){
+    tempAd();
+  });
+  $('#temp_ad').hover(function(){
+    $(this).stop().animate({
+      opacity: 1,
+      bottom: 0
+    },500,function(){
+      $(this).find('.close').fadeIn(200);
+    });
+  },function(){
+    $(this).find('.close').fadeOut(200);
+    $(this).stop().animate({
+      opacity: 0.85,
+      bottom: -140
+    },500,function(){});
+  });
+
+  function killAd(){
+    $('#temp_ad').fadeOut(400, function(){
+      $('#temp_ad').remove();
+    });
+  }
+
+  $('#temp_ad .close').click(function(){
+    killAd();
+    createCookie('temp_ad_closed',1,7);
+  });
+  // end of temp_ad code
+
+  $('a').each(function() {
+    trackToken(this);
+  });
+  CharacterCounter.Init();
+  
+  if($('.main-page').css('background-image') == 'none'){
+    $('.template-container').addClass('no-adskin');
+  }
+});
+
+$(window).bind('beforeunload',function () {
+  if (Page.warnOnLeavingPageMessage) {
+    return Page.warnOnLeavingPageMessage;
+  }
+});
+
+
+gapi.plusone.go();
+</script>
+    <script>
+  var is_premium = false;
+  var ga = ga || function noop() {
+    // Do nothing
+  };
+
+  $('#header_search_input').on('click', function trackSearch() {
+    ga('send', 'event', 'homepage', 'search', 'click');
+  });
+
+
+  $('#header_account_settings').on('click', function trackAccountSettings() {
+    if (is_premium) {
+      ga('send', 'event', 'Cancel', 'Cancel.Settings.click');
+    }
+  });
+</script>
+<script type="text/javascript">
+  var _qevents = _qevents || [];
+
+  (function() {
+    var elem = document.createElement('script');
+    elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+    elem.async = true;
+    elem.type = "text/javascript";
+    var scpt = document.getElementsByTagName('script')[0];
+    scpt.parentNode.insertBefore(elem, scpt);
+  })();
+
+  _qevents.push({
+    qacct:"p-2c9Xi7EeE3Hx2"
+  });
+</script>
+<noscript>
+  <div style="display:none;">
+    <img src="//pixel.quantserve.com/pixel/p-2c9Xi7EeE3Hx2.gif" border="0" height="1" width="1" alt="Quantcast"/>
+  </div>
+</noscript>
+<script type="text/javascript">
+  var _comscore = _comscore || [];
+  _comscore.push({ c1: "2", c2: "15801199" });
+  (function() {
+    var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+    s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+    el.parentNode.insertBefore(s, el);
+  })();
+</script>
+<noscript>
+  <img src="//sb.scorecardresearch.com/p?c1=2&amp;c2=7021617&amp;cv=2.0&amp;cj=1" />
+</noscript>
+
+
+<div style="display: none;">
+  <script>
+    /* <![CDATA[ */
+    var google_conversion_id = 982007020;
+    var google_conversion_format = "3";
+    var google_remarketing_only = true;
+      var google_conversion_value = 0;
+          /* ]]> */
+  </script>
+  <script src="//www.googleadservices.com/pagead/conversion.js"></script>
+  <noscript>
+    <div style="display: inline;">
+      <img height="1" width="1" style="border-style: none;" alt=""
+           src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/982007020/?guid=ON&amp;script=0&amp;value=0"/>
+    </div>
+  </noscript>
+</div>
+<script>
+  adroll_adv_id = "S3XDMOUT55F43EDQZFISDA";
+  adroll_pix_id = "3GKIBNN7JBASTNGN7GWJBD";
+  (function () {
+    var oldonload = window.onload;
+    window.onload = function () {
+      __adroll_loaded = true;
+      var scr = document.createElement("script");
+      var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
+      scr.setAttribute('async', 'true');
+      scr.type = "text/javascript";
+      scr.src = host + "/j/roundtrip.js";
+      ((document.getElementsByTagName('head') || [null])[0] ||
+      document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
+      if (oldonload) {
+        oldonload()
+      }
+    };
+  }());
+</script>
+
+<script src="https://platform.twitter.com/oct.js"></script>
+<script>
+    if (twttr.conversion) {
+    twttr.conversion.trackPid('l4wzz');
+  }
+</script>
+<noscript>
+  <img height="1" width="1" style="display: none;" alt=""
+       src="https://analytics.twitter.com/i/adsct?txn_id=l4wzz&p_id=Twitter"/>
+  <img height="1" width="1" style="display: none;" alt="" src="//t.co/i/adsct?txn_id=l4wzz&p_id=Twitter"/>
+</noscript>
+
+<script>
+  'use strict';
+
+  document.addEventListener('DOMContentLoaded', function setUpTruoptikTracking() {
+    if (!Components.TruoptikTrackingFacade) {
+      return;
+    }
+
+    var truoptikFacade = new Components.TruoptikTrackingFacade();
+
+    truoptikFacade.initialize().then(function() {
+      truoptikFacade.sendCustomData({"email":null,"name":null,"date_of_birth":null,"gender":null,"premium_status":"free","country_code":"BR"});
+    });
+  });
+</script><script>
+  !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t){var e=document.createElement("script");e.type="text/javascript";e.async=!0;e.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(e,n)};analytics.SNIPPET_VERSION="4.0.0";}}();
+
+  (function initializeSegment() {
+    const segmentKey = 'KC3ITMkcWCrn2dZrMXlkjNQBaFSB9ilG';
+    const fallbackApiHost = 'cr-eec.etp-prod.com/v1';
+    const fallbackLibraryHost = 'https://sa.etp-prod.com/analytics.js/v1/' + segmentKey + '/analytics.min.js';
+
+    const defaultApiHost = 'cr-eec.etp-prod.com/v1';
+    const defaultLibraryHost = 'https://cdn.segment.io/analytics.js/v1/' + segmentKey + '/analytics.min.js';
+
+    function loadSegmentScript(segmentKey, successCallback, errorCallback) {
+      const script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = !0;
+      script.src = defaultLibraryHost;
+
+      script.onload = function () {
+        successCallback();
+      };
+
+      script.onerror = function () {
+        errorCallback();
+      };
+
+      var firstScript = document.getElementsByTagName('script')[0];
+      firstScript.parentNode.insertBefore(script, firstScript)
+    }
+
+    function overrideSegmentHost() {
+      window.analytics._integrations['Segment.io'].options.apiHost = defaultApiHost;
+
+      const req = new XMLHttpRequest();
+      req.open('POST', 'https://' + defaultApiHost + '/batch');
+      req.setRequestHeader('Content-Type', 'application/json');
+      req.addEventListener('error', function () {
+        if (req.status === 0) { // BLOCK BY CLIENT STATUS CODE
+          window.analytics._integrations['Segment.io'].options.apiHost = fallbackApiHost;
+        }
+      });
+      // POST an empty batch action to check if api.segment.io is available
+      req.send(JSON.stringify({batch: []}));
+    }
+
+    function loadSegmentFallbackLibrary() {
+      const script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = !0;
+      script.src = fallbackLibraryHost;
+
+      script.onload = function () {
+        window.analytics._integrations['Segment.io'].options.apiHost = fallbackApiHost;
+      };
+
+      const firstScript = document.getElementsByTagName('script')[0];
+      firstScript.parentNode.insertBefore(script, firstScript);
+    }
+
+    function identify(anonymousId) {
+      let analytics = window.analytics,
+        traits = {anonymousId: anonymousId};
+
+            analytics.identify("", traits);
+      
+      let page_metadata = $.extend({
+        channelName: '',
+        modal: '',
+        referrer: document.referrer,
+        pageLoadTime: ''
+      }, {"experiment":"","isAuthenticated":false,"ContentMedia":{"channelName":"","mediaType":"episode","mediaId":"GY8D0QMJY","mediaTitle":"Attack on Titan","seasonTitle":"Attack on Titan S3","episodeTitle":"The Basement","episodeNumber":"56","extraTitle":""}});
+
+      analytics.page(page_metadata);
+    }
+
+    loadSegmentScript(segmentKey, overrideSegmentHost, loadSegmentFallbackLibrary);
+
+    triggerSegmentIdentifyExecuted();
+
+    let isAnalyticsReady = false;
+    window.analytics.ready(function () {
+      isAnalyticsReady = true;
+      identify(window.analytics.user().anonymousId());
+    });
+
+    // Trigger segment identify in case analytics didn't triggered "ready" event
+    setTimeout(function () {
+      if (!isAnalyticsReady) {
+        identify(null);
+      }
+    }, 5000);
+  })();
+
+  (function registerSegmentEvents() {
+    window.segment = {
+      track: function () {
+        this.trackLoginSelected();
+        this.trackLoginFailed();
+        this.trackLoginRequested();
+
+        this.trackRegistrationSelected();
+        this.trackRegistrationFailed();
+        this.trackRegistrationRequested();
+        this.trackLinkAccountPermissionsAgreed();
+        this.trackLinkAccountPermissionsDisagree();
+        this.trackLinkAccountRequested();
+
+        this.trackPaymentMethodSelected();
+        this.trackUpsellSelected();
+        this.trackHappyMealUpsellSelected();
+        this.trackAnchorNavigated();
+        this.trackHelpFaq();
+        this.trackSubscriptionRequested();
+
+        this.trackFreeTrialSelectedContinue();
+        this.trackTosSelected();
+        this.trackPrivacySelected();
+        this.trackPasswordResetNavigated();
+        this.trackHomeSelected();
+        this.trackWhatIsVRV();
+        this.trackHmVrvRegistrationRequested();
+        this.trackManualSigninNavigated();
+
+        this.trackShoppingContinued();
+        this.trackCartUpdated();
+        this.trackCheckoutStarted();
+      },
+
+      trackLoginRequested: function () {
+        $('#login_submit_button').click(function () {
+          analytics.track('Login Requested', {
+            loginId: $('#login_form_name').val(),
+            ActionDetail: helper.buildActionDetail($(this), 'right')
+          })
+        });
+
+        $('#freetrial_landing_login_form').find('button').click(function () {
+          analytics.track('Login Requested', {
+            loginId: $('#login_form_name').val(),
+            ActionDetail: helper.buildActionDetailForHappyMeal($(this), 'right')
+          })
+        });
+      },
+
+      trackLoginSelected: function () {
+        $('#header_userpanel_beta').find('.login a').click(function () {
+          analytics.track('Login Selected', {
+            ActionDetail: helper.buildActionDetail($(this).find('.caption'), 'header')
+          })
+        });
+
+        $('.showmedia-free-trial-already-have-account a').click(function () {
+          analytics.track('Login Selected', {
+            ActionDetail: helper.buildActionDetail($(this), 'right')
+          })
+        });
+
+        $('#freetrial_landing_select_login_form').click(function () {
+          analytics.track('Login Selected', {
+            ActionDetail: helper.buildActionDetailForHappyMeal($(this), 'right')
+          })
+        })
+      },
+
+      trackLoginFailed: function () {
+        var errors = $('#login_form').find('li.error');
+        if (errors.length > 0) {
+          analytics.track('Login Failed', {
+            emailAddress: $('#login_form_name').val(),
+            failureReason: errors.first().text()
+          });
+        }
+
+        errors = $('#freetrial_login_form').find('li.error');
+        if (errors.length > 0) {
+          analytics.track('Login Failed', {
+            emailAddress: $('#login_form_name').val(),
+            failureReason: errors.first().text()
+          });
+        }
+      },
+
+      trackRegistrationRequested: function () {
+        $('#signup_form #signup_submit_button').click(function () {
+          analytics.track('Registration Requested', {
+            emailAddress: $('#signup_with_profile_email').val(),
+            ActionDetail: helper.buildActionDetail($(this), 'left')
+          })
+        });
+
+        $('#showmedia_free_trial_signup').find('a.button').click(function () {
+          analytics.track('Registration Requested', {
+            emailAddress: $('#new_email').val(),
+            ActionDetail: helper.buildActionDetail($(this), 'right')
+          })
+        });
+
+        $('#freetrial_signup_form #signup_submit_button').click(function () {
+          analytics.track('Registration Requested', {
+            emailAddress: $('#signup_email').val(),
+            ActionDetail: helper.buildActionDetailForHappyMeal($(this), 'right')
+          });
+
+          //catch ajax validation errors
+          segment.trackRegistrationFailed();
+        });
+      },
+
+      trackRegistrationFailed: function () {
+        var errors = $('#signup_form').find('li.error');
+        if (errors.length > 0) {
+          analytics.track('Registration Failed', {
+            emailAddress: $('#signup_with_profile_email').val(),
+            failureReason: errors.first().text()
+          });
+        }
+
+        errors = $('#freetrial_signup_form').find('li.error');
+        if (errors.length > 0) {
+          analytics.track('Registration Failed', {
+            emailAddress: $('#freetrial_signup_form #signup_email').val(),
+            failureReason: errors.first().text()
+          });
+        }
+      },
+
+      trackRegistrationSelected: function () {
+        $('#freetrial_landing_select_signup_form').click(function () {
+          analytics.track('Registration Selected', {
+            ActionDetail: helper.buildActionDetailForHappyMeal($(this), 'right')
+          })
+        })
+      },
+
+      trackLinkAccountPermissionsAgreed: function () {
+        $('.permissions-request #allow_link').click(function () {
+          analytics.track('Link Accounts Permissions Agreed', {
+            ActionDetail: helper.buildActionDetail($(this), 'bottom')
+          })
+        });
+      },
+
+      trackLinkAccountPermissionsDisagree: function () {
+        $('.permissions-request #deny_link').click(function () {
+          analytics.track('Link Accounts Permissions Disagree', {
+            ActionDetail: helper.buildActionDetail($(this), 'bottom')
+          })
+        });
+      },
+
+      trackLinkAccountRequested: function () {
+        $('form[name="partners_login_form"]').submit(function () {
+          analytics.track('Link Accounts Requested', {
+            ActionDetail: helper.buildActionDetail($(this).find('#log_in_submit_button'), 'bottom')
+          })
+        });
+      },
+
+      trackPaymentMethodSelected: function () {
+        $('.subscription-page #payment_method_credit_card').click(clickOnPaymentMethod('CreditCard'));
+        $('.subscription-page #payment_method_paypal').click(clickOnPaymentMethod('PayPal'));
+
+        function clickOnPaymentMethod(method) {
+          return function () {
+            analytics.track('Payment Method Selected', {
+              method: method
+            });
+          }
+        }
+      },
+
+      trackSubscriptionSelected: function (element, sku) {
+        var infoObject = {
+          ActionDetail: helper.buildActionDetail(element, 'center')
+        };
+
+        if (sku) {
+          infoObject.SKU = {
+            skuId: sku.id,
+            skuTitle: sku.title,
+            skuType: sku.type
+          };
+        }
+
+        analytics.track('Subscription Selected', infoObject);
+      },
+
+      trackFreeTrialSelected: function (element, sku) {
+        if (!sku) {
+          return;
+        }
+
+        var infoObject = {
+          SKU: {
+            skuId: sku.id,
+            skuTitle: sku.title,
+            skuType: sku.type
+          },
+          ActionDetail: helper.buildActionDetail(element, 'center')
+        };
+
+        analytics.track('Free Trial Selected', infoObject);
+      },
+
+      trackCustomEvent: function (event, data) {
+        analytics.track(event, data);
+      },
+
+      trackSubscriptionCanceled: function (sku) {
+        analytics.track('Subscription Canceled', {
+          SKU: {
+            skuId: sku,
+            skuTitle: '',
+            skuType: ''
+          }
+        });
+      },
+
+      trackSubscriptionRequested: function () {
+        $('#premium_pick_plan_container').find('.premium-pick-plan-choices a').click(function () {
+          analytics.track('Subscription Requested', {
+            ActionDetail: helper.buildActionDetail($(this), 'center', $(this).attr('data-text')),
+            SKU: {
+              skuId: $(this).attr('data-sku'),
+              skuTitle: '',
+              skuType: ''
+            }
+          });
+        });
+      },
+
+      trackUpsellSelected: function () {
+        $('#header_try_premium_free').click(trackEvent('top', 'Premium try free'));
+        $('#footer_compare_plans, #footer_two_week_free_trial').click(trackEvent('bottom'));
+        $('#cancellation_try_vrv_button').click(trackEvent('center'));
+        $('#get_funimation_button, #vrv_offline_view_ad, #vrv_funimation_and_offline_view_ad')
+          .click(trackEvent('right', 'Find Out More'));
+
+        function trackEvent(position, text) {
+          return function () {
+            analytics.track('Upsell Selected', {
+              ActionDetail: helper.buildActionDetail($(this), position, text)
+            });
+          }
+        }
+      },
+
+      trackHappyMealUpsellSelected: function () {
+        $('.happy-meal-upsell-button').click(function () {
+          var element = $(this);
+
+          analytics.track('Upsell Selected', {
+            ActionDetail: helper.buildActionDetail($(this), element.data('position')),
+            SKU: {
+              skuId: element.data('id'),
+              skuTitle: element.data('title'),
+              skuType: 'alLaCarte',
+            }
+          });
+        });
+      },
+
+      trackAnchorNavigated: function () {
+        $('.top-menu-anchor-navigated').click(function () {
+          analytics.track('Anchor Navigated', {
+            ActionDetail: helper.buildActionDetail($(this), 'top'),
+          });
+        });
+      },
+
+      trackHelpFaq: function () {
+        $('.bottom-help-faq').click(function () {
+          analytics.track('Help/FAQ', {
+            ActionDetail: helper.buildActionDetail($(this), 'bottom'),
+          });
+        });
+      },
+
+      trackSubscriptionCancelRequested: function () {
+        analytics.track('Subscription Cancel Requested');
+      },
+
+      trackSubscriptionCancelConfirmed: function () {
+        analytics.track('Subscription Cancel Confirmed');
+      },
+
+      trackSubscriptionCancelSelected: function () {
+        analytics.track('Subscription Cancel Selected');
+      },
+
+      trackFreeTrialCancelled: function (sku) {
+        analytics.track('Free Trial Cancelled', {
+          SKU: {
+            skuId: sku,
+            skuTitle: '',
+            skuType: ''
+          }
+        });
+      },
+
+      trackFreeTrialSelectedContinue: function () {
+        $('#js_continue_free_trial').click(function () {
+          var element = $(this);
+          analytics.track('Free Trial Selected', {
+            ActionDetail: helper.buildActionDetail(element, 'right'),
+            SKU: {
+              skuId: element.data('sku'),
+              skuTitle: '',
+              skuType: ''
+            },
+            ExternalReferrer: {
+              referrerId: '',
+              referrerLink: '',
+              referrerName: '',
+              referrerType: '',
+              referrerUrl: ''
+            },
+            lengthOfFreeTrial: '14 Days'
+          });
+        });
+      },
+
+      trackUpsellDisplayed: function (textOfButtonOrLink, position) {
+        analytics.track('Upsell Displayed', {
+          textOfButtonOrLink: textOfButtonOrLink,
+          position: position
+        });
+      },
+
+      trackExperimentViewed: function (experiment, variant) {
+        analytics.track('Experiment Viewed', {
+          experimentId: experiment,
+          variantId: variant
+        });
+      },
+
+      trackExperimentListViewed: function (experimentList) {
+        let that = this;
+        $.each(experimentList, function (experiment, variant) {
+          that.trackExperimentViewed(experiment, variant);
+        });
+      },
+
+      trackHomeSelected: function () {
+        $('#isolated_page_home_link, #home_link').click(function () {
+          analytics.track('Home Selected', {
+            ActionDetail: helper.buildActionDetailForHappyMeal($(this), 'left')
+          });
+        });
+      },
+
+      trackWhatIsVRV: function () {
+        $('#what_is_vrv').click(function () {
+          analytics.track('What is VRV Navigated', {
+            ActionDetail: helper.buildActionDetail($(this), 'left')
+          })
+        });
+      },
+
+      trackTosSelected: function () {
+        $('#freetrial_landing_signup_form').find('#tos_link').click(function () {
+          analytics.track('Terms Selected', {
+            ActionDetail: helper.buildActionDetail($(this), 'right')
+          })
+        });
+      },
+
+      trackPrivacySelected: function () {
+        $('#freetrial_landing_signup_form').find('#privacy_link').click(function () {
+          analytics.track('Privacy Selected', {
+            ActionDetail: helper.buildActionDetail($(this), 'right')
+          });
+        })
+      },
+
+      trackPasswordResetNavigated: function () {
+        $('#freetrial_login_form').find('.forgot-password-link').click(function () {
+          analytics.track('Password Reset Navigated', {
+            ActionDetail: helper.buildActionDetail($(this), 'right')
+          });
+        })
+      },
+
+      trackHappyMealExitToCR: function () {
+        analytics.track('HM Exited to Crunchyroll');
+      },
+
+      trackHappyMealExitToVRV: function () {
+        analytics.track('HM Exited to VRV');
+      },
+
+      trackSFPHomeSelected: function() {
+        analytics.track('Home Selected', {
+          ActionDetail: helper.buildActionDetail($(this), 'top left', $(this).attr('href')),
+          referrer: document.referrer
+        });
+      },
+
+      trackSFPHelp: function() {
+        analytics.track('SFP Help/FAQ', {
+          ActionDetail: helper.buildActionDetail($(this), 'bottom'),
+          referrer: document.referrer
+        })
+      },
+
+      trackSFPBenefitNavigated: function(partner, link) {
+        analytics.track('3rd Party Bundle Benefit Link Navigated', {
+          ActionDetail: helper.buildActionDetail($(this)),
+          externalBenefitPartner: partner,
+          externalDestinationUrl: link
+        })
+      },
+
+      trackHmVrvRegistrationRequested: function () {
+        $('#activate_vrv_account').submit(function () {
+          analytics.track('HM VRV Registration Requested', {
+            ActionDetail: helper.buildActionDetail($(this), 'center')
+          });
+        });
+      },
+
+      trackManualSigninNavigated: function () {
+        $('#create_or_sign_in_vrv_account').click(function () {
+          analytics.track('Manual Signin Navigated', {
+            ActionDetail: helper.buildActionDetail($(this), 'bottom')
+          });
+        });
+      },
+
+      trackErrorBannerDisplayed: function (element) {
+        analytics.track('Error Banner Displayed', {
+          ActionDetail: helper.buildActionDetail($(element), 'center')
+        });
+      },
+
+      trackErrorBannerNavigated: function () {
+        analytics.track('Error Banner Navigated', {
+          ActionDetail: helper.buildActionDetail($(this), 'center')
+        });
+      },
+
+      trackShoppingContinued: function () {
+        $('#continue_shopping').click(function () {
+          analytics.track('Shopping Continued');
+        });
+      },
+
+      trackCartUpdated: function () {
+        $('#update_cart').click(function () {
+            analytics.track('Cart Updated');
+          }
+        );
+      },
+
+      trackCartViewed: function (cart) {
+        analytics.track('Cart Viewed', cart);
+      },
+
+      trackGetShippingEstimate: function (countryCode, zip) {
+        analytics.track('Get Shipping Estimate', {
+          country: countryCode,
+          zip: zip
+        });
+      },
+
+      trackCheckoutStarted: function () {
+        $('#checkout_cart').click(function () {
+          analytics.track('Checkout Started');
+        });
+      },
+
+      trackOrderCompleted: function (orderId) {
+        analytics.track('Order Completed', {
+          orderId: orderId
+        });
+      },
+
+      trackPartnerLoginViewed: function (partnerId, partnerName) {
+        analytics.track('Partner Login', {
+          partnerId: partnerId,
+          partnerName: partnerName
+        });
+      },
+
+      trackPartnerLoginRequested: function (loginId, partnerId, partnerName) {
+        analytics.track('Partner Login Requested', {
+          partnerId: partnerId,
+          partnerName: partnerName,
+          loginId: loginId
+        });
+      }
+    };
+
+    $(function () {
+      segment.track();
+    });
+
+    var helper = {
+      buildActionDetail: function (element, position, text) {
+        return {
+          textOfButtonOrLink: text || element.text().trim(),
+          pageOrScreen: $(document).find('head title').text(),
+          position: position || ''
+        }
+      },
+      buildActionDetailForHappyMeal: function (element, position, text) {
+        var actionDetail = this.buildActionDetail(element, position, text);
+        var happyMealVariant = null;
+
+        if (happyMealVariant) {
+          return $.extend(actionDetail, {experiment: 'HappyMeal.E31.' + happyMealVariant});
+        }
+
+        return actionDetail;
+      }
+    };
+  })();
+
+  //hack to make vilos work when an adblocker is present
+  //we use segment anonymous_id in vilos configuration, which is generated in analytics.identify
+  //this listener has to be added after loading segment and before calling analytics.identify, can't do it when loading vilos
+  function triggerSegmentIdentifyExecuted() {
+    let isVilosLoaded = false;
+
+    window.analytics.on('invoke', function (o) {
+      if (!o.obj || !o.obj.anonymousId || isVilosLoaded) {
+        return;
+      }
+
+      if (typeof window.CustomEvent === 'function') {
+        document.dispatchEvent(new CustomEvent('SEGMENT_IDENTIFY_EXECUTED', {
+          detail: {
+            segment_anonymous_id: o.obj.anonymousId
+          }
+        }));
+      } else {
+        //IE compatibility
+        let event = document
+          .createEvent('CustomEvent')
+          .initCustomEvent('SEGMENT_IDENTIFY_EXECUTED', false, false, {
+            segment_anonymous_id: o.obj.anonymousId
+          });
+
+        document.dispatchEvent(event);
+      }
+
+      isVilosLoaded = true;
+    });
+  }
+</script>
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"bad6e2948e","applicationID":"109843800","transactionName":"NFZQZ0IAD0BRVkddXw0ccUZDFQ5eH1ZBDkMLXEVeVQUIUg==","queueTime":0,"applicationTime":141,"atts":"GBFTEQoaHE4=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

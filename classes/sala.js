@@ -4,13 +4,15 @@ class Sala {
         this.id = id;
         this.nome = nome;
         this.playlist = new Array()
-        this.tempo = 0
+        this.tempo = -2
         this.volume = 100;
     }
 
     atualizarTempo() {
-        this.tempo++;
-        Sala.io.emit("time", { duracao: this.tempo });
+        this.tempo = this.tempo +1;
+        if (this.tempo >= 0) {
+            Sala.io.emit("time", { duracao: this.tempo });
+        }
     }
 
 
@@ -21,6 +23,7 @@ class Sala {
     setVolume(valor = this.volume) {
         this.volume = valor;
         Sala.io.to(this.id).emit("volume", { volume: valor });
+
     }
 
 
