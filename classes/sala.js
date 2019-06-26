@@ -9,9 +9,9 @@ class Sala {
     }
 
     atualizarTempo() {
-        this.tempo = this.tempo +1;
+        this.tempo = this.tempo + 1;
         if (this.tempo >= 0) {
-            Sala.io.emit("time", { duracao: this.tempo });
+            Sala.io.to(this.id).emit("time", { duracao: this.tempo });
         }
     }
 
@@ -40,9 +40,9 @@ class Sala {
         return Sala.verificarSala(idSala)
     }
 
-    static criarSala(salas, idSala) {
+    static criarSala(salas, idSala, nome) {
         const Sala = require('./sala.js')
-        var salaUser = new Sala(idSala, "Sala numero" + idSala);
+        var salaUser = new Sala(idSala, nome);
 
         if (this.verificarSala(idSala) == -1) {
             salas.push(salaUser);
@@ -51,15 +51,30 @@ class Sala {
         return this.pegarSala(idSala);
     }
 
+    static async getYoutubeAPI(idVideo) {
+        const Youtube = require('../robots/youtube');
+
+        var r = await Youtube.main(idVideo);
+        return r;
+    }
+
     async adicionarVideo(idVideo, msg) {
 
         const Video = require('./video');
-        const Youtube = require('../robots/youtube');
         var iso = require('iso8601-duration');
 
-        var r = await Youtube.main(idVideo);
-        var indexSala = Sala.verificarSala(msg.guild.id);
-        Sala.salas[indexSala].playlist.push(new Video(idVideo, r.items[0].snippet.title, iso.toSeconds(iso.parse(r.items[0].contentDetails.duration)), msg.author))
+        var r = await Sala.getYoutubeAPI(idVideo);
+
+        if (r.items[0] != null) {
+            var indexSala = Sala.verificarSala(msg.guild.id);
+            setTimeout(() => {
+                Sala.salas[indexSala].playlist.push(new Video(idVideo, r.items[0].snippet.title, iso.toSeconds(iso.parse(r.items[0].contentDetails.duration)), msg.author))
+            }, 5000);
+            return true;
+        } else {
+            return false;
+
+        }
     }
 
 }

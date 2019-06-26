@@ -4,7 +4,7 @@
 <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <title> <%- teste %> </title>
+    <title> Jessy! - BOT de cinema para Discord </title>
     <style>
         * {
             margin: 0;
@@ -40,11 +40,7 @@
             <div style="width: 77vw;height: 24.5vw;padding-top: 5.2vw;margin: 0px auto">
                 <div style="background: black;height: 100%;width: 100%;box-shadow: 0px 0px 5px #000;">
                     <div id="video">
-                        <div style="
-                        position: absolute;
-                        height: 100%;
-                        width: 100%;
-                    "></div>
+                   
                         <div id="player"></div>
                     </div>
                 </div>
@@ -109,12 +105,15 @@
                 $("#video").hide();
 
                 console.log("Video: " + data.video)
+
                 dados = await player.getVideoData();
                 if (dados['video_id'] != data.video) {
                     //$("#video").show();
                     player.loadVideoById({ 'videoId': data.video });
                     player.stopVideo();
+
                 }
+
             });
 
             socket.on("disconnect", () => {
@@ -123,12 +122,15 @@
             });
 
             socket.on("time", (data) => {
-                console.log(Math.floor(player.getCurrentTime()) + " " + data.duracao);
+                // console.log(Math.floor(player.getCurrentTime()) + " " + data.duracao);
                 if (playerPronto) {
                     if (Math.floor(player.getCurrentTime()) != data.duracao - 1) {
+                        if (player.getVideoData()['title'] != 'undefined')
+                            setTitle(player.getVideoData()['title']);
                         console.log(Math.floor(player.getCurrentTime()) + " " + data.duracao);
                         player.seekTo(data.duracao);
                         $("#video").show();
+                        player.playVideo();
                     }
                 }
             });
@@ -156,8 +158,15 @@
             }
             if (event.data == YT.PlayerState.ENDED || event.data == YT.PlayerState.CUED) {
                 console.log("terminou" + event.data);
+                setTitle()
                 $("#video").hide();
             }
+        }
+
+        function setTitle(texto = "") {
+            if (texto != "")
+                texto += " -";
+            document.title = texto + " Jessy! BOT de Cinema"
         }
     </script>
 

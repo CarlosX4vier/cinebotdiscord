@@ -19,6 +19,8 @@ class Youtube {
                     });
                 });
         });
+        console.log("https://www.googleapis.com/youtube/v3/videos?part=id,snippet,contentDetails&id="+video+"&key=" + credentials.youtube);
+
         return p;
     }
 }
