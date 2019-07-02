@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs')
 app.set('views', './view');
 
-var server = app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+var server = app.listen(port, () => console.log(`>Aplicativo executando na porta ${port}!`))
 var io = require('socket.io', { rememberTransport: false })(server);
 
 
@@ -120,7 +120,6 @@ client.on('message', async (msg) => {
    
 
   } else if (acao[0] == "!volume") {
-    console.log("Sala: " + msg.guild.id + " | Index" + Salaid);
     Sala.salas[Salaid].setVolume(acao[1]);
   }
 });

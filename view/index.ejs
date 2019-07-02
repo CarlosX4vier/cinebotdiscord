@@ -123,6 +123,7 @@
 
             socket.on("time", (data) => {
                 // console.log(Math.floor(player.getCurrentTime()) + " " + data.duracao);
+                player.playVideo();
                 if (playerPronto) {
                     if (Math.floor(player.getCurrentTime()) != data.duracao - 1) {
                         if (player.getVideoData()['title'] != 'undefined')
@@ -130,7 +131,6 @@
                         console.log(Math.floor(player.getCurrentTime()) + " " + data.duracao);
                         player.seekTo(data.duracao);
                         $("#video").show();
-                        player.playVideo();
                     }
                 }
             });
@@ -166,7 +166,7 @@
         function setTitle(texto = "") {
             if (texto != "")
                 texto += " -";
-            document.title = texto + " Jessy! BOT de Cinema"
+            document.title = texto + " Jessy! - BOT de cinema para Discord"
         }
     </script>
 
