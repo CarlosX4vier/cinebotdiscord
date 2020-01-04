@@ -21,12 +21,10 @@ class Sala {
      * @param {int} valor Volume da sala
      */
     setVolume(valor = this.volume) {
-        console.log(">Volume da sala " + msg.guild.id + " setado para "+valor);
+        //console.log(">Volume da sala " + msg.guild.id + " setado para "+valor);
         this.volume = valor;
         Sala.io.to(this.id).emit("volume", { volume: valor });
-
     }
-
 
     static verificarSala(salaTeste) {
         return Sala.salas.findIndex(salaCheck => salaCheck.id == salaTeste);
@@ -46,7 +44,7 @@ class Sala {
         var salaUser = new Sala(idSala, nome);
 
         if (this.verificarSala(idSala) == -1) {
-            console.log(">Criação da sala do servidor "+nome)
+            console.log(">Criação da sala do servidor " + nome)
             salas.push(salaUser);
         }
 
@@ -58,6 +56,16 @@ class Sala {
 
         var r = await Youtube.main(idVideo);
         return r;
+    }
+
+    proximoVideo() {
+        this.tempo = -2;
+        if (this.playlist.length > 1) {
+            this.playlist.shift();
+            return true
+        } else {
+            return false
+        }
     }
 
     async adicionarVideo(idVideo, msg) {

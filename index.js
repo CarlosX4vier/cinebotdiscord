@@ -42,7 +42,7 @@ setInterval(() => {
       }
 
       if (element.tempo < element.playlist[0].duracao) {
-      //  console.log(element.tempo)
+        //  console.log(element.tempo)
         element.atualizarTempo();
       }
     }
@@ -66,11 +66,11 @@ client.on('guildCreate', (guild) => {
 
   let channel = guild.channels.get(guild.systemChannelID || channelID);
   var msg = "Ol\u00E1, eu sou a **Jessy**, a organizadora do **Cine Discord** e eu j\u00E1 estou pronta para come\u00E7ar:\r\n\r\n"
-  +"`COMANDOS` \r\n:arrow_right: **!assistir** *link do YouTube* - Para come\u00E7ar a sess\u00E3o de videos " 
-  +"\r\n:arrow_right: **!assistir** *link do YouTube* - Para come\u00E7ar a sess\u00E3o de videos"
-  +"\r\n:arrow_right: **!volume** *(0-100)* - Para alterar o volume da sala"
-  +"\r\n:arrow_right:  **!doar** - Para saber como colaborar com o projeto. "
-  +"\r\n\r\n :star: E AI?! Vamos come\u00E7ar?!";
+    + "`COMANDOS` \r\n:arrow_right: **!assistir** *link do YouTube* - Para come\u00E7ar a sess\u00E3o de videos "
+    + "\r\n:arrow_right: **!assistir** *link do YouTube* - Para come\u00E7ar a sess\u00E3o de videos"
+    + "\r\n:arrow_right: **!volume** *(0-100)* - Para alterar o volume da sala"
+    + "\r\n:arrow_right:  **!doar** - Para saber como colaborar com o projeto. "
+    + "\r\n\r\n :star: E AI?! Vamos come\u00E7ar?!";
   channel.send(msg);
 })
 
@@ -80,9 +80,9 @@ client.on('ready', () => {
 
 
 
-client.login('MzkyOTAzMTcwNTQ1ODExNDU3.XPaWwQ.J0SA8eN3y8mGEblnA6jiPB39o3U');
+client.login('MzkyOTAzMTcwNTQ1ODExNDU3.XgpI6g.04JYDnLSKQOvXSRQb489XCwHAkY');
 
-
+//codigo dahora kakakaka
 client.on('message', async (msg) => {
   var acao = msg.content.split(" ");
   Salaid = Sala.verificarSala(msg.guild.id);
@@ -98,29 +98,30 @@ client.on('message', async (msg) => {
     var url = new URL(msg.content.split(" ")[1]);
     var idVideo = url.searchParams.get('v');
 
-    /* client.user.setPresence({
-       game: {
-         name: "Organizando sessão de  " + Sala.salas[Salaid].nome,
-         url: credentials.site + "/?sala=" + msg.guild.id
-       }
-     });*/
     client.user.setActivity('Sessão de ' + msg.guild.name, { type: 'WATCHING' })
 
-      await Sala.salas[Salaid].adicionarVideo("yYzaEnt0kxs", msg);
-      result = await Sala.salas[Salaid].adicionarVideo(idVideo, msg);
-      if (result) {
-        if (Sala.salas[Salaid].playlist.length == 0) {
-          msg.reply("Pegue a pipoca :popcorn: e acesse '" + msg.guild.name + "' é " + credentials.site + "/?sala=" + msg.guild.id + " \n porque o video já vai começar!");
-        } else {
-          msg.reply("Coloquei esse video na playlist, agora é só esperar :thumbsup: \n\n :link: O link da sessão é '" + msg.guild.name + "' é " + credentials.site + "/?sala=" + msg.guild.id);
-        }
-      }else{
-        msg.reply("Esse video não existe :cold_sweat: \n\n Tenta outro!!")
+    await Sala.salas[Salaid].adicionarVideo("yYzaEnt0kxs", msg);
+    result = await Sala.salas[Salaid].adicionarVideo(idVideo, msg);
+    if (result) {
+      if (Sala.salas[Salaid].playlist.length == 0) {
+        msg.reply("Pegue a pipoca :popcorn: e acesse '" + msg.guild.name + "' é " + credentials.site + "/?sala=" + msg.guild.id + " \n porque o video já vai começar!");
+      } else {
+        msg.reply("Coloquei esse video na playlist, agora é só esperar :thumbsup: \n\n :link: O link da sessão é '" + msg.guild.name + "' é " + credentials.site + "/?sala=" + msg.guild.id);
       }
-   
+    } else {
+      msg.reply("Esse video não existe :cold_sweat: \n\n Tenta outro!!")
+    }
+
 
   } else if (acao[0] == "!volume") {
-    Sala.salas[Salaid].setVolume(acao[1]);
+    Sala.salas[Salaid].setVolume(acao[1])
+  } else if (acao[0] == "!proximo") {
+    console.log(Sala.salas[Salaid].proximoVideo())
+    if (Sala.salas[Salaid].proximoVideo() == true) {
+      msg.reply(msg.author + "  colocando no ar o proximo video... ")
+    } else {
+      msg.reply(msg.author + " não tem video para colocar na sequencia :S ")
+    }
   }
 });
 
@@ -129,13 +130,10 @@ app.get('/room', (req, res) => {
 
   res.render("index", { teste: "AAA", site: credentials.host });
 
-  /*console.log(client.guilds);
 
-  var canais = client.guilds.array();
-  var channels = canais;
-  console.log(channels);
-*/
-  //canais.forEach(canal => canais.channels[585497914827210801].send("A"))
+})
+
+app.get("/", (req, res) => {
 
 })
 
