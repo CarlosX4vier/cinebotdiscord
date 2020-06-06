@@ -6,7 +6,7 @@ let ejs = require('ejs')
 
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const Sala = require('./classes/sala.js');
+const Sala = require('./classes/Sala.js');
 var credentials = require('./credentials');
 var path = require('path')
 
@@ -25,16 +25,20 @@ Sala.io = io;
 setInterval(() => {
   Sala.salas.forEach((element, i) => {
 
+    //Se há video ja fila
     if (element.playlist.length >= 1) {
 
+      //Se o video primeiro video não começou
       if (element.playlist[0].comecou == false) {
         element.tempo = -2;
         element.playlist[0].comecou = true;
       } else if (element.tempo >= element.playlist[0].duracao) {
+        //Se o video ja acabou, remove da fila
         element.playlist.shift();
         return;
       }
 
+      //SE o video estiver em carregamento, envia para os espectadores
       if (element.tempo == -2) {
         io.to(element.id).emit("video", { video: Sala.salas[i].playlist[0].id });
         io.to(Sala.salas[i].id).emit("volume", { volume: Sala.salas[i].volume });
@@ -43,7 +47,9 @@ setInterval(() => {
 
       if (element.tempo < element.playlist[0].duracao) {
         //  console.log(element.tempo)
-        element.atualizarTempo();
+        if (element.playlist.pause == false) {
+          element.atualizarTempo();
+        }
       }
     }
   });
@@ -85,14 +91,14 @@ client.login('MzkyOTAzMTcwNTQ1ODExNDU3.XgpI6g.04JYDnLSKQOvXSRQb489XCwHAkY');
 //codigo dahora kakakaka
 client.on('message', async (msg) => {
   var acao = msg.content.split(" ");
-  Salaid = Sala.verificarSala(msg.guild.id);
+  salaId = Sala.verificarSala(msg.guild.id);
 
   if (acao[0] == "!assistir") {
 
     if (Sala.verificarSala(msg.guild.id) == -1) {
       msg.reply("Espere só um minutinho que eu estou terminando de arrumar sua sala!! :blush:");
       Sala.criarSala(Sala.salas, msg.guild.id, msg.guild.name);
-      Salaid = Sala.verificarSala(msg.guild.id);
+      salaId = Sala.verificarSala(msg.guild.id);
 
     }
     var url = new URL(msg.content.split(" ")[1]);
@@ -100,10 +106,10 @@ client.on('message', async (msg) => {
 
     client.user.setActivity('Sessão de ' + msg.guild.name, { type: 'WATCHING' })
 
-    await Sala.salas[Salaid].adicionarVideo("yYzaEnt0kxs", msg);
-    result = await Sala.salas[Salaid].adicionarVideo(idVideo, msg);
+    await Sala.salas[salaId].adicionarVideo("yYzaEnt0kxs", msg);
+    result = await Sala.salas[salaId].adicionarVideo(idVideo, msg);
     if (result) {
-      if (Sala.salas[Salaid].playlist.length == 0) {
+      if (Sala.salas[salaId].playlist.length == 0) {
         msg.reply("Pegue a pipoca :popcorn: e acesse '" + msg.guild.name + "' é " + credentials.site + "/?sala=" + msg.guild.id + " \n porque o video já vai começar!");
       } else {
         msg.reply("Coloquei esse video na playlist, agora é só esperar :thumbsup: \n\n :link: O link da sessão é '" + msg.guild.name + "' é " + credentials.site + "/?sala=" + msg.guild.id);
@@ -114,14 +120,20 @@ client.on('message', async (msg) => {
 
 
   } else if (acao[0] == "!volume") {
-    Sala.salas[Salaid].setVolume(acao[1])
+    Sala.salas[salaId].setVolume(acao[1])
   } else if (acao[0] == "!proximo") {
-    console.log(Sala.salas[Salaid].proximoVideo())
-    if (Sala.salas[Salaid].proximoVideo() == true) {
+    console.log(Sala.salas[salaId].proximoVideo())
+    if (Sala.salas[salaId].proximoVideo() == true) {
       msg.reply(msg.author + "  colocando no ar o proximo video... ")
     } else {
       msg.reply(msg.author + " não tem video para colocar na sequencia :S ")
     }
+  } else if (acao[0] == "!pause") {
+    msg.reply(msg.author + " parando o video! ")
+    Sala.salas[salaId].pause()
+  } else if (acao[0] == "!pause") {
+    msg.reply(msg.author + " voooltando o video! ")
+    Sala.salas[salaId].despause()
   }
 });
 

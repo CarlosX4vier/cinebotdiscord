@@ -40,7 +40,7 @@ class Sala {
     }
 
     static criarSala(salas, idSala, nome) {
-        const Sala = require('./sala.js')
+        const Sala = require('./Sala.js')
         var salaUser = new Sala(idSala, nome);
 
         if (this.verificarSala(idSala) == -1) {
@@ -70,7 +70,7 @@ class Sala {
 
     async adicionarVideo(idVideo, msg) {
 
-        const Video = require('./video');
+        const Video = require('./Video');
         var iso = require('iso8601-duration');
 
         var r = await Sala.getYoutubeAPI(idVideo);
@@ -85,6 +85,17 @@ class Sala {
             return false;
 
         }
+    }
+
+    pause() {
+        this.playlist[0].pause = true;
+        Sala.io.to(this.id).emit("pause", true);
+    }
+
+    despause() {
+        this.playlist[0].pause = false;
+        Sala.io.to(this.id).emit("pause", false);
+
     }
 
 }
